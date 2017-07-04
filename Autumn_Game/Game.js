@@ -4,6 +4,7 @@ var MainMenu = true;
 var Play = false;
 var Options = false;
 var exit = false;
+var player;
 
 
 function main()
@@ -21,6 +22,7 @@ function main()
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 
 	app.menu = new Menu();
+	app.player = new Player();
 	update();
 
 }
@@ -29,9 +31,14 @@ function update()
 {
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
+	app.player.init();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
+	}
+	if(Play === true)
+	{
+		app.player.draw(app.ctx);
 	}
 	window.requestAnimationFrame(update);
 	console.log("Updating");
@@ -52,9 +59,9 @@ function onTouchStart(e)
 	    	touches[0].clientY <= app.menu.winHeight+ 130)
 	    {
 	    	console.log("Play Button Pressed");
-	    	//MainMenu = false;
-	    	//Play = true;
-	    	//Options = false;
+	    	MainMenu = false;
+	    	Play = true;
+	    	Options = false;
 	    }
 
 	    //Options Button
