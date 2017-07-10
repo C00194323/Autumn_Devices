@@ -134,29 +134,32 @@ function onTouchStart(e)
     	if (Play === true)
    		{
 				if (touches[0].clientX >= app.player.RightArrowWidth &&
-		    	touches[0].clientX <= app.player.RightArrowWidth+65&&
-		    	touches[0].clientY >= app.menu.winHeight+400 &&
-		    	touches[0].clientY <= app.menu.winHeight+530)
+		    	touches[0].clientX <= app.player.RightArrowWidth+64&&
+		    	touches[0].clientY >= app.player.RightArrowHeight &&
+		    	touches[0].clientY <= app.player.RightArrowHeight+64)
 		    {
+					app.player.playerX+=10;
 				}
 				if (touches[0].clientX >= app.player.LeftArrowWidth &&
-		    	touches[0].clientX <= app.player.LeftArrowWidth+65&&
-		    	touches[0].clientY >= app.menu.winHeight+400 &&
-		    	touches[0].clientY <= app.menu.winHeight+530)
+		    	touches[0].clientX <= app.player.LeftArrowWidth+64&&
+		    	touches[0].clientY >= app.player.LeftArrowHeight &&
+		    	touches[0].clientY <= app.player.LeftArrowHeight+64)
 		    {
+					app.player.playerX-=10;
 				}
-				if (touches[0].clientX >= app.menu.winWidth &&
-		    	touches[0].clientX <= app.menu.winWidth+65&&
-		    	touches[0].clientY >= app.menu.winHeight+400 &&
-		    	touches[0].clientY <= app.menu.winHeight+530)
+				if (touches[0].clientX >= app.player.UpArrowWidth &&
+		    	touches[0].clientX <= app.player.UpArrowWidth+64&&
+		    	touches[0].clientY >= app.player.UpArrowHeight &&
+		    	touches[0].clientY <= app.player.UpArrowHeight+64)
 		    {
+					app.player.playerY-=10;
 				}
-
-				if (touches[0].clientX >= app.menu.winWidth &&
-		    	touches[0].clientX <= app.menu.winWidth+65&&
-		    	touches[0].clientY >= app.menu.winHeight+400 &&
-		    	touches[0].clientY <= app.menu.winHeight+530)
+				if (touches[0].clientX >= app.player.DownArrowWidth &&
+		    	touches[0].clientX <= app.player.DownArrowWidth+64&&
+		    	touches[0].clientY >= app.player.DownArrowHeight &&
+		    	touches[0].clientY <= app.player.DownArrowHeight+64)
 		    {
+					app.player.playerY+=10;
 				}
 
 
