@@ -10,6 +10,7 @@ var player;
 function main()
 {
 	document.addEventListener("touchstart", onTouchStart);
+	document.addEventListener("keydown", keyDownHandler);
 
 	//creates a new canvas element
 	var canvas;
@@ -21,8 +22,11 @@ function main()
 	app.ctx = app.canvas.getContext("2d");
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 
+
+
 	app.menu = new Menu();
 	app.player = new Player();
+	app.player.init();
 	update();
 
 }
@@ -31,18 +35,55 @@ function update()
 {
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
-	app.player.init();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
 	}
 	if(Play === true)
 	{
-		app.player.draw(app.ctx);
+		if(app.player.playerAlive === true){
+			app.player.draw(app.ctx);
+		}
 	}
 	window.requestAnimationFrame(update);
 	console.log("Updating");
 };
+
+function keyDownHandler(j)
+{
+
+	if(j.keyCode === 38) //up arrow
+	{
+		if(app.player.playerAlive=== true)
+		{
+			app.player.playerY-= 10;
+		}
+	}
+
+	if(j.keyCode === 40) //down arrow
+	{
+		if(app.player.playerAlive=== true)
+		{
+			app.player.playerY+=10;
+		}
+
+	}
+	if(j.keyCode === 37) //left arrow
+	{
+		if(app.player.playerAlive=== true)
+		{
+			app.player.playerX-=10;
+		}
+	}
+
+	if(j.keyCode === 39) // right arrow
+	{
+		if(app.player.playerAlive=== true)
+		{
+			app.player.playerX+=10;
+		}
+	}
+}
 
 function onTouchStart(e)
 {
@@ -90,11 +131,36 @@ function onTouchStart(e)
 	    }
     }
 
-    //if (Play === true)
-   // {
-    	//app.player.init(touches[0].clientX, touches[0].clientY);
-    	//app.player.init(touchXPos, touchYPos);
-   // }
+    	if (Play === true)
+   		{
+				if (touches[0].clientX >= app.player.RightArrowWidth &&
+		    	touches[0].clientX <= app.player.RightArrowWidth+65&&
+		    	touches[0].clientY >= app.menu.winHeight+400 &&
+		    	touches[0].clientY <= app.menu.winHeight+530)
+		    {
+				}
+				if (touches[0].clientX >= app.player.LeftArrowWidth &&
+		    	touches[0].clientX <= app.player.LeftArrowWidth+65&&
+		    	touches[0].clientY >= app.menu.winHeight+400 &&
+		    	touches[0].clientY <= app.menu.winHeight+530)
+		    {
+				}
+				if (touches[0].clientX >= app.menu.winWidth &&
+		    	touches[0].clientX <= app.menu.winWidth+65&&
+		    	touches[0].clientY >= app.menu.winHeight+400 &&
+		    	touches[0].clientY <= app.menu.winHeight+530)
+		    {
+				}
+
+				if (touches[0].clientX >= app.menu.winWidth &&
+		    	touches[0].clientX <= app.menu.winWidth+65&&
+		    	touches[0].clientY >= app.menu.winHeight+400 &&
+		    	touches[0].clientY <= app.menu.winHeight+530)
+		    {
+				}
+
+
+   		}
 
     /*if (bOptions === true)
     {
@@ -104,8 +170,7 @@ function onTouchStart(e)
 	    	touches[0].clientY <= 600)
 	    {
 	    	console.log("Left Arrow Pressed");
-	    	arrowLeft = true;
-	    	arrowRight =  false;
+
 	    }
 
 	    if (touches[0].clientX >= 579 &&
@@ -114,8 +179,7 @@ function onTouchStart(e)
 	    	touches[0].clientY <= 600)
 	    {
 	    	console.log("Right Arrow Pressed");
-	    	arrowLeft = false;
-	    	arrowRight =  true;
+
 	    }
     }*/
 };
