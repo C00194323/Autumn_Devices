@@ -35,7 +35,7 @@ Player.prototype.init= function(){
 
   this.playerAlive=true;
   this.playerX = 0;
-  this.playerY=0;
+  this.playerY = 0;
 
   this.RightArrowWidth=window.innerWidth-400;
   this.LeftArrowWidth=window.innerWidth/2-100;

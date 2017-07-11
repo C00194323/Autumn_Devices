@@ -5,6 +5,7 @@ var Play = false;
 var Options = false;
 var exit = false;
 var player;
+var settingMenu;
 
 
 function main()
@@ -22,10 +23,10 @@ function main()
 	app.ctx = app.canvas.getContext("2d");
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 
-
-
 	app.menu = new Menu();
 	app.player = new Player();
+	app.settingMenu=new SettingMenu();
+
 	app.player.init();
 	update();
 
@@ -35,6 +36,7 @@ function update()
 {
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
+	app.settingMenu.init();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
@@ -44,6 +46,10 @@ function update()
 		if(app.player.playerAlive === true){
 			app.player.draw(app.ctx);
 		}
+	}
+	if(Options === true)
+	{
+		app.settingMenu.draw(app.ctx);
 	}
 	window.requestAnimationFrame(update);
 	console.log("Updating");
@@ -112,9 +118,9 @@ function onTouchStart(e)
 	    	touches[0].clientY <= app.menu.winHeight+330)
 	    {
 	    	console.log("Options Button Pressed");
-	    	//MainMenu = false;
-	    	//Play = false;
-	    	//Options = true;
+	    		MainMenu = false;
+		    	Play = false;
+	    	 	Options = true;
 	    }
 
 	    //Exit Button
