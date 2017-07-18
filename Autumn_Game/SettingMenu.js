@@ -7,7 +7,7 @@ function SettingMenu()
 
 SettingMenu.prototype.init= function(){
   this.settingBackground = new Image();
-  this.settingBackground.src = 'assets/Menu_Assets/MenuBackground.jpg';
+  this.settingBackground.src = 'assets/SettingMenu_Assets/MenuBackground.jpg';
 
   this.soundUp=new Image();
   this.soundUp.src='';

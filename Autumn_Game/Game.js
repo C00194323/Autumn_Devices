@@ -6,12 +6,15 @@ var Options = false;
 var exit = false;
 var player;
 var settingMenu;
+var playerWalkingRight = false;
+var playerStanding = true;
+var playerWalkingLeft =false;
 
 
 function main()
 {
 	document.addEventListener("touchstart", onTouchStart);
-	document.addEventListener("keydown", keyDownHandler);
+
 
 	//creates a new canvas element
 	var canvas;
@@ -28,7 +31,10 @@ function main()
 	app.settingMenu=new SettingMenu();
 
 	app.player.init();
+	document.addEventListener("keydown", keyDownHandler);
 	update();
+
+
 
 }
 
@@ -43,9 +49,29 @@ function update()
 	}
 	if(Play === true)
 	{
+
 		if(app.player.playerAlive === true){
-			app.player.draw(app.ctx);
+			if(playerStanding === true)
+			{
+				app.player.draw(app.ctx);
+				app.player.drawArrows(app.ctx);
+			}
 		}
+		if(app.player.playerAlive === true)
+		{
+			if(playerWalkingRight ===true){
+				app.player.animation(app.ctx);
+				app.player.drawArrows(app.ctx);
+			}
+		}
+		if(app.player.playerAlive === true)
+		{
+			if(playerWalkingLeft ===true){
+				app.player.animationLeft(app.ctx);
+				app.player.drawArrows(app.ctx);
+			}
+		}
+
 	}
 	if(Options === true)
 	{
@@ -63,6 +89,9 @@ function keyDownHandler(j)
 		if(app.player.playerAlive=== true)
 		{
 			app.player.playerY-= 10;
+			playerStanding=true;
+			playerWalkingRight=false;
+			playerWalkingLeft=false;
 		}
 	}
 
@@ -71,6 +100,10 @@ function keyDownHandler(j)
 		if(app.player.playerAlive=== true)
 		{
 			app.player.playerY+=10;
+			playerStanding=true;
+			playerWalkingRight=false;
+			playerWalkingLeft=false;
+
 		}
 
 	}
@@ -79,14 +112,21 @@ function keyDownHandler(j)
 		if(app.player.playerAlive=== true)
 		{
 			app.player.playerX-=10;
+			playerWalkingLeft=true;
+			playerStanding=false;
+			playerWalkingRight=false;
 		}
 	}
+
 
 	if(j.keyCode === 39) // right arrow
 	{
 		if(app.player.playerAlive=== true)
 		{
 			app.player.playerX+=10;
+			playerWalkingLeft=false;
+			playerStanding=false;
+			playerWalkingRight=true;
 		}
 	}
 }
@@ -145,6 +185,9 @@ function onTouchStart(e)
 		    	touches[0].clientY <= app.player.RightArrowHeight+64)
 		    {
 					app.player.playerX+=10;
+					playerStanding=false;
+					playerWalkingRight=true;
+					playerWalkingLeft=false;
 				}
 				if (touches[0].clientX >= app.player.LeftArrowWidth &&
 		    	touches[0].clientX <= app.player.LeftArrowWidth+64&&
@@ -152,6 +195,9 @@ function onTouchStart(e)
 		    	touches[0].clientY <= app.player.LeftArrowHeight+64)
 		    {
 					app.player.playerX-=10;
+					playerStanding=false;
+					playerWalkingRight=false;
+					playerWalkingLeft=true;
 				}
 				if (touches[0].clientX >= app.player.UpArrowWidth &&
 		    	touches[0].clientX <= app.player.UpArrowWidth+64&&
@@ -159,6 +205,9 @@ function onTouchStart(e)
 		    	touches[0].clientY <= app.player.UpArrowHeight+64)
 		    {
 					app.player.playerY-=10;
+					playerStanding=true;
+					playerWalkingRight=false;
+					playerWalkingLeft=false;
 				}
 				if (touches[0].clientX >= app.player.DownArrowWidth &&
 		    	touches[0].clientX <= app.player.DownArrowWidth+64&&
@@ -166,6 +215,9 @@ function onTouchStart(e)
 		    	touches[0].clientY <= app.player.DownArrowHeight+64)
 		    {
 					app.player.playerY+=10;
+					playerStanding=true;
+					playerWalkingRight=false;
+					playerWalkingLeft=false;
 				}
 
 
