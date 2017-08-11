@@ -5,6 +5,7 @@ var Play = false;
 var Options = false;
 var exit = false;
 var player;
+var enemy;
 var settingMenu;
 var playerWalkingRight = false;
 var playerStanding = true;
@@ -29,6 +30,7 @@ function main()
 	app.menu = new Menu();
 	app.player = new Player();
 	app.settingMenu=new SettingMenu();
+	app.enemy = new Enemies();
 
 	app.player.init();
 	app.settingMenu.init();
@@ -44,13 +46,14 @@ function update()
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
 	app.settingMenu.init();
+	app.enemy.init();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
 	}
 	if(Play === true)
 	{
-
+		app.enemy.draw(app.ctx);
 		if(app.player.playerAlive === true){
 			if(playerStanding === true)
 			{

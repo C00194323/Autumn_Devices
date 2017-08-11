@@ -1,6 +1,6 @@
 function Enemies()
 {
-  var enemiesIdle;
+  var enemyIdle;
   var enemieAnimationRight;
   var oldTime;
   var fps;
@@ -11,12 +11,19 @@ function Enemies()
 }
 
 Enemies.prototype.init= function(){
-  this.enemiesIdle=new Image();
-  this.enemiesIdle.src='';
+  this.enemyIdle=new Image();
+  this.enemyIdle.src='assets/Enemy_Assets/Robot.png';
+
+  this.enemieAnimationRight=new Image();
+  this.enemieAnimationRight.src='';
+
+  this.enemieAnimationLeft=new Image();
+  this.enemieAnimationLeft.src='';
 
 }
 
 Enemies.prototype.draw=function(ctx){
+  app.ctx.drawImage(this.enemyIdle,500,300);
 
 }
 

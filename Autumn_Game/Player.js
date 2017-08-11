@@ -23,6 +23,7 @@ function Player(){
 
 }
 Player.prototype.init= function(){
+
   this.playerSprite = new Image();
   this.playerSprite.src='assets/Player_Assets/Knight.png';
 
