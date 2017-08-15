@@ -46,7 +46,7 @@ Player.prototype.init= function(){
   this.arrowDown.src='assets/Arrow_Assets/Down-Arrow.png';
 
   this.playerAlive=true;
-  this.playerX = 0;
+  this.playerX = 150;
   this.playerY = 0;
   this.oldTime=Date.now();
   this.fps=60;
