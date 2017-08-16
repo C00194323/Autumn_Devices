@@ -55,5 +55,9 @@ Border.prototype.collision=function(){
   {
     app.player.playerY=app.player.playerY-10;
   }
+  else if(app.player.playerY-10<0)
+  {
+    app.player.playerY=app.player.playerY+10;
+  }
 
 }

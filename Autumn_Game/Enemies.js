@@ -42,10 +42,8 @@ Enemies.prototype.movement=function(){
   }
  if(app.player.playerY>this.enemyY)
   {
-    this.enemyY= this.enemyY+0.5;
+    this.enemyY= this.enemyY+1;
   }
-  console.log("EnemyXPos"+this.enemyX);
-console.log("EnemyYPos"+this.enemyY);
 }
 
 Enemies.prototype.draw=function(ctx){

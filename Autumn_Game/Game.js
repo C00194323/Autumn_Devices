@@ -11,6 +11,8 @@ var playerWalkingRight = false;
 var playerStanding = true;
 var playerWalkingLeft =false;
 var border;
+var level1;
+var FirstLevel= false;
 
 
 function main()
@@ -34,6 +36,7 @@ function main()
 	app.enemy = new Enemies();
 	app.border = new Border();
 
+
 	app.player.init();
 	app.settingMenu.init();
 	app.enemy.init();
@@ -56,32 +59,31 @@ function update()
 	}
 	if(Play === true)
 	{
+		if(FirstLevel === true)
+		{
 
-		if(app.player.playerAlive === true){
-			if(playerStanding === true)
-			{
-				app.player.draw(app.ctx);
-				app.player.drawArrows(app.ctx);
+			if(app.player.playerAlive === true){
+				if(playerStanding === true)
+				{
+					app.player.draw(app.ctx);
+					app.player.drawArrows(app.ctx);
 
+				}
+
+				if(playerWalkingRight ===true){
+					app.player.animation(app.ctx);
+					app.player.drawArrows(app.ctx);
+				}
+				if(playerWalkingLeft ===true){
+					app.player.animationLeft(app.ctx);
+					app.player.drawArrows(app.ctx);}
 			}
 
-			if(playerWalkingRight ===true){
-				app.player.animation(app.ctx);
-				app.player.drawArrows(app.ctx);
-
-
-			}
-			if(playerWalkingLeft ===true){
-				app.player.animationLeft(app.ctx);
-				app.player.drawArrows(app.ctx);
-
-			}
+			app.enemy.movement();
+			app.enemy.draw(app.ctx);
+			app.border.draw(app.ctx);
+			app.border.collision();
 		}
-		app.enemy.movement();
-		app.enemy.draw(app.ctx);
-		app.border.draw(app.ctx);
-		app.border.collision();
-
 	}
 	if(Options === true)
 	{
@@ -158,6 +160,7 @@ function onTouchStart(e)
 	    	console.log("Play Button Pressed");
 	    	MainMenu = false;
 	    	Play = true;
+				FirstLevel = true;
 	    	Options = false;
 	    }
 
