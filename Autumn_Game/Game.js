@@ -10,7 +10,6 @@ var settingMenu;
 var playerWalkingRight = false;
 var playerStanding = true;
 var playerWalkingLeft =false;
-var border;
 var level1;
 var FirstLevel= false;
 
@@ -34,7 +33,6 @@ function main()
 	app.player = new Player();
 	app.settingMenu=new SettingMenu();
 	app.enemy = new Enemies();
-	app.border = new Border();
 
 
 	app.player.init();
@@ -52,7 +50,6 @@ function update()
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
 	app.settingMenu.init();
-	app.border.init();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
@@ -81,8 +78,6 @@ function update()
 
 			app.enemy.movement();
 			app.enemy.draw(app.ctx);
-			app.border.draw(app.ctx);
-			app.border.collision();
 		}
 	}
 	if(Options === true)
