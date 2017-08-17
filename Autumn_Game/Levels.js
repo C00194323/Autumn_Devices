@@ -22,23 +22,23 @@ var level1={
 
 var level2={
   "Level2":[
-    ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
-    ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"]
+    ["River","River","River","River","River","River","River","River","River","River","River","River","River","River","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
+    ["River","River","River","River","River","River","River","River","River","River","River","River","River","River","River"]
   ]
 }
 
@@ -46,8 +46,10 @@ function Levels()
 {
     var level1Grass;
     var level1StoneWall;
-    var level1Width;
-    var level1Height;
+
+    var level2Wood;
+    var level2StoneWall;
+
 }
 Levels.prototype.init=function(){
 
