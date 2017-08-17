@@ -1,4 +1,4 @@
-var level1={
+var level={
   "Level1":[
     ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"],
     ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
@@ -17,10 +17,7 @@ var level1={
     ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
     ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
     ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"]
-  ]
-}
-
-var level2={
+  ],
   "Level2":[
     ["River","River","River","River","River","River","River","River","River","River","River","River","River","River","River"],
     ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
@@ -40,15 +37,15 @@ var level2={
     ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
     ["River","River","River","River","River","River","River","River","River","River","River","River","River","River","River"]
   ]
-}
+};
 
 function Levels()
 {
     var level1Grass;
     var level1StoneWall;
 
-    var level2Wood;
-    var level2StoneWall;
+    var level2MudGround;
+    var level2River;
 
 }
 Levels.prototype.init=function(){
@@ -64,18 +61,21 @@ Levels.prototype.init=function(){
 }
 
 Levels.prototype.draw=function(ctx){
-  for (i=0;i<17;i++)
+  if(FirstLevel === true)
   {
-    for(j=0;j<15;j++)
-    {
-      if(level1.Level1[i][j]==="StoneWall")
+      for (i=0;i<17;i++)
       {
-        app.ctx.drawImage(this.level1StoneWall,j*64,i*64,64,64);
+        for(j=0;j<15;j++)
+        {
+          if(level.Level1[i][j]==="StoneWall")
+          {
+            app.ctx.drawImage(this.level1StoneWall,j*64,i*64,64,64);
+          }
+          if(level.Level1[i][j]==="Grass")
+          {
+            app.ctx.drawImage(this.level1Grass,j*64,i*64,64,64);
+          }
+        }
       }
-      if(level1.Level1[i][j]==="Grass")
-      {
-        app.ctx.drawImage(this.level1Grass,j*64,i*64,64,64);
-      }
-    }
   }
 }
