@@ -56,6 +56,11 @@ Levels.prototype.init=function(){
   this.level1StoneWall=new Image();
   this.level1StoneWall.src='assets/Level_Assets/Level1_Assets/StoneWall.png';
 
+  this.level2River= new Image();
+  this.level2River.src = 'assets/Level_Assets/Level2_Assets/River.png'
+
+  this.level2MudGround= new Image();
+  this.level2MudGround.src = 'assets/Level_Assets/Level2_Assets/MudGround.png'
 
 
 }
@@ -77,5 +82,23 @@ Levels.prototype.draw=function(ctx){
           }
         }
       }
-  }
+    }
+
+    if(SecondLevel === true)
+    {
+      for (i=0;i<17;i++)
+      {
+        for(j=0;j<15;j++)
+        {
+          if(level.Level2[i][j]==="River")
+          {
+            app.ctx.drawImage(this.level2River,j*64,i*64,64,64);
+          }
+          if(level.Level2[i][j]==="MudGround")
+          {
+            app.ctx.drawImage(this.level2MudGround,j*64,i*64,64,64);
+          }
+        }
+      }
+    }
 }

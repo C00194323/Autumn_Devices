@@ -10,8 +10,10 @@ var settingMenu;
 var playerWalkingRight = false;
 var playerStanding = true;
 var playerWalkingLeft =false;
-var level1;
+var level;
+var TutorialLevel= false;
 var FirstLevel= false;
+var SecondLevel= false;
 
 
 function main()
@@ -33,13 +35,13 @@ function main()
 	app.player = new Player();
 	app.settingMenu=new SettingMenu();
 	app.enemy = new Enemies();
-	app.level1 = new Levels();
+	app.level = new Levels();
 
 
 	app.player.init();
 	app.settingMenu.init();
 	app.enemy.init();
-	app.level1.init();
+	app.level.init();
 	document.addEventListener("keydown", keyDownHandler);
 	update();
 
@@ -58,13 +60,19 @@ function update()
 	}
 	if(Play === true)
 	{
+
+		if(TutorialLevel === true)
+		{
+
+		}
+
 		if(FirstLevel === true)
 		{
 
 			app.level1.draw(app.ctx);
 			app.enemy.movement();
 			app.enemy.draw(app.ctx);
-			
+
 			if(app.player.playerAlive === true)
 			{
 				if(playerStanding === true)
@@ -83,6 +91,10 @@ function update()
 			}		app.player.drawArrows(app.ctx);}
 
 
+		}
+		if(SecondLevel === true)
+		{
+			app.level.draw(app.ctx);
 		}
 	}
 	if(Options === true)
@@ -160,7 +172,9 @@ function onTouchStart(e)
 	    	console.log("Play Button Pressed");
 	    	MainMenu = false;
 	    	Play = true;
-				FirstLevel = true;
+				TutorialLevel = false;
+				FirstLevel = false;
+				SecondLevel = true;
 	    	Options = false;
 	    }
 
