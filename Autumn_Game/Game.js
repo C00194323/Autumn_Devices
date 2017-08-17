@@ -69,7 +69,7 @@ function update()
 		if(FirstLevel === true)
 		{
 
-			app.level1.draw(app.ctx);
+			app.level.draw(app.ctx);
 			app.enemy.movement();
 			app.enemy.draw(app.ctx);
 
@@ -173,8 +173,8 @@ function onTouchStart(e)
 	    	MainMenu = false;
 	    	Play = true;
 				TutorialLevel = false;
-				FirstLevel = false;
-				SecondLevel = true;
+				FirstLevel = true;
+				SecondLevel = false;
 	    	Options = false;
 	    }
 

@@ -1,4 +1,24 @@
 var level={
+
+  "Tutorial":[
+    ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
+    ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"]
+  ],
   "Level1":[
     ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"],
     ["StoneWall","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","Grass","StoneWall"],
@@ -66,7 +86,7 @@ Levels.prototype.init=function(){
 }
 
 Levels.prototype.draw=function(ctx){
-  if(FirstLevel === true)
+  if(TutorialLevel === true || FirstLevel === true)
   {
       for (i=0;i<17;i++)
       {
