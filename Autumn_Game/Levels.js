@@ -20,6 +20,28 @@ var level1={
   ]
 }
 
+var level2={
+  "Level2":[
+    ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","Wood","StoneWall"],
+    ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"]
+  ]
+}
+
 function Levels()
 {
     var level1Grass;
