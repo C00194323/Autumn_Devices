@@ -87,8 +87,7 @@ Player.prototype.animation=function(ctx){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      app.ctx.clearRect(0,0,app.canvas.width,app.canvas.height);
-      app.ctx.clearRect(this.playerX,this.playerY,64,64);
+      //app.ctx.clearRect(this.playerX,this.playerY,64,64);
       app.ctx.drawImage(this.playerAnimationRight,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
       console.log("Player Animating Right");
     }
@@ -106,8 +105,7 @@ Player.prototype.animationLeft=function(ctx){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      app.ctx.clearRect(0,0,app.canvas.width,app.canvas.height);
-      app.ctx.clearRect(this.playerX,this.playerY,64,64);
+      //app.ctx.clearRect(this.playerX,this.playerY,64,64);
       app.ctx.drawImage(this.playerAnimationLeft,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
       console.log("Player Animating Left");
     }

@@ -33,11 +33,13 @@ function main()
 	app.player = new Player();
 	app.settingMenu=new SettingMenu();
 	app.enemy = new Enemies();
+	app.level1 = new Levels();
 
 
 	app.player.init();
 	app.settingMenu.init();
 	app.enemy.init();
+	app.level1.init();
 	document.addEventListener("keydown", keyDownHandler);
 	update();
 
@@ -59,7 +61,12 @@ function update()
 		if(FirstLevel === true)
 		{
 
-			if(app.player.playerAlive === true){
+			app.level1.draw(app.ctx);
+			app.enemy.movement();
+			app.enemy.draw(app.ctx);
+			
+			if(app.player.playerAlive === true)
+			{
 				if(playerStanding === true)
 				{
 					app.player.draw(app.ctx);
@@ -73,11 +80,9 @@ function update()
 				}
 				if(playerWalkingLeft ===true){
 					app.player.animationLeft(app.ctx);
-					app.player.drawArrows(app.ctx);}
-			}
+			}		app.player.drawArrows(app.ctx);}
 
-			app.enemy.movement();
-			app.enemy.draw(app.ctx);
+
 		}
 	}
 	if(Options === true)
