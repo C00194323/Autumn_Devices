@@ -70,8 +70,15 @@ function update()
 		{
 
 			app.level.draw(app.ctx);
-			app.enemy.movement();
-			app.enemy.draw(app.ctx);
+			if(app.enemy.enemiesAlive === true)
+			{
+
+					app.enemy.movement();
+				if(app.enemy.enemyUp===true|| app.enemy.enemyDown ===true)
+				{
+					app.enemy.draw();
+				}
+			}
 
 			if(app.player.playerAlive === true)
 			{
