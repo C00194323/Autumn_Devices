@@ -124,7 +124,30 @@ Levels.prototype.init=function(){
 }
 
 Levels.prototype.draw=function(ctx){
-  if(TutorialLevel === true || FirstLevel === true)
+
+  if(TutorialLevel === true )
+  {
+      for (i=0;i<28;i++)
+      {
+        for(j=0;j<15;j++)
+        {
+          if(level.Tutorial[i][j]==="Hud")
+          {
+            app.ctx.drawImage(this.Hud,j*64,i*64,64,64);
+          }
+          if(level.Tutorial[i][j]==="StoneWall")
+          {
+            app.ctx.drawImage(this.level1StoneWall,j*64,i*64,64,64);
+          }
+          if(level.Tutorial[i][j]==="Grass")
+          {
+            app.ctx.drawImage(this.level1Grass,j*64,i*64,64,64);
+          }
+        }
+      }
+    }
+
+  if(FirstLevel === true)
   {
       for (i=0;i<28;i++)
       {
@@ -152,6 +175,10 @@ Levels.prototype.draw=function(ctx){
       {
         for(j=0;j<15;j++)
         {
+          if(level.Level2[i][j]==="Hud")
+          {
+            app.ctx.drawImage(this.Hud,j*64,i*64,64,64);
+          }
           if(level.Level2[i][j]==="River")
           {
             app.ctx.drawImage(this.level2River,j*64,i*64,64,64);
