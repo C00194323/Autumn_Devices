@@ -63,7 +63,7 @@ function update()
 
 		if(TutorialLevel === true)
 		{
-
+			app.level.draw(app.ctx);
 		}
 
 		if(FirstLevel === true)
