@@ -76,10 +76,10 @@ Player.prototype.drawArrows=function(ctx){
   app.ctx.drawImage(this.arrowDown,this.DownArrowWidth,this.DownArrowHeight);
 }
 
-Player.prototype.animation=function(ctx){
+Player.prototype.animation=function(){
   if(this.playerAlive===true)
   {
-    if(Date.now()-this.oldTime>10/this.fps)
+    if(Date.now()-this.oldTime>5500/this.fps)
     {
       if(this.imageFrame===9)
       {
@@ -87,17 +87,17 @@ Player.prototype.animation=function(ctx){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      //app.ctx.clearRect(this.playerX,this.playerY,64,64);
-      app.ctx.drawImage(this.playerAnimationRight,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
+
       console.log("Player Animating Right");
     }
+    app.ctx.drawImage(this.playerAnimationRight,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
   }
 }
 
-Player.prototype.animationLeft=function(ctx){
+Player.prototype.animationLeft=function(){
   if(this.playerAlive===true)
   {
-    if(Date.now()-this.oldTime>10/this.fps)
+    if(Date.now()-this.oldTime>5500/this.fps)
     {
       if(this.imageFrame===9)
       {
@@ -105,9 +105,8 @@ Player.prototype.animationLeft=function(ctx){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      //app.ctx.clearRect(this.playerX,this.playerY,64,64);
-      app.ctx.drawImage(this.playerAnimationLeft,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
       console.log("Player Animating Left");
     }
+    app.ctx.drawImage(this.playerAnimationLeft,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
   }
 }
