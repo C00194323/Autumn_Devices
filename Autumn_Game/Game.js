@@ -78,6 +78,7 @@ function update()
 		if(TutorialLevel === true)
 		{
 			app.level.draw(app.ctx);
+			app.level.Collision();
 		}
 
 		if(FirstLevel === true)
@@ -128,6 +129,7 @@ function update()
 		if(SecondLevel === true)
 		{
 			app.level.draw(app.ctx);
+			app.level.Collision();
 		}
 	}
 	if(Options === true)
@@ -143,7 +145,7 @@ function HudElements()
   app.ctx.fillStyle = rgb(256,256,256);
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "top";
-	app.ctx.fillText("Player Health:" + app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.1);
+	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.1);
 	app.ctx.fillText("Rubee Collected:", app.canvas.width/7,(app.canvas.height/7)*5.88);
 
 }

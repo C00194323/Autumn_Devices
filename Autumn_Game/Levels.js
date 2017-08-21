@@ -226,4 +226,22 @@ Levels.prototype.draw=function(ctx){
 }
 
 Levels.prototype.Collision=function(){
+if(app.player.playerX+64>window.innerWidth-70)
+{
+  app.player.playerX=app.player.playerX-10;
+}
+else if(app.player.playerX-64<(window.innerWidth/20)-70)
+{
+  app.player.playerX=app.player.playerX+10;
+}
+else if(app.player.playerY-64<0)
+{
+  app.player.playerY=app.player.playerY+10;
+}
+else if(app.player.playerY-64>((window.innerHeight/5)*2.82)-70)
+{
+  app.player.playerY=app.player.playerY-10;
+}
+
+
 }
