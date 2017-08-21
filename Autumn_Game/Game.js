@@ -5,7 +5,7 @@ var Play = false;
 var Options = false;
 var exit = false;
 var player;
-var Rubee;
+var RubeeLevel1;
 var enemyTutorial;
 var enemyLevel1;
 var enemyLevel2;
@@ -46,13 +46,15 @@ function main()
 	app.enemyLevel1[4]=new Enemies();
 	app.level = new Levels();
 
-	app.Rubee=[4];
-	app.Rubee= new PickUps();
+	app.RubeeLevel1=[4];
+	app.RubeeLevel1[0]= new PickUps();
 
 	app.player.init();
 	app.settingMenu.init();
 	app.enemyLevel1[0].init(500,300);
 	app.enemyLevel1[1].init(800,500);
+
+	app.RubeeLevel1[0].init(100,800);
 	app.level.init();
 	document.addEventListener("keydown", keyDownHandler);
 	update();
@@ -83,6 +85,14 @@ function update()
 
 			app.level.draw(app.ctx);
 			app.level.Collision();
+
+			HudElements();
+
+			/*for(j=0;j<app.RubeeLevel1.length;j++)
+			{
+				app.RubeeLevel1[0].CoinSpinning();
+			}*/
+			app.RubeeLevel1[0].CoinSpinning();
 			for(i=0;i<app.enemyLevel1.length;i++)
 			{
 				if(app.enemyLevel1[i].enemiesAlive === true)
@@ -127,6 +137,16 @@ function update()
 	window.requestAnimationFrame(update);
 	console.log("Updating");
 };
+function HudElements()
+{
+
+  app.ctx.fillStyle = rgb(256,256,256);
+	app.ctx.font = 'italic 40pt Calibri';
+	app.ctx.TextBaseline = "top";
+	app.ctx.fillText("Player Health:" + app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.1);
+	app.ctx.fillText("Rubee Collected:", app.canvas.width/7,(app.canvas.height/7)*5.88);
+
+}
 
 function keyDownHandler(j)
 {

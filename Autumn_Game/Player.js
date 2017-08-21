@@ -20,6 +20,7 @@ function Player(){
   var oldTime;
   var fps;
   var imageFrame;
+  var PlayerLive;
 
 }
 Player.prototype.init= function(){
@@ -51,6 +52,8 @@ Player.prototype.init= function(){
   this.oldTime=Date.now();
   this.fps=60;
   this.imageFrame=0;
+
+  this.PlayerLive = 3;
 
   this.RightArrowWidth=window.innerWidth-400;
   this.LeftArrowWidth=window.innerWidth/2-100;
