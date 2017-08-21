@@ -5,7 +5,10 @@ var Play = false;
 var Options = false;
 var exit = false;
 var player;
-var enemy;
+var Rubee;
+var enemyTutorial;
+var enemyLevel1;
+var enemyLevel2;
 var settingMenu;
 var playerWalkingRight = false;
 var playerStanding = true;
@@ -34,13 +37,22 @@ function main()
 	app.menu = new Menu();
 	app.player = new Player();
 	app.settingMenu=new SettingMenu();
-	app.enemy = new Enemies();
+	//app.enemy = new Enemies();
+	app.enemyLevel1=[5];
+	app.enemyLevel1[0]=new Enemies();
+	app.enemyLevel1[1]=new Enemies();
+	app.enemyLevel1[2]=new Enemies();
+	app.enemyLevel1[3]=new Enemies();
+	app.enemyLevel1[4]=new Enemies();
 	app.level = new Levels();
 
+	app.Rubee=[4];
+	app.Rubee= new PickUps();
 
 	app.player.init();
 	app.settingMenu.init();
-	app.enemy.init();
+	app.enemyLevel1[0].init(500,300);
+	app.enemyLevel1[1].init(800,500);
 	app.level.init();
 	document.addEventListener("keydown", keyDownHandler);
 	update();
@@ -70,13 +82,17 @@ function update()
 		{
 
 			app.level.draw(app.ctx);
-			if(app.enemy.enemiesAlive === true)
+			app.level.Collision();
+			for(i=0;i<app.enemyLevel1.length;i++)
 			{
-
-					app.enemy.movement();
-				if(app.enemy.enemyUp===true|| app.enemy.enemyDown ===true)
+				if(app.enemyLevel1[i].enemiesAlive === true)
 				{
-					app.enemy.draw();
+
+						app.enemyLevel1[i].movement();
+					if(app.enemyLevel1[i].enemyUp===true|| app.enemyLevel1[i].enemyDown ===true)
+					{
+						app.enemyLevel1[i].draw();
+					}
 				}
 			}
 

@@ -21,9 +21,9 @@ var level={
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","PlayerIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","RubeeIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
@@ -51,9 +51,9 @@ var level={
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","PlayerIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","RubeeIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
@@ -81,9 +81,9 @@ var level={
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","PlayerIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","RubeeIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
@@ -101,6 +101,9 @@ function Levels()
     var level2River;
 
     var Hud;
+
+    var RubeeHudIcon;
+    var PlayerHudIcon;
 
 }
 Levels.prototype.init=function(){
@@ -120,6 +123,12 @@ Levels.prototype.init=function(){
   this.level2MudGround= new Image();
   this.level2MudGround.src = 'assets/Level_Assets/Level2_Assets/MudGround.png'
 
+  this.RubeeHudIcon= new Image();
+  this.RubeeHudIcon.src ='assets/Level_Assets/Hud/HudIcon.png';
+
+  this.PlayerHudIcon=new Image();
+  this.PlayerHudIcon.src='assets/Level_Assets/Hud/PlayerIcon.png';
+
 
 }
 
@@ -134,6 +143,14 @@ Levels.prototype.draw=function(ctx){
           if(level.Tutorial[i][j]==="Hud")
           {
             app.ctx.drawImage(this.Hud,j*64,i*64,64,64);
+          }
+          if(level.Tutorial[i][j]==="PlayerIcon")
+          {
+            app.ctx.drawImage(this.PlayerHudIcon,j*64,i*64,64,64);
+          }
+          if(level.Tutorial[i][j]==="RubeeIcon")
+          {
+            app.ctx.drawImage(this.RubeeHudIcon,j*64,i*64,64,64);
           }
           if(level.Tutorial[i][j]==="StoneWall")
           {
@@ -157,6 +174,14 @@ Levels.prototype.draw=function(ctx){
           {
             app.ctx.drawImage(this.Hud,j*64,i*64,64,64);
           }
+          if(level.Level1[i][j]==="PlayerIcon")
+          {
+            app.ctx.drawImage(this.PlayerHudIcon,j*64,i*64,64,64);
+          }
+          if(level.Level1[i][j]==="RubeeIcon")
+          {
+            app.ctx.drawImage(this.RubeeHudIcon,j*64,i*64,64,64);
+          }
           if(level.Level1[i][j]==="StoneWall")
           {
             app.ctx.drawImage(this.level1StoneWall,j*64,i*64,64,64);
@@ -179,6 +204,14 @@ Levels.prototype.draw=function(ctx){
           {
             app.ctx.drawImage(this.Hud,j*64,i*64,64,64);
           }
+          if(level.Level2[i][j]==="PlayerIcon")
+          {
+            app.ctx.drawImage(this.PlayerHudIcon,j*64,i*64,64,64);
+          }
+          if(level.Level2[i][j]==="RubeeIcon")
+          {
+            app.ctx.drawImage(this.RubeeHudIcon,j*64,i*64,64,64);
+          }
           if(level.Level2[i][j]==="River")
           {
             app.ctx.drawImage(this.level2River,j*64,i*64,64,64);
@@ -190,4 +223,7 @@ Levels.prototype.draw=function(ctx){
         }
       }
     }
+}
+
+Levels.prototype.Collision=function(){
 }

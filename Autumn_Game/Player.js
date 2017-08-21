@@ -6,7 +6,7 @@ function Player(){
   var arrowRight;
   var arrowUp;
   var arrowDown;
-  var playerAlive = true ;
+  var playerAlive;
   var playerX;
   var playerY;
   var RightArrowWidth;
@@ -47,7 +47,7 @@ Player.prototype.init= function(){
 
   this.playerAlive=true;
   this.playerX = 150;
-  this.playerY = 0;
+  this.playerY = 128;
   this.oldTime=Date.now();
   this.fps=60;
   this.imageFrame=0;

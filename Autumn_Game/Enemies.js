@@ -5,22 +5,22 @@ function Enemies()
   var oldTime;
   var fps;
   var imageFrame;
-  var enemiesAlive = true;
+  var enemiesAlive;
   var enemyAnimationLeft;
   var enemyX;
   var enemyY;
   var oldTime;
   var fps;
   var imageFrame;
-  var enemyDown = false;
-  var enemyUp=false;
-  var enemyLeft = false;
-  var enemyRight=false;
+  var enemyDown;
+  var enemyUp;
+  var enemyLeft;
+  var enemyRight;
 
 
 }
 
-Enemies.prototype.init= function(){
+Enemies.prototype.init= function(enemyx,enemyy){
   this.enemyIdle=new Image();
   this.enemyIdle.src='assets/Enemy_Assets/Robot.png';
 
@@ -32,8 +32,13 @@ Enemies.prototype.init= function(){
 
   this.enemiesAlive=true;
 
-  this.enemyX=500;
-  this.enemyY=300;
+  this.enemyUp=false;
+  this.enemyLeft=false;
+  this.enemyRight=false;
+  this.enemyLeft=false;
+
+  this.enemyX=enemyx;
+  this.enemyY=enemyy;
 
   this.oldTime=Date.now();
   this.fps=60;
