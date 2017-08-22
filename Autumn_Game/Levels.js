@@ -146,9 +146,33 @@ Levels.prototype.Tutorial=function()
   {
     this.tutorialText="Hi This Is A Tutorial Level, Lets Play A Game"
   }
-  if(this.tutorialTimer>240&&this.tutorialTimer<480)
+  if(this.tutorialTimer>220&&this.tutorialTimer<480)
   {
     this.tutorialText="Follow These Simple Instructions"
+  }
+  if(this.tutorialTimer>480)
+  {
+    this.tutorialText="To Move Use The Arrows Press The Right Arrow"
+  }
+  if(TutorialRarrow === true &&this.tutorialTimer>480)
+  {
+    this.tutorialText="Well Done Now Press The Left Arrow"
+  }
+  if(TutorialLarrow === true &&this.tutorialTimer>600)
+  {
+    this.tutorialText=" Now Press The Up Arrow"
+  }
+  if(TutorialUarrow === true &&this.tutorialTimer>720)
+  {
+    this.tutorialText=" Now Press The Down Arrow"
+  }
+  if(TutorialDarrow === true &&this.tutorialTimer>940)
+  {
+    this.tutorialText=" Congratulations We Now Know How to Move"
+  }
+  if(this.tutorialTimer>1060)
+  {
+    this.tutorialText=" Now We Can Collect the Rubys"
   }
 
 
@@ -195,6 +219,8 @@ Levels.prototype.draw=function(ctx){
           }
         }
       }
+      this.Tutorial();
+      this.TutorialText();
     }
 
   if(FirstLevel === true)

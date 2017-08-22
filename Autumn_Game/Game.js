@@ -4,6 +4,10 @@ var MainMenu = true;
 var Play = false;
 var Options = false;
 var exit = false;
+var TutorialRarrow = false;
+var TutorialLarrow = false;
+var TutorialDarrow = false;
+var TutorialUarrow = false;
 var player;
 var RubyLevel1;
 var enemyTutorial;
@@ -106,8 +110,7 @@ function update()
 				{
 					app.level.draw(app.ctx);
 					app.level.Collision();
-					app.level.Tutorial();
-					app.level.TutorialText();
+
 
 					if(app.player.playerAlive === true)
 					{
@@ -211,6 +214,10 @@ function keyDownHandler(j)
 			playerWalkingRight=false;
 			playerWalkingLeft=false;
 		}
+		if(TutorialLevel === true)
+		{
+			TutorialUarrow=true;
+		}
 	}
 
 	if(j.keyCode === 40) //down arrow
@@ -221,7 +228,10 @@ function keyDownHandler(j)
 			playerStanding=true;
 			playerWalkingRight=false;
 			playerWalkingLeft=false;
-
+		}
+		if(TutorialLevel === true)
+		{
+			TutorialDarrow=true;
 		}
 
 	}
@@ -234,6 +244,10 @@ function keyDownHandler(j)
 			playerStanding=false;
 			playerWalkingRight=false;
 		}
+		if(TutorialLevel === true)
+		{
+			TutorialLarrow=true;
+		}
 	}
 
 
@@ -245,6 +259,10 @@ function keyDownHandler(j)
 			playerWalkingLeft=false;
 			playerStanding=false;
 			playerWalkingRight=true;
+		}
+		if(TutorialLevel === true)
+		{
+			TutorialRarrow=true;
 		}
 	}
 }
@@ -345,6 +363,10 @@ function onTouchStart(e)
 					playerStanding=false;
 					playerWalkingRight=true;
 					playerWalkingLeft=false;
+					if(TutorialLevel === true)
+					{
+						TutorialRarrow=true;
+					}
 				}
 				if (touches[0].clientX >= app.player.LeftArrowWidth &&
 		    	touches[0].clientX <= app.player.LeftArrowWidth+64&&
@@ -355,6 +377,10 @@ function onTouchStart(e)
 					playerStanding=false;
 					playerWalkingRight=false;
 					playerWalkingLeft=true;
+					if(TutorialLevel === true)
+					{
+						TutorialLarrow=true;
+					}
 				}
 				if (touches[0].clientX >= app.player.UpArrowWidth &&
 		    	touches[0].clientX <= app.player.UpArrowWidth+64&&
@@ -365,6 +391,10 @@ function onTouchStart(e)
 					playerStanding=true;
 					playerWalkingRight=false;
 					playerWalkingLeft=false;
+					if(TutorialLevel === true)
+					{
+						TutorialUarrow=true;
+					}
 				}
 				if (touches[0].clientX >= app.player.DownArrowWidth &&
 		    	touches[0].clientX <= app.player.DownArrowWidth+64&&
@@ -375,6 +405,10 @@ function onTouchStart(e)
 					playerStanding=true;
 					playerWalkingRight=false;
 					playerWalkingLeft=false;
+					if(TutorialLevel === true)
+					{
+						TutorialDarrow=true;
+					}
 				}
 
 
