@@ -106,6 +106,27 @@ function update()
 				{
 					app.level.draw(app.ctx);
 					app.level.Collision();
+					app.level.Tutorial();
+					app.level.TutorialText();
+
+					if(app.player.playerAlive === true)
+					{
+						if(playerStanding === true)
+						{
+							app.player.draw(app.ctx);
+							app.player.drawArrows(app.ctx);
+
+						}
+
+						if(playerWalkingRight ===true){
+							app.player.animation(app.ctx);
+							app.player.drawArrows(app.ctx);
+						}
+						if(playerWalkingLeft ===true){
+							app.player.animationLeft(app.ctx);
+					}		app.player.drawArrows(app.ctx);}
+
+					HudElements();
 				}
 
 				if(FirstLevel === true)
@@ -172,7 +193,7 @@ function HudElements()
   app.ctx.fillStyle = rgb(256,256,256);
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "top";
-	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.1);
+	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.32);
 
 	app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected, app.canvas.width/7,(app.canvas.height/7)*5.88);
 
@@ -289,8 +310,8 @@ function onTouchStart(e)
 				MainMenu = false;
 	    	Play = true;
 				GameMode= false;
-				TutorialLevel = false;
-				FirstLevel = true;
+				TutorialLevel = true;
+				FirstLevel = false;
 				SecondLevel = false;
 	    	Options = false;
 			}

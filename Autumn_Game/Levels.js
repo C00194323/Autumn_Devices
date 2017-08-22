@@ -106,6 +106,9 @@ function Levels()
     var RubeeHudIcon;
     var PlayerHudIcon;
 
+    var tutorialTimer;
+    var tutorialText;
+
 }
 Levels.prototype.init=function(){
 
@@ -131,7 +134,33 @@ Levels.prototype.init=function(){
   this.PlayerHudIcon.src='assets/Level_Assets/Hud/PlayerIcon.png';
 
   this.RubiesCollected =0;
+  this.tutorialTimer =0;
+  this.tutorialText='';
 
+
+}
+Levels.prototype.Tutorial=function()
+{
+  this.tutorialTimer++;
+  if(this.tutorialTimer < 220)
+  {
+    this.tutorialText="Hi This Is A Tutorial Level, Lets Play A Game"
+  }
+  if(this.tutorialTimer>240&&this.tutorialTimer<480)
+  {
+    this.tutorialText="Follow These Simple Instructions"
+  }
+
+
+}
+
+Levels.prototype.TutorialText=function()
+{
+
+    app.ctx.fillStyle = rgb(0,0,0);
+  	app.ctx.font = 'italic 24pt Calibri';
+  	app.ctx.TextBaseline = "top";
+    app.ctx.fillText(this.tutorialText,app.canvas.width/7,(app.canvas.height/7)*4.8);
 
 }
 
@@ -139,6 +168,7 @@ Levels.prototype.draw=function(ctx){
 
   if(TutorialLevel === true )
   {
+
       for (i=0;i<28;i++)
       {
         for(j=0;j<15;j++)
