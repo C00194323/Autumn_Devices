@@ -101,6 +101,7 @@ function Levels()
     var level2River;
 
     var Hud;
+    var RubiesCollected;
 
     var RubeeHudIcon;
     var PlayerHudIcon;
@@ -128,6 +129,8 @@ Levels.prototype.init=function(){
 
   this.PlayerHudIcon=new Image();
   this.PlayerHudIcon.src='assets/Level_Assets/Hud/PlayerIcon.png';
+
+  this.RubiesCollected =0;
 
 
 }

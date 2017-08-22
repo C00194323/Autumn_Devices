@@ -5,7 +5,7 @@ var Play = false;
 var Options = false;
 var exit = false;
 var player;
-var RubeeLevel1;
+var RubyLevel1;
 var enemyTutorial;
 var enemyLevel1;
 var enemyLevel2;
@@ -14,9 +14,14 @@ var playerWalkingRight = false;
 var playerStanding = true;
 var playerWalkingLeft =false;
 var level;
+var gameMode;
 var TutorialLevel= false;
 var FirstLevel= false;
 var SecondLevel= false;
+var singlePlayer = true;
+var MultiPlayer = false;
+var GameMode = false;
+var RubiesCollected=0;
 
 
 function main()
@@ -34,10 +39,14 @@ function main()
 	app.ctx = app.canvas.getContext("2d");
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 
+
+
 	app.menu = new Menu();
 	app.player = new Player();
 	app.settingMenu=new SettingMenu();
-	//app.enemy = new Enemies();
+
+	app.gameMode = new GameModeMenu();
+
 	app.enemyLevel1=[5];
 	app.enemyLevel1[0]=new Enemies();
 	app.enemyLevel1[1]=new Enemies();
@@ -46,15 +55,27 @@ function main()
 	app.enemyLevel1[4]=new Enemies();
 	app.level = new Levels();
 
-	app.RubeeLevel1=[4];
-	app.RubeeLevel1[0]= new PickUps();
+	app.RubyLevel1=[5];
+
+	app.RubyLevel1[0]= new PickUps();
+	app.RubyLevel1[1]= new PickUps();
+	app.RubyLevel1[2]= new PickUps();
+	app.RubyLevel1[3]= new PickUps();
+	app.RubyLevel1[4]= new PickUps();
+
+
 
 	app.player.init();
 	app.settingMenu.init();
+	app.gameMode.init();
 	app.enemyLevel1[0].init(500,300);
 	app.enemyLevel1[1].init(800,500);
 
-	app.RubeeLevel1[0].init(100,800);
+	app.RubyLevel1[0].init(100,800);
+	app.RubyLevel1[1].init(300,800);
+	app.RubyLevel1[2].init(500,500);
+	app.RubyLevel1[3].init(600,200);
+	app.RubyLevel1[4].init(200,400);
 	app.level.init();
 	document.addEventListener("keydown", keyDownHandler);
 	update();
@@ -74,62 +95,68 @@ function update()
 	}
 	if(Play === true)
 	{
-
-		if(TutorialLevel === true)
+		if(GameMode===true)
 		{
-			app.level.draw(app.ctx);
-			app.level.Collision();
+			app.gameMode.draw();
 		}
 
-		if(FirstLevel === true)
-		{
-
-			app.level.draw(app.ctx);
-			app.level.Collision();
-
-			HudElements();
-
-			/*for(j=0;j<app.RubeeLevel1.length;j++)
+			if(singlePlayer === true)
 			{
-				app.RubeeLevel1[0].CoinSpinning();
-			}*/
-			app.RubeeLevel1[0].CoinSpinning();
-			for(i=0;i<app.enemyLevel1.length;i++)
-			{
-				if(app.enemyLevel1[i].enemiesAlive === true)
+				if(TutorialLevel === true)
+				{
+					app.level.draw(app.ctx);
+					app.level.Collision();
+				}
+
+				if(FirstLevel === true)
 				{
 
-						app.enemyLevel1[i].movement();
-					if(app.enemyLevel1[i].enemyUp===true|| app.enemyLevel1[i].enemyDown ===true)
+					app.level.draw(app.ctx);
+					app.level.Collision();
+
+
+					for(j=0;j<app.RubyLevel1.length;j++)
 					{
-						app.enemyLevel1[i].draw();
+						app.RubyLevel1[j].CoinSpinning();
+						app.RubyLevel1[j].Collision();
 					}
-				}
-			}
+					for(i=0;i<app.enemyLevel1.length;i++)
+					{
+						if(app.enemyLevel1[i].enemiesAlive === true)
+						{
 
-			if(app.player.playerAlive === true)
-			{
-				if(playerStanding === true)
+								app.enemyLevel1[i].movement();
+							if(app.enemyLevel1[i].enemyUp===true|| app.enemyLevel1[i].enemyDown ===true)
+							{
+								app.enemyLevel1[i].draw();
+							}
+						}
+					}
+
+					if(app.player.playerAlive === true)
+					{
+						if(playerStanding === true)
+						{
+							app.player.draw(app.ctx);
+							app.player.drawArrows(app.ctx);
+
+						}
+
+						if(playerWalkingRight ===true){
+							app.player.animation(app.ctx);
+							app.player.drawArrows(app.ctx);
+						}
+						if(playerWalkingLeft ===true){
+							app.player.animationLeft(app.ctx);
+					}		app.player.drawArrows(app.ctx);}
+
+					HudElements();
+				}
+				if(SecondLevel === true)
 				{
-					app.player.draw(app.ctx);
-					app.player.drawArrows(app.ctx);
-
+					app.level.draw(app.ctx);
+					app.level.Collision();
 				}
-
-				if(playerWalkingRight ===true){
-					app.player.animation(app.ctx);
-					app.player.drawArrows(app.ctx);
-				}
-				if(playerWalkingLeft ===true){
-					app.player.animationLeft(app.ctx);
-			}		app.player.drawArrows(app.ctx);}
-
-
-		}
-		if(SecondLevel === true)
-		{
-			app.level.draw(app.ctx);
-			app.level.Collision();
 		}
 	}
 	if(Options === true)
@@ -146,7 +173,8 @@ function HudElements()
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "top";
 	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.1);
-	app.ctx.fillText("Rubee Collected:", app.canvas.width/7,(app.canvas.height/7)*5.88);
+
+	app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected, app.canvas.width/7,(app.canvas.height/7)*5.88);
 
 }
 
@@ -217,8 +245,9 @@ function onTouchStart(e)
 	    	console.log("Play Button Pressed");
 	    	MainMenu = false;
 	    	Play = true;
+				GameMode= true;
 				TutorialLevel = false;
-				FirstLevel = true;
+				FirstLevel = false;
 				SecondLevel = false;
 	    	Options = false;
 	    }
@@ -248,6 +277,41 @@ function onTouchStart(e)
 	 		 }
 	    }
     }
+
+		if(GameMode === true)
+		{
+			if (touches[0].clientX >= app.canvas.width/3 &&
+				touches[0].clientX <= (app.canvas.width/3)+130&&
+				touches[0].clientY >= app.canvas.height/2 &&
+				touches[0].clientY <= (app.canvas.height/2)+130)
+			{
+				console.log("Single Player Selected");
+				MainMenu = false;
+	    	Play = true;
+				GameMode= false;
+				TutorialLevel = false;
+				FirstLevel = true;
+				SecondLevel = false;
+	    	Options = false;
+			}
+
+			if (touches[0].clientX >= app.canvas.width/2 &&
+				touches[0].clientX <= (app.canvas.width/2)+130&&
+				touches[0].clientY >= app.canvas.height/2 &&
+				touches[0].clientY <= (app.canvas.height/2)+130)
+			{
+				console.log("MultiPlayer Selected");
+				MainMenu = false;
+	    	Play = true;
+				GameMode= false;
+				TutorialLevel = false;
+				FirstLevel = true;
+				SecondLevel = false;
+	    	Options = false;
+			}
+
+
+		}
 
     	if (Play === true)
    		{
@@ -294,26 +358,21 @@ function onTouchStart(e)
 
 
    		}
-    /*if (bOptions === true)
+    if (Options === true)
     {
-    	if (touches[0].clientX >= 25 &&
-	    	touches[0].clientX <= 425 &&
-	    	touches[0].clientY >= 500 &&
-	    	touches[0].clientY <= 600)
+    	if (touches[0].clientX >= app.canvas.width/2.4 &&
+	    	touches[0].clientX <= (app.canvas.width/2.4)+130 &&
+	    	touches[0].clientY >= ((app.canvas.height/2)*1.5) &&
+	    	touches[0].clientY <= ((app.canvas.height/2)*1.5)+130)
 	    {
-	    	console.log("Left Arrow Pressed");
+	    	console.log("Exit To Menu");
+
+				MainMenu = true;
+				Play = false;
+				Options = false;
 
 	    }
-
-	    if (touches[0].clientX >= 579 &&
-	    	touches[0].clientX <= 979 &&
-	    	touches[0].clientY >= 500 &&
-	    	touches[0].clientY <= 600)
-	    {
-	    	console.log("Right Arrow Pressed");
-
-	    }
-    }*/
+		}
 };
 
 function rgb(r, g, b)

@@ -44,7 +44,7 @@ SettingMenu.prototype.draw= function(ctx){
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "top";
 	app.ctx.fillText("Sound :", this.textWidth,this.textheight);
-  app.ctx.fillText(" Exit :", app.canvas.width/3.6,((app.canvas.height/2)*1.6))
+  app.ctx.fillText("Exit :", app.canvas.width/3.6,((app.canvas.height/2)*1.6));
 
   app.ctx.font = 'italic 52pt Calibri';
 	app.ctx.TextBaseline = "top";
