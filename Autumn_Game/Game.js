@@ -245,8 +245,8 @@ function HudElements()
 	{
 		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.TutorialRubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
 	}
-	
-	app.player.drawArrows(app.ctx);
+
+	app.player.drawControls(app.ctx);
 }
 
 function keyDownHandler(j)

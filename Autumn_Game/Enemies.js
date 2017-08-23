@@ -23,8 +23,7 @@ function Enemies()
 }
 
 Enemies.prototype.init= function(enemyx,enemyy){
-  this.enemyIdle=new Image();
-  this.enemyIdle.src='assets/Enemy_Assets/Robot.png';
+
 
   this.enemyAnimationRight=new Image();
   this.enemyAnimationRight.src='assets/Enemy_Assets/Level_1/EnemyRight.png';

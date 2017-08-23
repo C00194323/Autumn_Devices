@@ -8,6 +8,7 @@ function Player(){
   var arrowRight;
   var arrowUp;
   var arrowDown;
+  var FireButton;
   var playerAlive;
   var playerX;
   var playerY;
@@ -27,9 +28,6 @@ function Player(){
 }
 Player.prototype.init= function(){
 
-  this.playerSprite = new Image();
-  this.playerSprite.src='assets/Player_Assets/Knight.png';
-
   this.playerAnimationRight = new Image();
   this.playerAnimationRight.src='assets/Player_Assets/WRight.png'
 
@@ -43,16 +41,19 @@ Player.prototype.init= function(){
   this.playerAnimationDown.src= 'assets/Player_Assets/WDown.png'
 
   this.arrowLeft = new Image();
-  this.arrowLeft.src='assets/Arrow_Assets/Left-Arrow.png';
+  this.arrowLeft.src='assets/Controller_Assets/Arrow_Assets/Left-Arrow.png';
 
   this.arrowRight = new Image();
-  this.arrowRight.src='assets/Arrow_Assets/Right-Arrow.png';
+  this.arrowRight.src='assets/Controller_Assets/Arrow_Assets/Right-Arrow.png';
 
   this.arrowUp = new Image();
-  this.arrowUp.src='assets/Arrow_Assets/Up-Arrow.png';
+  this.arrowUp.src='assets/Controller_Assets/Arrow_Assets/Up-Arrow.png';
 
   this.arrowDown = new Image();
-  this.arrowDown.src='assets/Arrow_Assets/Down-Arrow.png';
+  this.arrowDown.src='assets/Controller_Assets/Arrow_Assets/Down-Arrow.png';
+
+  this.FireButton = new Image();
+  this.FireButton.src = 'assets/Controller_Assets/FireButton.png';
 
   this.playerAlive=true;
   this.playerX = 150;
@@ -73,18 +74,14 @@ Player.prototype.init= function(){
   this.DownArrowHeight=window.innerHeight-100;
   this.UpArrowHeight=window.innerHeight-200;
 }
-Player.prototype.draw=function(ctx){
-  if(this.playerAlive===true)
-  {
-    app.ctx.drawImage(this.playerSprite,this.playerX,this.playerY);
-  }
-}
-Player.prototype.drawArrows=function(ctx){
+
+Player.prototype.drawControls=function(ctx){
 
   app.ctx.drawImage(this.arrowLeft,this.LeftArrowWidth,this.LeftArrowHeight);
   app.ctx.drawImage(this.arrowRight,this.RightArrowWidth,this.RightArrowHeight);
   app.ctx.drawImage(this.arrowUp,this.UpArrowWidth,this.UpArrowHeight);
   app.ctx.drawImage(this.arrowDown,this.DownArrowWidth,this.DownArrowHeight);
+  app.ctx.drawImage(this.FireButton,(app.canvas.width/2)*1.65,(app.canvas.height/2)*1.85);
 }
 
 Player.prototype.animation=function(){
