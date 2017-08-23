@@ -20,8 +20,8 @@ var level={
     ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","PlayerIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","RubeeIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
@@ -50,7 +50,7 @@ var level={
     ["StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall","StoneWall"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","PlayerIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","PlayerIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","RubeeIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
@@ -79,8 +79,8 @@ var level={
     ["River","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","MudGround","River"],
     ["River","River","River","River","River","River","River","River","River","River","River","River","River","River","River"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
-    ["Hud","PlayerIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
+    ["Hud","PlayerIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
     ["Hud","RubeeIcon","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud","Hud"],
@@ -102,6 +102,10 @@ function Levels()
 
     var Hud;
     var RubiesCollected;
+
+    var TutorialRubys = 2;
+    var Level1Rubys = 5;
+    //var Level2Rubys = 10;
 
     var RubeeHudIcon;
     var PlayerHudIcon;
@@ -134,6 +138,8 @@ Levels.prototype.init=function(){
   this.PlayerHudIcon.src='assets/Level_Assets/Hud/PlayerIcon.png';
 
   this.RubiesCollected =0;
+  this.TutorialRubys ='/2';
+  this.Level1Rubys='/5';
   this.tutorialTimer =0;
   this.tutorialText='';
 
@@ -182,9 +188,9 @@ Levels.prototype.TutorialText=function()
 {
 
     app.ctx.fillStyle = rgb(0,0,0);
-  	app.ctx.font = 'italic 24pt Calibri';
+  	app.ctx.font = 'italic 26pt Calibri';
   	app.ctx.TextBaseline = "top";
-    app.ctx.fillText(this.tutorialText,app.canvas.width/7,(app.canvas.height/7)*4.8);
+    app.ctx.fillText(this.tutorialText,app.canvas.width/7,(app.canvas.height/7)*4.55);
 
 }
 

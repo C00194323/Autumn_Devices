@@ -238,8 +238,14 @@ function HudElements()
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "top";
 	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.1);
-
-	app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected, app.canvas.width/7,(app.canvas.height/7)*5.88);
+	if(FirstLevel){
+		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.Level1Rubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
+	}
+	if(TutorialLevel)
+	{
+		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.TutorialRubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
+	}
+	
 	app.player.drawArrows(app.ctx);
 }
 

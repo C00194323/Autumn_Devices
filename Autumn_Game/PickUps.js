@@ -7,6 +7,7 @@ function PickUps(){
   var imageFrame;
   var RubyLevel1;
   var collected;
+  
 
 }
 PickUps.prototype.init=function(rubX,rubY){
