@@ -28,7 +28,9 @@ var SecondLevel= false;
 var singlePlayer = true;
 var MultiPlayer = false;
 var GameMode = false;
-var RubiesCollected=0;
+
+var FirstLevelTimer =0;
+var FirstLevelText='';
 
 
 function main()
@@ -74,7 +76,8 @@ function main()
 	app.RubyTutorial[0]= new PickUps();
 	app.RubyTutorial[1]= new PickUps();
 
-
+this.FirstLevelTimer=0;
+this.FirstLevelText="Collect All The Rubys";
 
 	app.player.init();
 	app.settingMenu.init();
@@ -216,10 +219,25 @@ function update()
 function HudElements()
 {
 
+
+
+	if(FirstLevel===true){
+		this.FirstLevelTimer++;
+		app.ctx.fillStyle = rgb(0,0,0);
+		app.ctx.font = 'italic 35pt Calibri';
+		if(this.FirstLevelTimer >180){
+			this.FirstLevelText= " And Avoid the Enemies";
+	}
+	if (this.FirstLevelTimer>420	){
+		this.FirstLevelText= " To Make It To Level 2";
+	}
+	app.ctx.fillText(this.FirstLevelText
+	,app.canvas.width/7,(app.canvas.height/7)*4.55);
+	}
   app.ctx.fillStyle = rgb(256,256,256);
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "top";
-	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.32);
+	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.1);
 
 	app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected, app.canvas.width/7,(app.canvas.height/7)*5.88);
 	app.player.drawArrows(app.ctx);
