@@ -174,12 +174,7 @@ function update()
 					{
 						if(app.enemyLevel1[i].enemiesAlive === true)
 						{
-
 								app.enemyLevel1[i].movement();
-							if(app.enemyLevel1[i].enemyUp===true|| app.enemyLevel1[i].enemyDown ===true)
-							{
-								app.enemyLevel1[i].draw();
-							}
 						}
 					}
 

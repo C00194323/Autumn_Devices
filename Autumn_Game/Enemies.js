@@ -7,6 +7,8 @@ function Enemies()
   var imageFrame;
   var enemiesAlive;
   var enemyAnimationLeft;
+  var enemyAnimationUp;
+  var enemyAnimationDown;
   var enemyX;
   var enemyY;
   var oldTime;
@@ -25,10 +27,16 @@ Enemies.prototype.init= function(enemyx,enemyy){
   this.enemyIdle.src='assets/Enemy_Assets/Robot.png';
 
   this.enemyAnimationRight=new Image();
-  this.enemyAnimationRight.src='assets/Enemy_Assets/Robot_Running_Right.png';
+  this.enemyAnimationRight.src='assets/Enemy_Assets/Level_1/EnemyRight.png';
 
   this.enemyAnimationLeft=new Image();
-  this.enemyAnimationLeft.src='assets/Enemy_Assets/Robot_Running_Left.png';
+  this.enemyAnimationLeft.src='assets/Enemy_Assets/Level_1/EnemyLeft.png';
+
+  this.enemyAnimationUp=new Image();
+  this.enemyAnimationUp.src='assets/Enemy_Assets/Level_1/EnemyUp.png';
+
+  this.enemyAnimationDown=new Image();
+  this.enemyAnimationDown.src='assets/Enemy_Assets/Level_1/EnemyDown.png';
 
   this.enemiesAlive=true;
 
@@ -53,7 +61,7 @@ Enemies.prototype.movement=function(){
     this.enemyDown =false;
     this.enemyLeft =true;
     this.enemyRight =false;
-    this.animationLeft();
+    this.EnemyanimationLeft();
     this.enemyX=this.enemyX-1;
   }
  else if(app.player.playerX>this.enemyX){
@@ -61,7 +69,7 @@ Enemies.prototype.movement=function(){
    this.enemyDown =false;
    this.enemyLeft =false;
    this.enemyRight =true;
-    this.animationRight();
+    this.EnemyanimationRight();
     this.enemyX=this.enemyX+1;
 
   }
@@ -71,6 +79,7 @@ Enemies.prototype.movement=function(){
     this.enemyLeft =false;
     this.enemyRight =false;
     this.enemyY= this.enemyY-1;
+    this.EnemyanimationUp();
   }
  else if(app.player.playerY>this.enemyY)
   {
@@ -79,18 +88,11 @@ Enemies.prototype.movement=function(){
     this.enemyLeft =false;
     this.enemyRight =false;
     this.enemyY= this.enemyY+1;
+      this.EnemyanimationDown();
   }
 }
 
-Enemies.prototype.draw=function(){
-  if(this.enemiesAlive === true)
-  {
-    app.ctx.drawImage(this.enemyIdle,this.enemyX,this.enemyY);
-  }
-
-}
-
-Enemies.prototype.animationRight=function(){
+Enemies.prototype.EnemyanimationRight=function(){
   if(this.enemiesAlive===true)
   {
     if(Date.now()-this.oldTime>6000/this.fps)
@@ -101,14 +103,49 @@ Enemies.prototype.animationRight=function(){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Player Animating Right");
+      console.log("Enemy Animating Right");
     }
     app.ctx.drawImage(this.enemyAnimationRight,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
   }
 
 }
 
-Enemies.prototype.animationLeft=function(){
+Enemies.prototype.EnemyanimationUp=function(){
+  if(this.enemiesAlive===true)
+  {
+    if(Date.now()-this.oldTime>6000/this.fps)
+    {
+      if(this.imageFrame===7)
+      {
+        this.imageFrame=0;
+      }
+      this.imageFrame++;
+      this.oldTime=Date.now();
+      console.log("Enemy Animating Up");
+    }
+    app.ctx.drawImage(this.enemyAnimationUp,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
+  }
+
+}
+
+Enemies.prototype.EnemyanimationDown=function(){
+  if(this.enemiesAlive===true)
+  {
+    if(Date.now()-this.oldTime>6000/this.fps)
+    {
+      if(this.imageFrame===7)
+      {
+        this.imageFrame=0;
+      }
+      this.imageFrame++;
+      this.oldTime=Date.now();
+
+    }
+    app.ctx.drawImage(this.enemyAnimationDown,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
+  }
+}
+
+Enemies.prototype.EnemyanimationLeft=function(){
   if(this.enemiesAlive===true)
   {
     if(Date.now()-this.oldTime>6000/this.fps)
