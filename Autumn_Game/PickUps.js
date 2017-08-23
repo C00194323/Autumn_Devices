@@ -55,4 +55,17 @@ PickUps.prototype.Collision=function(){
       FirstLevel=false;
     }
   }
+  if(TutorialLevel)
+  {
+    for(i=0;i<app.RubyTutorial.length;i++)
+    {
+      if(app.player.playerX+64>=app.RubyTutorial[i].RubyX&&app.player.playerX-64<=app.RubyTutorial[i].RubyX
+      &&app.player.playerY+64>=app.RubyTutorial[i].RubyY&&app.player.playerY-64<=app.RubyTutorial[i].RubyY)
+      {
+        console.log("Collected");
+        app.RubyTutorial.splice(i,1);
+        app.level.RubiesCollected++;
+      }
+    }
+  }
 };

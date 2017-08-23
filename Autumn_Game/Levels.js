@@ -154,23 +154,23 @@ Levels.prototype.Tutorial=function()
   {
     this.tutorialText="To Move Use The Arrows Press The Right Arrow"
   }
-  if(TutorialRarrow === true &&this.tutorialTimer>480)
+  if(TutorialRarrow === true &&this.tutorialTimer>600)
   {
     this.tutorialText="Well Done Now Press The Left Arrow"
   }
-  if(TutorialLarrow === true &&this.tutorialTimer>600)
+  if(TutorialLarrow === true &&this.tutorialTimer>720)
   {
     this.tutorialText=" Now Press The Up Arrow"
   }
-  if(TutorialUarrow === true &&this.tutorialTimer>720)
+  if(TutorialUarrow === true &&this.tutorialTimer>940)
   {
     this.tutorialText=" Now Press The Down Arrow"
   }
-  if(TutorialDarrow === true &&this.tutorialTimer>940)
+  if(TutorialDarrow === true &&this.tutorialTimer>1060)
   {
     this.tutorialText=" Congratulations We Now Know How to Move"
   }
-  if(this.tutorialTimer>1060)
+  if(TutorialRarrow === true&&TutorialLarrow === true&&TutorialUarrow === true&&TutorialDarrow === true&&this.tutorialTimer>1180)
   {
     this.tutorialText=" Now We Can Collect the Rubys"
   }

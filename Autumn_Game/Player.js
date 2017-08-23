@@ -2,6 +2,8 @@ function Player(){
   var playerSprite;
   var playerAnimationRight;
   var playerAnimationLeft;
+  var playerAnimationUp;
+  var playerAnimationDown;
   var arrowLeft;
   var arrowRight;
   var arrowUp;
@@ -29,10 +31,16 @@ Player.prototype.init= function(){
   this.playerSprite.src='assets/Player_Assets/Knight.png';
 
   this.playerAnimationRight = new Image();
-  this.playerAnimationRight.src='assets/Player_Assets/Walking_Right.png'
+  this.playerAnimationRight.src='assets/Player_Assets/WRight.png'
 
   this.playerAnimationLeft = new Image();
-  this.playerAnimationLeft.src='assets/Player_Assets/Walking_Left.png'
+  this.playerAnimationLeft.src='assets/Player_Assets/WLeft.png'
+
+  this.playerAnimationUp = new Image();
+  this.playerAnimationUp.src= 'assets/Player_Assets/WUp.png'
+
+  this.playerAnimationDown = new Image();
+  this.playerAnimationDown.src= 'assets/Player_Assets/WDown.png'
 
   this.arrowLeft = new Image();
   this.arrowLeft.src='assets/Arrow_Assets/Left-Arrow.png';
@@ -84,7 +92,7 @@ Player.prototype.animation=function(){
   {
     if(Date.now()-this.oldTime>5500/this.fps)
     {
-      if(this.imageFrame===9)
+      if(this.imageFrame===7)
       {
         this.imageFrame=0;
       }
@@ -97,12 +105,46 @@ Player.prototype.animation=function(){
   }
 }
 
+Player.prototype.animationDown=function(){
+  if(this.playerAlive===true)
+  {
+    if(Date.now()-this.oldTime>5500/this.fps)
+    {
+      if(this.imageFrame===7)
+      {
+        this.imageFrame=0;
+      }
+      this.imageFrame++;
+      this.oldTime=Date.now();
+      console.log("Player Animating Down");
+    }
+    app.ctx.drawImage(this.playerAnimationDown,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
+  }
+}
+
+Player.prototype.animationUp=function(){
+  if(this.playerAlive===true)
+  {
+    if(Date.now()-this.oldTime>5500/this.fps)
+    {
+      if(this.imageFrame===7)
+      {
+        this.imageFrame=0;
+      }
+      this.imageFrame++;
+      this.oldTime=Date.now();
+      console.log("Player Animating Up");
+    }
+    app.ctx.drawImage(this.playerAnimationUp,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
+  }
+}
+
 Player.prototype.animationLeft=function(){
   if(this.playerAlive===true)
   {
     if(Date.now()-this.oldTime>5500/this.fps)
     {
-      if(this.imageFrame===9)
+      if(this.imageFrame===7)
       {
         this.imageFrame=0;
       }

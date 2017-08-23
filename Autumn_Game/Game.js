@@ -9,6 +9,7 @@ var TutorialLarrow = false;
 var TutorialDarrow = false;
 var TutorialUarrow = false;
 var player;
+var RubyTutorial;
 var RubyLevel1;
 var enemyTutorial;
 var enemyLevel1;
@@ -17,6 +18,8 @@ var settingMenu;
 var playerWalkingRight = false;
 var playerStanding = true;
 var playerWalkingLeft =false;
+var playerWalkingDown =true;
+var playerWalkingUp =false;
 var level;
 var gameMode;
 var TutorialLevel= false;
@@ -60,12 +63,16 @@ function main()
 	app.level = new Levels();
 
 	app.RubyLevel1=[5];
+	app.RubyTutorial=[2];
 
 	app.RubyLevel1[0]= new PickUps();
 	app.RubyLevel1[1]= new PickUps();
 	app.RubyLevel1[2]= new PickUps();
 	app.RubyLevel1[3]= new PickUps();
 	app.RubyLevel1[4]= new PickUps();
+
+	app.RubyTutorial[0]= new PickUps();
+	app.RubyTutorial[1]= new PickUps();
 
 
 
@@ -74,6 +81,9 @@ function main()
 	app.gameMode.init();
 	app.enemyLevel1[0].init(500,300);
 	app.enemyLevel1[1].init(800,500);
+
+	app.RubyTutorial[0].init(100,800);
+	app.RubyTutorial[1].init(300,500);
 
 	app.RubyLevel1[0].init(100,800);
 	app.RubyLevel1[1].init(300,800);
@@ -111,23 +121,39 @@ function update()
 					app.level.draw(app.ctx);
 					app.level.Collision();
 
+					if(TutorialRarrow === true&&TutorialLarrow === true&&
+						TutorialUarrow === true&&TutorialDarrow === true&&
+						app.level.tutorialTimer>1180)
+					{
+						for(j=0;j<app.RubyTutorial.length;j++)
+						{
+							app.RubyTutorial[j].CoinSpinning();
+							app.RubyTutorial[j].Collision();
+						}
+					}
+
 
 					if(app.player.playerAlive === true)
 					{
-						if(playerStanding === true)
-						{
-							app.player.draw(app.ctx);
-							app.player.drawArrows(app.ctx);
 
+						if(playerWalkingUp === true)
+						{
+							app.player.animationUp();
+						}
+
+						if(playerWalkingDown ===true)
+						{
+							app.player.animationDown();
 						}
 
 						if(playerWalkingRight ===true){
 							app.player.animation(app.ctx);
-							app.player.drawArrows(app.ctx);
+
 						}
 						if(playerWalkingLeft ===true){
 							app.player.animationLeft(app.ctx);
-					}		app.player.drawArrows(app.ctx);}
+					}
+				}
 
 					HudElements();
 				}
@@ -161,18 +187,20 @@ function update()
 					{
 						if(playerStanding === true)
 						{
-							app.player.draw(app.ctx);
-							app.player.drawArrows(app.ctx);
+
+							app.player.animationUp();
+
 
 						}
 
 						if(playerWalkingRight ===true){
 							app.player.animation(app.ctx);
-							app.player.drawArrows(app.ctx);
+
 						}
 						if(playerWalkingLeft ===true){
 							app.player.animationLeft(app.ctx);
-					}		app.player.drawArrows(app.ctx);}
+					}
+				}
 
 					HudElements();
 				}
@@ -199,7 +227,7 @@ function HudElements()
 	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.32);
 
 	app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected, app.canvas.width/7,(app.canvas.height/7)*5.88);
-
+	app.player.drawArrows(app.ctx);
 }
 
 function keyDownHandler(j)
@@ -209,14 +237,26 @@ function keyDownHandler(j)
 	{
 		if(app.player.playerAlive=== true)
 		{
-			app.player.playerY-= 10;
-			playerStanding=true;
-			playerWalkingRight=false;
-			playerWalkingLeft=false;
-		}
-		if(TutorialLevel === true)
-		{
-			TutorialUarrow=true;
+			if(FirstLevel===true||SecondLevel===true)
+			{
+				app.player.playerY-=10;
+				playerWalkingUp=true;
+				playerWalkingRight=false;
+				playerWalkingLeft=false;
+				playerWalkingDown=false;
+			}
+			if(TutorialLevel === true&&TutorialLarrow===true)
+			{
+				if(app.level.tutorialTimer>720)
+				{
+					TutorialUarrow=true;
+					app.player.playerY-=10;
+					playerWalkingUp=true;
+					playerWalkingRight=false;
+					playerWalkingLeft=false;
+					playerWalkingDown=false;
+				}
+			}
 		}
 	}
 
@@ -224,14 +264,26 @@ function keyDownHandler(j)
 	{
 		if(app.player.playerAlive=== true)
 		{
-			app.player.playerY+=10;
-			playerStanding=true;
-			playerWalkingRight=false;
-			playerWalkingLeft=false;
-		}
-		if(TutorialLevel === true)
-		{
-			TutorialDarrow=true;
+			if(FirstLevel===true||SecondLevel===true)
+			{
+				app.player.playerY+=10;
+				playerWalkingRight=false;
+				playerWalkingLeft=false;
+				playerWalkingDown=true;
+				playerWalkingUp=false;
+			}
+			if(TutorialLevel === true&&TutorialUarrow===true)
+			{
+				if(app.level.tutorialTimer>940)
+				{
+					TutorialDarrow=true;
+					app.player.playerY+=10;
+					playerWalkingDown=true;
+					playerWalkingUp=false;
+					playerWalkingRight=false;
+					playerWalkingLeft=false;
+				}
+			}
 		}
 
 	}
@@ -239,14 +291,26 @@ function keyDownHandler(j)
 	{
 		if(app.player.playerAlive=== true)
 		{
-			app.player.playerX-=10;
-			playerWalkingLeft=true;
-			playerStanding=false;
-			playerWalkingRight=false;
-		}
-		if(TutorialLevel === true)
-		{
-			TutorialLarrow=true;
+			if(FirstLevel===true||SecondLevel===true)
+			{
+				app.player.playerX-=10;
+				playerWalkingDown=false;
+				playerWalkingUp=false;
+				playerWalkingRight=false;
+				playerWalkingLeft=true;
+			}
+			if(TutorialLevel === true&&TutorialRarrow===true)
+			{
+				if(app.level.tutorialTimer>600)
+				{
+					TutorialLarrow=true;
+					app.player.playerX-=10;
+					playerWalkingDown=false;
+					playerWalkingUp=false;
+					playerWalkingRight=false;
+					playerWalkingLeft=true;
+				}
+			}
 		}
 	}
 
@@ -255,15 +319,25 @@ function keyDownHandler(j)
 	{
 		if(app.player.playerAlive=== true)
 		{
-			app.player.playerX+=10;
-			playerWalkingLeft=false;
-			playerStanding=false;
-			playerWalkingRight=true;
+			if(FirstLevel===true||SecondLevel===true)
+			{
+				app.player.playerX+=10;
+				playerWalkingDown=false;
+				playerWalkingUp=false;
+				playerWalkingRight=true;
+				playerWalkingLeft=false;
+			}
+			if(TutorialLevel === true&&app.level.tutorialTimer>480)
+			{
+					TutorialRarrow=true;
+					app.player.playerX+=10;
+					playerWalkingDown=false;
+					playerWalkingUp=false;
+					playerWalkingRight=true;
+					playerWalkingLeft=false;
+			}
 		}
-		if(TutorialLevel === true)
-		{
-			TutorialRarrow=true;
-		}
+
 	}
 }
 
@@ -359,13 +433,22 @@ function onTouchStart(e)
 		    	touches[0].clientY >= app.player.RightArrowHeight &&
 		    	touches[0].clientY <= app.player.RightArrowHeight+64)
 		    {
-					app.player.playerX+=10;
-					playerStanding=false;
-					playerWalkingRight=true;
-					playerWalkingLeft=false;
-					if(TutorialLevel === true)
+					if(FirstLevel===true||SecondLevel===true)
 					{
-						TutorialRarrow=true;
+						app.player.playerX+=10;
+						playerWalkingDown=false;
+						playerWalkingUp=false;
+						playerWalkingRight=true;
+						playerWalkingLeft=false;
+					}
+					if(TutorialLevel === true&&app.level.tutorialTimer>480)
+					{
+							TutorialRarrow=true;
+							app.player.playerX+=10;
+							playerWalkingDown=false;
+							playerWalkingUp=false;
+							playerWalkingRight=true;
+							playerWalkingLeft=false;
 					}
 				}
 				if (touches[0].clientX >= app.player.LeftArrowWidth &&
@@ -373,13 +456,25 @@ function onTouchStart(e)
 		    	touches[0].clientY >= app.player.LeftArrowHeight &&
 		    	touches[0].clientY <= app.player.LeftArrowHeight+64)
 		    {
-					app.player.playerX-=10;
-					playerStanding=false;
-					playerWalkingRight=false;
-					playerWalkingLeft=true;
-					if(TutorialLevel === true)
+					if(FirstLevel===true||SecondLevel===true)
 					{
-						TutorialLarrow=true;
+						app.player.playerX-=10;
+						playerWalkingDown=false;
+						playerWalkingUp=false;
+						playerWalkingRight=false;
+						playerWalkingLeft=true;
+					}
+					if(TutorialLevel === true&&TutorialRarrow===true)
+					{
+						if(app.level.tutorialTimer>600)
+						{
+							TutorialLarrow=true;
+							app.player.playerX-=10;
+							playerWalkingDown=false;
+							playerWalkingUp=false;
+							playerWalkingRight=false;
+							playerWalkingLeft=true;
+						}
 					}
 				}
 				if (touches[0].clientX >= app.player.UpArrowWidth &&
@@ -387,13 +482,25 @@ function onTouchStart(e)
 		    	touches[0].clientY >= app.player.UpArrowHeight &&
 		    	touches[0].clientY <= app.player.UpArrowHeight+64)
 		    {
-					app.player.playerY-=10;
-					playerStanding=true;
-					playerWalkingRight=false;
-					playerWalkingLeft=false;
-					if(TutorialLevel === true)
+					if(FirstLevel===true||SecondLevel===true)
 					{
-						TutorialUarrow=true;
+						app.player.playerY-=10;
+						playerWalkingDown=false;
+						playerWalkingUp=true;
+						playerWalkingRight=false;
+						playerWalkingLeft=false;
+					}
+					if(TutorialLevel === true&&TutorialLarrow===true)
+					{
+						if(app.level.tutorialTimer>720)
+						{
+							TutorialUarrow=true;
+							app.player.playerY-=10;
+							playerWalkingDown=false;
+							playerWalkingUp=true;
+							playerWalkingRight=false;
+							playerWalkingLeft=false;
+						}
 					}
 				}
 				if (touches[0].clientX >= app.player.DownArrowWidth &&
@@ -401,13 +508,25 @@ function onTouchStart(e)
 		    	touches[0].clientY >= app.player.DownArrowHeight &&
 		    	touches[0].clientY <= app.player.DownArrowHeight+64)
 		    {
-					app.player.playerY+=10;
-					playerStanding=true;
-					playerWalkingRight=false;
-					playerWalkingLeft=false;
-					if(TutorialLevel === true)
+					if(FirstLevel===true||SecondLevel===true)
 					{
-						TutorialDarrow=true;
+						app.player.playerY+=10;
+						playerWalkingDown=true;
+						playerWalkingUp=false;
+						playerWalkingRight=false;
+						playerWalkingLeft=false;
+					}
+					if(TutorialLevel === true&&TutorialUarrow===true)
+					{
+						if(app.level.tutorialTimer>940)
+						{
+							TutorialDarrow=true;
+							app.player.playerY+=10;
+							playerWalkingDown=true;
+							playerWalkingUp=false;
+							playerWalkingRight=false;
+							playerWalkingLeft=false;
+						}
 					}
 				}
 
