@@ -1,25 +1,61 @@
 app = {};
-var menu;
+/*
+*******************************
+GameStates
+*******************************
+*/
 var MainMenu = true;
 var Play = false;
 var Options = false;
 var exit = false;
+/*
+*******************************
+Player Control Bools For Arrows
+*******************************
+*/
 var TutorialRarrow = false;
 var TutorialLarrow = false;
 var TutorialDarrow = false;
 var TutorialUarrow = false;
-var player;
+/*
+*******************************
+Ruby Objects
+*******************************
+*/
 var RubyTutorial;
 var RubyLevel1;
+/*
+*******************************
+Enemy Objects
+*******************************
+*/
 var enemyTutorial;
 var enemyLevel1;
 var enemyLevel2;
+
+/*
+*******************************
+Menu Object
+*******************************
+*/
+var menu;
 var settingMenu;
+/*
+*******************************
+Player Bools/Objects
+*******************************
+*/
+var player;
 var playerWalkingRight = false;
-var playerStanding = true;
 var playerWalkingLeft =false;
 var playerWalkingDown =true;
 var playerWalkingUp =false;
+/*
+*******************************
+Level Bools/Objects and GameMode
+*******************************
+*/
+
 var level;
 var gameMode;
 var TutorialLevel= false;
@@ -29,8 +65,16 @@ var singlePlayer = true;
 var MultiPlayer = false;
 var GameMode = false;
 
+/*
+*******************************
+Level Text and Timer
+*******************************
+*/
+
 var FirstLevelTimer =0;
 var FirstLevelText='';
+
+var myData;
 
 
 function main()
@@ -56,7 +100,11 @@ function main()
 
 	app.gameMode = new GameModeMenu();
 
-	app.enemyLevel1=[5];
+	app.enemyTutorial = [1];
+	app.enemyTutorial[0]=new Enemies();
+	app.enemyTutorial[0].init(800,700);
+
+	app.enemyLevel1=[3];
 	app.enemyLevel1[0]=new Enemies();
 	app.enemyLevel1[1]=new Enemies();
 	app.enemyLevel1[2]=new Enemies();
@@ -135,6 +183,14 @@ function update()
 						}
 					}
 
+					for(a=0;a<app.enemyTutorial.length;a++)
+					{
+						if(app.enemyTutorial[a].enemiesAlive === true)
+						{
+								app.enemyTutorial[a].movement();
+						}
+					}
+
 
 					if(app.player.playerAlive === true)
 					{
@@ -183,12 +239,16 @@ function update()
 
 					if(app.player.playerAlive === true)
 					{
-						if(playerStanding === true)
+						if(playerWalkingUp === true)
 						{
 
 							app.player.animationUp();
 
 
+						}
+						if(playerWalkingDown)
+						{
+							app.player.animationDown();
 						}
 
 						if(playerWalkingRight ===true){
