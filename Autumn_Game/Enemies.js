@@ -24,7 +24,6 @@ function Enemies()
 
 Enemies.prototype.init= function(enemyx,enemyy){
 
-
   this.enemyAnimationRight=new Image();
   this.enemyAnimationRight.src='assets/Enemy_Assets/Level_1/EnemyRight.png';
 
@@ -36,6 +35,7 @@ Enemies.prototype.init= function(enemyx,enemyy){
 
   this.enemyAnimationDown=new Image();
   this.enemyAnimationDown.src='assets/Enemy_Assets/Level_1/EnemyDown.png';
+
 
   this.enemiesAlive=true;
 
@@ -104,7 +104,7 @@ Enemies.prototype.EnemyanimationRight=function(){
       this.oldTime=Date.now();
       console.log("Enemy Animating Right");
     }
-    app.ctx.drawImage(this.enemyAnimationRight,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
+      app.ctx.drawImage(this.enemyAnimationRight,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
   }
 
 }
@@ -122,7 +122,7 @@ Enemies.prototype.EnemyanimationUp=function(){
       this.oldTime=Date.now();
       console.log("Enemy Animating Up");
     }
-    app.ctx.drawImage(this.enemyAnimationUp,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
+      app.ctx.drawImage(this.enemyAnimationUp,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
   }
 
 }
@@ -140,7 +140,8 @@ Enemies.prototype.EnemyanimationDown=function(){
       this.oldTime=Date.now();
 
     }
-    app.ctx.drawImage(this.enemyAnimationDown,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
+      app.ctx.drawImage(this.enemyAnimationDown,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
+
   }
 }
 
@@ -157,6 +158,7 @@ Enemies.prototype.EnemyanimationLeft=function(){
       this.oldTime=Date.now();
       console.log("Player Animating Left");
     }
-    app.ctx.drawImage(this.enemyAnimationLeft,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
+      app.ctx.drawImage(this.enemyAnimationLeft,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
+
   }
 }

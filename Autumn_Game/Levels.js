@@ -158,7 +158,7 @@ Levels.prototype.Tutorial=function()
   }
   if(this.tutorialTimer>480)
   {
-    this.tutorialText="To Move Use The Arrows Press The Right Arrow On The Screen/Computer"
+    this.tutorialText="To Move Press The Right Arrow On The Screen/Computer"
   }
   if(TutorialRarrow === true &&this.tutorialTimer>600)
   {
@@ -190,7 +190,7 @@ Levels.prototype.TutorialText=function()
     app.ctx.fillStyle = rgb(0,0,0);
   	app.ctx.font = 'italic 26pt Calibri';
   	app.ctx.TextBaseline = "top";
-    app.ctx.fillText(this.tutorialText,app.canvas.width/7,(app.canvas.height/7)*4.55);
+    app.ctx.fillText(this.tutorialText,app.canvas.width/55,(app.canvas.height/7)*4.55);
 
 }
 

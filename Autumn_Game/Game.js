@@ -79,10 +79,20 @@ var myData;
 
 function main()
 {
+/*
+*******************************
+Event Listeners
+*******************************
+*/
 	document.addEventListener("touchstart", onTouchStart);
+	document.addEventListener("keydown", keyDownHandler);
 
 
-	//creates a new canvas element
+/*
+*******************************
+Creating Canvas Element
+*******************************
+*/
 	var canvas;
 	app.canvas = document.createElement("canvas");
 	//adds canvas to document
@@ -92,27 +102,49 @@ function main()
 	app.ctx = app.canvas.getContext("2d");
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 
-
-
+/*
+*******************************
+Instances Of Classes
+*******************************
+*/
 	app.menu = new Menu();
 	app.player = new Player();
 	app.settingMenu=new SettingMenu();
-
 	app.gameMode = new GameModeMenu();
+	app.level = new Levels();
+
+	app.player.init();
+	app.settingMenu.init();
+	app.gameMode.init();
+	app.level.init();
+
+
+/*
+*******************************
+Tutorial Level Assets
+*******************************
+*/
+
+	app.RubyTutorial=[2];
+	app.RubyTutorial[0]= new PickUps();
+	app.RubyTutorial[1]= new PickUps();
+
+	app.RubyTutorial[0].init(100,800);
+	app.RubyTutorial[1].init(300,800);
 
 	app.enemyTutorial = [1];
 	app.enemyTutorial[0]=new Enemies();
 	app.enemyTutorial[0].init(800,700);
 
-	app.enemyLevel1=[3];
-	app.enemyLevel1[0]=new Enemies();
-	app.enemyLevel1[1]=new Enemies();
-	app.enemyLevel1[2]=new Enemies();
-
-	app.level = new Levels();
+/*
+*******************************
+First Level Assets
+*******************************
+*/
+	this.FirstLevelTimer=0;
+	this.FirstLevelText="Collect All The Rubys";
 
 	app.RubyLevel1=[5];
-	app.RubyTutorial=[2];
 
 	app.RubyLevel1[0]= new PickUps();
 	app.RubyLevel1[1]= new PickUps();
@@ -120,29 +152,33 @@ function main()
 	app.RubyLevel1[3]= new PickUps();
 	app.RubyLevel1[4]= new PickUps();
 
-	app.RubyTutorial[0]= new PickUps();
-	app.RubyTutorial[1]= new PickUps();
 
-this.FirstLevelTimer=0;
-this.FirstLevelText="Collect All The Rubys";
 
-	app.player.init();
-	app.settingMenu.init();
-	app.gameMode.init();
+
+	app.enemyLevel1=[3];
+	app.enemyLevel1[0]=new Enemies();
+	app.enemyLevel1[1]=new Enemies();
+	app.enemyLevel1[2]=new Enemies();
 	app.enemyLevel1[0].init(500,300);
 	app.enemyLevel1[1].init(800,500);
 	app.enemyLevel1[2].init(100,600);
-
-	app.RubyTutorial[0].init(100,800);
-	app.RubyTutorial[1].init(300,500);
 
 	app.RubyLevel1[0].init(100,800);
 	app.RubyLevel1[1].init(300,800);
 	app.RubyLevel1[2].init(500,500);
 	app.RubyLevel1[3].init(600,200);
 	app.RubyLevel1[4].init(200,400);
-	app.level.init();
-	document.addEventListener("keydown", keyDownHandler);
+
+
+/*
+*******************************
+Second Level Assets
+*******************************
+*/
+
+
+
+
 	update();
 
 
