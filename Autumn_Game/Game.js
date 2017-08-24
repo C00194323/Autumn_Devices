@@ -60,8 +60,7 @@ function main()
 	app.enemyLevel1[0]=new Enemies();
 	app.enemyLevel1[1]=new Enemies();
 	app.enemyLevel1[2]=new Enemies();
-	app.enemyLevel1[3]=new Enemies();
-	app.enemyLevel1[4]=new Enemies();
+
 	app.level = new Levels();
 
 	app.RubyLevel1=[5];
@@ -84,6 +83,7 @@ this.FirstLevelText="Collect All The Rubys";
 	app.gameMode.init();
 	app.enemyLevel1[0].init(500,300);
 	app.enemyLevel1[1].init(800,500);
+	app.enemyLevel1[2].init(100,600);
 
 	app.RubyTutorial[0].init(100,800);
 	app.RubyTutorial[1].init(300,500);
