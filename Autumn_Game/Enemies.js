@@ -96,9 +96,19 @@ Enemies.prototype.EnemyanimationRight=function(){
   {
     if(Date.now()-this.oldTime>6000/this.fps)
     {
-      if(this.imageFrame===7)
+      if(TutorialLevel||FirstLevel)
       {
-        this.imageFrame=0;
+        if(this.imageFrame===7)
+        {
+          this.imageFrame=0;
+        }
+      }
+      if(SecondLevel)
+      {
+        if(this.imageFrame===2)
+        {
+          this.imageFrame=0;
+        }
       }
       this.imageFrame++;
       this.oldTime=Date.now();
@@ -114,9 +124,19 @@ Enemies.prototype.EnemyanimationUp=function(){
   {
     if(Date.now()-this.oldTime>6000/this.fps)
     {
-      if(this.imageFrame===7)
+      if(TutorialLevel||FirstLevel)
       {
-        this.imageFrame=0;
+        if(this.imageFrame===7)
+        {
+          this.imageFrame=0;
+        }
+      }
+      if(SecondLevel)
+      {
+        if(this.imageFrame===2)
+        {
+          this.imageFrame=0;
+        }
       }
       this.imageFrame++;
       this.oldTime=Date.now();
@@ -126,16 +146,57 @@ Enemies.prototype.EnemyanimationUp=function(){
   }
 
 }
+Enemies.prototype.ChangeSprite=function()
+{
+  if(TutorialLevel||FirstLevel)
+  {
+    this.enemyAnimationRight=new Image();
+    this.enemyAnimationRight.src='assets/Enemy_Assets/Level_1/EnemyRight.png';
 
+    this.enemyAnimationLeft=new Image();
+    this.enemyAnimationLeft.src='assets/Enemy_Assets/Level_1/EnemyLeft.png';
+
+    this.enemyAnimationUp=new Image();
+    this.enemyAnimationUp.src='assets/Enemy_Assets/Level_1/EnemyUp.png';
+
+    this.enemyAnimationDown=new Image();
+    this.enemyAnimationDown.src='assets/Enemy_Assets/Level_1/EnemyDown.png';
+  }
+  if(SecondLevel)
+  {
+    this.enemyAnimationRight=new Image();
+    this.enemyAnimationRight.src='assets/Enemy_Assets/Level_2/GolemWRight.png';
+
+    this.enemyAnimationLeft=new Image();
+    this.enemyAnimationLeft.src='assets/Enemy_Assets/Level_2/GolemWLeft.png';
+
+    this.enemyAnimationUp=new Image();
+    this.enemyAnimationUp.src='assets/Enemy_Assets/Level_2/GolemWUp.png';
+
+    this.enemyAnimationDown=new Image();
+    this.enemyAnimationDown.src='assets/Enemy_Assets/Level_2/GolemWDown.png';
+  }
+}
 Enemies.prototype.EnemyanimationDown=function(){
   if(this.enemiesAlive===true)
   {
     if(Date.now()-this.oldTime>6000/this.fps)
     {
-      if(this.imageFrame===7)
+      if(TutorialLevel||FirstLevel)
       {
-        this.imageFrame=0;
+        if(this.imageFrame===7)
+        {
+          this.imageFrame=0;
+        }
       }
+      if(SecondLevel)
+      {
+        if(this.imageFrame===2)
+        {
+          this.imageFrame=0;
+        }
+      }
+
       this.imageFrame++;
       this.oldTime=Date.now();
 
@@ -145,18 +206,29 @@ Enemies.prototype.EnemyanimationDown=function(){
   }
 }
 
+
+
 Enemies.prototype.EnemyanimationLeft=function(){
   if(this.enemiesAlive===true)
   {
     if(Date.now()-this.oldTime>6000/this.fps)
     {
-      if(this.imageFrame===7)
+      if(TutorialLevel||FirstLevel)
       {
-        this.imageFrame=0;
+        if(this.imageFrame===7)
+        {
+          this.imageFrame=0;
+        }
+      }
+      if(SecondLevel)
+      {
+        if(this.imageFrame===2)
+        {
+          this.imageFrame=0;
+        }
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Player Animating Left");
     }
       app.ctx.drawImage(this.enemyAnimationLeft,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
 

@@ -159,6 +159,7 @@ First Level Assets
 	app.enemyLevel1[0]=new Enemies();
 	app.enemyLevel1[1]=new Enemies();
 	app.enemyLevel1[2]=new Enemies();
+	
 	app.enemyLevel1[0].init(500,300);
 	app.enemyLevel1[1].init(800,500);
 	app.enemyLevel1[2].init(100,600);
@@ -189,7 +190,6 @@ function update()
 {
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
-	app.settingMenu.init();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
@@ -302,6 +302,37 @@ function update()
 				{
 					app.level.draw(app.ctx);
 					app.level.Collision();
+					HudElements();
+					for(i=0;i<app.enemyLevel1.length;i++)
+					{
+						if(app.enemyLevel1[i].enemiesAlive === true)
+						{
+								app.enemyLevel1[i].ChangeSprite();
+								app.enemyLevel1[i].movement();
+						}
+					}
+					if(app.player.playerAlive === true)
+					{
+						if(playerWalkingUp === true)
+						{
+
+							app.player.animationUp();
+
+
+						}
+						if(playerWalkingDown)
+						{
+							app.player.animationDown();
+						}
+
+						if(playerWalkingRight ===true){
+							app.player.animation(app.ctx);
+
+						}
+						if(playerWalkingLeft ===true){
+							app.player.animationLeft(app.ctx);
+					}
+				}
 				}
 		}
 	}
