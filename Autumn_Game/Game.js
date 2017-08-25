@@ -10,13 +10,14 @@ var Options = false;
 var exit = false;
 /*
 *******************************
-Player Control Bools For Arrows
+Player Control Bools For Arrows/Space Bar
 *******************************
 */
 var TutorialRarrow = false;
 var TutorialLarrow = false;
 var TutorialDarrow = false;
 var TutorialUarrow = false;
+var SpacePressed = false;
 /*
 *******************************
 Ruby Objects
@@ -202,6 +203,7 @@ function update()
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
 	app.Sound.playMusic();
+	app.Sound.SoundEffects();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
@@ -368,7 +370,7 @@ function HudElements()
 		if(this.FirstLevelTimer >180){
 			this.FirstLevelText= " And Avoid the Enemies";
 	}
-	if (this.FirstLevelTimer>420	){
+	if (this.FirstLevelTimer>320	){
 		this.FirstLevelText= " To Make It To Level 2";
 	}
 	app.ctx.fillText(this.FirstLevelText
@@ -382,6 +384,10 @@ function HudElements()
 		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.Level1Rubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
 	}
 	if(TutorialLevel)
+	{
+		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.TutorialRubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
+	}
+	if(SecondLevel)
 	{
 		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.TutorialRubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
 	}
@@ -445,6 +451,17 @@ function keyDownHandler(j)
 			}
 		}
 
+	}
+	if(j.keyCode === 32) // Space Bar
+	{
+		if(Play)
+		{
+			if(TutorialLevel||SecondLevel)
+			{
+				SpacePressed = true;
+				app.player.Fire();
+			}
+		}
 	}
 	if(j.keyCode === 37) //left arrow
 	{

@@ -6,8 +6,8 @@ function PickUps(){
   var oldTime;
   var imageFrame;
   var RubyLevel1;
-  var collected;
-  
+  var rubyPicked;
+
 
 }
 PickUps.prototype.init=function(rubX,rubY){
@@ -17,7 +17,7 @@ PickUps.prototype.init=function(rubX,rubY){
   this.RubyX=rubX;
   this.RubyY=rubY;
 
-  this.collected = 0;
+  rubyPicked = false;
 
   this.oldTime=Date.now();
   this.fps=60;
@@ -47,6 +47,7 @@ PickUps.prototype.Collision=function(){
       {
         console.log("Collected");
         app.RubyLevel1.splice(i,1);
+        rubyPicked=true;
         app.level.RubiesCollected++;
       }
     }

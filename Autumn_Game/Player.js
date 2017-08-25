@@ -23,7 +23,15 @@ function Player(){
   var oldTime;
   var fps;
   var imageFrame;
-  var PlayerLive;
+  var PlayerLife;
+
+  var fireLeft;
+  var fireRight;
+  var fireUp;
+  var fireDown;
+
+  var fireX;
+  var fireY;
 
 }
 Player.prototype.init= function(){
@@ -55,6 +63,18 @@ Player.prototype.init= function(){
   this.FireButton = new Image();
   this.FireButton.src = 'assets/Controller_Assets/FireButton.png';
 
+  this.fireRight = new Image();
+  this.fireRight.src='assets/Bullet_Assets/Player_Bullets/Magic_Right.png';
+
+  this.fireLeft = new Image();
+  this.fireLeft.src='assets/Bullet_Assets/Player_Bullets/Magic_Left.png';
+
+  this.fireUp = new Image();
+  this.fireUp.src='assets/Bullet_Assets/Player_Bullets/Magic_Up.png';
+
+  this.fireDown = new Image();
+  this.fireDown.src='assets/Bullet_Assets/Player_Bullets/Magic_Down.png';
+
   this.playerAlive=true;
   this.playerX = 150;
   this.playerY = 128;
@@ -62,7 +82,10 @@ Player.prototype.init= function(){
   this.fps=60;
   this.imageFrame=0;
 
-  this.PlayerLive = 3;
+  this.PlayerLife = 3;
+
+  this.fireX=this.playerX;
+  this.fireY=this.playerY;
 
   this.RightArrowWidth=window.innerWidth-400;
   this.LeftArrowWidth=window.innerWidth/2-100;
@@ -83,7 +106,25 @@ Player.prototype.drawControls=function(ctx){
   app.ctx.drawImage(this.arrowDown,this.DownArrowWidth,this.DownArrowHeight);
   app.ctx.drawImage(this.FireButton,(app.canvas.width/2)*1.65,(app.canvas.height/2)*1.85);
 }
+Player .prototype.Fire=function()
+{
+  if(SpacePressed&&playerWalkingUp)
+  {
 
+  }
+  else if(SpacePressed&&playerWalkingDown)
+  {
+
+  }
+  else if(SpacePressed&&playerWalkingLeft)
+  {
+
+  }
+  else if(SpacePressed&&playerWalkingRight)
+  {
+
+  }
+}
 Player.prototype.animation=function(){
   if(this.playerAlive===true)
   {

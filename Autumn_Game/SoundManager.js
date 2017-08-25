@@ -3,7 +3,7 @@ function SoundManager()
   var backgroundMusic;
   var backgroundVolume;
 
-
+  var PickUpSoundEffect;
 
   var GameMusic;
   var GameMusicVolume;
@@ -13,7 +13,7 @@ function SoundManager()
 SoundManager.prototype.init=function()
 {
   this.backgroundMusic=new Audio('assets/Music_Assets/BackgroundMusic.mp3');
-
+  this.PickUpSoundEffect = new Audio('assets/Music_Assets/sfx_Ruby.wav');
 };
 SoundManager.prototype.playMusic=function()
 {
@@ -21,12 +21,18 @@ SoundManager.prototype.playMusic=function()
   if(MainMenu){
     this.backgroundMusic.loop=true;
     this.backgroundMusic.play();
-
-
   }
   else if(TutorialLevel ===true||FirstLevel ===true||SecondLevel ===true)
   {
     this.backgroundMusic.pause();
+  }
+};
+
+SoundManager.prototype.SoundEffects=function()
+{
+  if(rubyPicked)
+  {
+    this.PickUpSoundEffect.play();
   }
 };
 
