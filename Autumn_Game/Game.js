@@ -159,7 +159,7 @@ First Level Assets
 	app.enemyLevel1[0]=new Enemies();
 	app.enemyLevel1[1]=new Enemies();
 	app.enemyLevel1[2]=new Enemies();
-	
+
 	app.enemyLevel1[0].init(500,300);
 	app.enemyLevel1[1].init(800,500);
 	app.enemyLevel1[2].init(100,600);
@@ -177,6 +177,17 @@ Second Level Assets
 *******************************
 */
 
+/*
+*******************************
+Sound Manager
+*******************************
+*/
+var Sound;
+app.Sound = new SoundManager();
+app.Sound.init();
+
+
+
 
 
 
@@ -193,6 +204,7 @@ function update()
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
+		app.Sound.playMusic();
 	}
 	if(Play === true)
 	{
@@ -435,6 +447,7 @@ function keyDownHandler(j)
 	}
 	if(j.keyCode === 37) //left arrow
 	{
+		app.Sound.VolumeDown();
 		if(app.player.playerAlive=== true)
 		{
 			if(FirstLevel===true||SecondLevel===true)
@@ -463,6 +476,7 @@ function keyDownHandler(j)
 
 	if(j.keyCode === 39) // right arrow
 	{
+		app.Sound.VolumeUp();
 		if(app.player.playerAlive=== true)
 		{
 			if(FirstLevel===true||SecondLevel===true)

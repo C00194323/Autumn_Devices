@@ -34,6 +34,7 @@ SettingMenu.prototype.init= function(){
   this.exitButton = new Image();
   this.exitButton.src='assets/SettingMenu_Assets/Exit.png';
 
+
 }
 
 SettingMenu.prototype.draw= function(ctx){
@@ -44,6 +45,7 @@ SettingMenu.prototype.draw= function(ctx){
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "top";
 	app.ctx.fillText("Sound :", this.textWidth,this.textheight);
+  app.ctx.fillText("Volume :", ((app.canvas.width/4.2)),((app.canvas.height/2.7)));
   app.ctx.fillText("Exit :", app.canvas.width/3.6,((app.canvas.height/2)*1.6));
 
   app.ctx.font = 'italic 52pt Calibri';
