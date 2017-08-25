@@ -201,10 +201,11 @@ function update()
 {
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
+	app.Sound.playMusic();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
-		app.Sound.playMusic();
+
 	}
 	if(Play === true)
 	{
@@ -447,7 +448,9 @@ function keyDownHandler(j)
 	}
 	if(j.keyCode === 37) //left arrow
 	{
-		app.Sound.VolumeDown();
+		if(MainMenu){
+			app.Sound.VolumeDown();
+		}
 		if(app.player.playerAlive=== true)
 		{
 			if(FirstLevel===true||SecondLevel===true)
@@ -476,7 +479,9 @@ function keyDownHandler(j)
 
 	if(j.keyCode === 39) // right arrow
 	{
-		app.Sound.VolumeUp();
+		if(MainMenu){
+			app.Sound.VolumeUp();
+		}
 		if(app.player.playerAlive=== true)
 		{
 			if(FirstLevel===true||SecondLevel===true)
@@ -694,6 +699,30 @@ function onTouchStart(e)
    		}
     if (Options === true)
     {
+
+			if(touches[0].clientX >= app.settingMenu.soundUpWidth &&
+	    	touches[0].clientX <= app.settingMenu.soundUpWidth+130 &&
+	    	touches[0].clientY >= app.settingMenu.soundUpHeight &&
+	    	touches[0].clientY <= app.settingMenu.soundUpHeight+130)
+				{
+					if(app.settingMenu.VolumeText<100)
+					{
+						app.settingMenu.VolumeText +=10;
+					}
+					app.Sound.VolumeUp();
+				}
+
+				if(touches[0].clientX >= app.settingMenu.soundDownWidth &&
+		    	touches[0].clientX <= app.settingMenu.soundDownWidth+130 &&
+		    	touches[0].clientY >= app.settingMenu.soundDownHeight &&
+		    	touches[0].clientY <= app.settingMenu.soundDownHeight+130)
+					{
+						if(app.settingMenu.VolumeText>0)
+						{
+							app.settingMenu.VolumeText -=10;
+						}
+						app.Sound.VolumeDown();
+					}
     	if (touches[0].clientX >= app.canvas.width/2.4 &&
 	    	touches[0].clientX <= (app.canvas.width/2.4)+130 &&
 	    	touches[0].clientY >= ((app.canvas.height/2)*1.5) &&

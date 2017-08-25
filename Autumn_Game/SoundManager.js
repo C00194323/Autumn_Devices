@@ -21,12 +21,12 @@ SoundManager.prototype.playMusic=function()
   if(MainMenu){
     this.backgroundMusic.loop=true;
     this.backgroundMusic.play();
-    this.backgroundMusic.pause();
+
 
   }
-  if(TutorialLevel||FirstLevel||SecondLevel)
+  else if(TutorialLevel ===true||FirstLevel ===true||SecondLevel ===true)
   {
-
+    this.backgroundMusic.pause();
   }
 };
 
