@@ -61,7 +61,7 @@ Enemies.prototype.movement=function(){
     this.enemyLeft =true;
     this.enemyRight =false;
     this.EnemyanimationLeft();
-    this.enemyX=this.enemyX-1;
+    this.enemyX=this.enemyX-.5;
   }
  else if(app.player.playerX>this.enemyX){
    this.enemyUp=false;
@@ -69,7 +69,7 @@ Enemies.prototype.movement=function(){
    this.enemyLeft =false;
    this.enemyRight =true;
     this.EnemyanimationRight();
-    this.enemyX=this.enemyX+1;
+    this.enemyX=this.enemyX+.5;
 
   }
   else if(app.player.playerY<this.enemyY){
@@ -77,7 +77,7 @@ Enemies.prototype.movement=function(){
     this.enemyDown =false;
     this.enemyLeft =false;
     this.enemyRight =false;
-    this.enemyY= this.enemyY-1;
+    this.enemyY= this.enemyY-.5;
     this.EnemyanimationUp();
   }
  else if(app.player.playerY>this.enemyY)
@@ -86,7 +86,7 @@ Enemies.prototype.movement=function(){
     this.enemyUp=false;
     this.enemyLeft =false;
     this.enemyRight =false;
-    this.enemyY= this.enemyY+1;
+    this.enemyY= this.enemyY+.5;
       this.EnemyanimationDown();
   }
 }

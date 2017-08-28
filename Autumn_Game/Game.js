@@ -18,6 +18,14 @@ var TutorialLarrow = false;
 var TutorialDarrow = false;
 var TutorialUarrow = false;
 var SpacePressed = false;
+
+/*
+*******************************
+Bullet Object
+*******************************
+*/
+var bullets;
+var bul;
 /*
 *******************************
 Ruby Objects
@@ -114,10 +122,19 @@ Instances Of Classes
 	app.gameMode = new GameModeMenu();
 	app.level = new Levels();
 
+
 	app.player.init();
 	app.settingMenu.init();
 	app.gameMode.init();
 	app.level.init();
+
+/*
+*******************************
+ 	Bullet Assets
+*******************************
+*/
+	app.bullets=[0];
+	app.bul;
 
 
 /*
@@ -177,6 +194,18 @@ First Level Assets
 Second Level Assets
 *******************************
 */
+app.enemyLevel2=[5];
+app.enemyLevel2[0]=new Enemies();
+app.enemyLevel2[1]=new Enemies();
+app.enemyLevel2[2]=new Enemies();
+app.enemyLevel2[3]=new Enemies();
+app.enemyLevel2[4]=new Enemies();
+
+app.enemyLevel2[0].init(500,300);
+app.enemyLevel2[1].init(800,500);
+app.enemyLevel2[2].init(100,600);
+app.enemyLevel2[3].init(300,400);
+app.enemyLevel2[4].init(400,600);
 
 /*
 *******************************
@@ -241,11 +270,14 @@ function update()
 								app.enemyTutorial[a].movement();
 						}
 					}
-
-
+					for(j=0;j<app.bullets.length;j++)
+					{
+						if(SpacePressed){
+							app.bullets[j].BMovement();
+						}
+					}
 					if(app.player.playerAlive === true)
 					{
-
 						if(playerWalkingUp === true)
 						{
 							app.player.animationUp();
@@ -287,7 +319,6 @@ function update()
 								app.enemyLevel1[i].movement();
 						}
 					}
-
 					if(app.player.playerAlive === true)
 					{
 						if(playerWalkingUp === true)
@@ -318,12 +349,21 @@ function update()
 					app.level.draw(app.ctx);
 					app.level.Collision();
 					HudElements();
-					for(i=0;i<app.enemyLevel1.length;i++)
+					if(SpacePressed)
 					{
-						if(app.enemyLevel1[i].enemiesAlive === true)
+						for(b=0;b<app.bullets.length;b++)
 						{
-								app.enemyLevel1[i].ChangeSprite();
-								app.enemyLevel1[i].movement();
+							app.bullets[b].update();
+						}
+					}
+
+					for(i=0;i<app.enemyLevel2.length;i++)
+					{
+						app.enemyLevel2[i].ChangeSprite();
+						if(app.enemyLevel2[i].enemiesAlive === true)
+						{
+
+								app.enemyLevel2[i].movement();
 						}
 					}
 					if(app.player.playerAlive === true)
@@ -379,7 +419,7 @@ function HudElements()
   app.ctx.fillStyle = rgb(256,256,256);
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "top";
-	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLive, app.canvas.width/7,(app.canvas.height/7)*5.1);
+	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLife, app.canvas.width/7,(app.canvas.height/7)*5.1);
 	if(FirstLevel){
 		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.Level1Rubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
 	}
@@ -389,7 +429,8 @@ function HudElements()
 	}
 	if(SecondLevel)
 	{
-		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.TutorialRubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
+
+		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.Level2Rubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
 	}
 
 	app.player.drawControls(app.ctx);
@@ -456,10 +497,27 @@ function keyDownHandler(j)
 	{
 		if(Play)
 		{
-			if(TutorialLevel||SecondLevel)
+			SpacePressed=true;
+			if((TutorialLevel||SecondLevel)&&SpacePressed)
 			{
-				SpacePressed = true;
-				app.player.Fire();
+				app.bul = new Bullet();
+				if(playerWalkingUp)
+				{
+					app.bul.init(app.player.playerX,app.player.playerY,0);
+				}
+				if(playerWalkingDown)
+				{
+					app.bul.init(app.player.playerX,app.player.playerY,1);
+				}
+				if(playerWalkingLeft)
+				{
+					app.bul.init(app.player.playerX,app.player.playerY,2);
+				}
+				if(playerWalkingRight)
+				{
+					app.bul.init(app.player.playerX,app.player.playerY,3);
+				}
+				app.bullets.push(app.bul);
 			}
 		}
 	}

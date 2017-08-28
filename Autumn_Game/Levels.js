@@ -105,7 +105,7 @@ function Levels()
 
     var TutorialRubys = 2;
     var Level1Rubys = 5;
-    //var Level2Rubys = 10;
+    var Level2Rubys = 7;
 
     var RubeeHudIcon;
     var PlayerHudIcon;
@@ -140,6 +140,7 @@ Levels.prototype.init=function(){
   this.RubiesCollected =0;
   this.TutorialRubys ='/2';
   this.Level1Rubys='/5';
+  this.Level2Rubys='/7';
   this.tutorialTimer =0;
   this.tutorialText='';
 
@@ -179,6 +180,14 @@ Levels.prototype.Tutorial=function()
   if(TutorialRarrow === true&&TutorialLarrow === true&&TutorialUarrow === true&&TutorialDarrow === true&&this.tutorialTimer>1180)
   {
     this.tutorialText=" Now We Can Collect the Rubys"
+  }
+  if(this.tutorialTimer>1300)
+  {
+    this.tutorialText="Now To kill the Enemy"
+  }
+  if(this.tutorialTimer>1420)
+  {
+    this.tutorialText="Press SpaceBar/Fire button to Shoot Magic"
   }
 
 

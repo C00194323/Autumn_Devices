@@ -32,7 +32,7 @@ SoundManager.prototype.SoundEffects=function()
 {
   if(rubyPicked)
   {
-    this.PickUpSoundEffect.play();
+  //  this.PickUpSoundEffect.play();
   }
 };
 

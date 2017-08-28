@@ -55,8 +55,10 @@ PickUps.prototype.Collision=function(){
     {
       SecondLevel=true;
       FirstLevel=false;
+      app.level.RubiesCollected=0;
     }
   }
+
   if(TutorialLevel)
   {
     for(i=0;i<app.RubyTutorial.length;i++)
