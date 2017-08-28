@@ -1,23 +1,44 @@
 function Enemies()
 {
+/*
+*******************************
+ Normal Enemy Assets/Variables
+*******************************
+*/
   var enemyIdle;
   var enemyAnimationRight;
-  var oldTime;
-  var fps;
-  var imageFrame;
   var enemiesAlive;
   var enemyAnimationLeft;
   var enemyAnimationUp;
   var enemyAnimationDown;
   var enemyX;
   var enemyY;
-  var oldTime;
-  var fps;
-  var imageFrame;
   var enemyDown;
   var enemyUp;
   var enemyLeft;
   var enemyRight;
+/*
+*******************************
+ 	Boss Assets/Variables
+*******************************
+*/
+  var bossAnimationLeft;
+  var bossAnimationRight;
+  var bossIdle;
+  var BossX;
+  var BossY;
+  var BossAlive;
+  var BossTimer;
+
+/*
+*******************************
+ 	Animation Variables
+*******************************
+*/
+  var oldTime;
+  var fps;
+  var imageFrame;
+
 
 
 }
