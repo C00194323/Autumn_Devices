@@ -24,7 +24,7 @@ var SpacePressed = false;
 Bullet Object
 *******************************
 */
-var bullets;
+var bullets=[0];
 var bul;
 /*
 *******************************
@@ -247,6 +247,7 @@ function update()
 
 			if(singlePlayer === true)
 			{
+
 				if(TutorialLevel === true)
 				{
 					app.level.draw(app.ctx);
@@ -270,12 +271,12 @@ function update()
 								app.enemyTutorial[a].movement();
 						}
 					}
-					for(j=0;j<app.bullets.length;j++)
-					{
+
 						if(SpacePressed){
-							app.bullets[j].BMovement();
+							app.bul.BMovement();
+							app.bul.CheckAlive();
 						}
-					}
+
 					if(app.player.playerAlive === true)
 					{
 						if(playerWalkingUp === true)
@@ -517,7 +518,7 @@ function keyDownHandler(j)
 				{
 					app.bul.init(app.player.playerX,app.player.playerY,3);
 				}
-				app.bullets.push(app.bul);
+				//app.bullets.push(app.bul);
 			}
 		}
 	}

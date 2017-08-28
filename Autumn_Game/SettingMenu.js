@@ -52,11 +52,9 @@ SettingMenu.prototype.draw= function(ctx){
 
 	app.ctx.font = 'italic 40pt Calibri';
 	app.ctx.TextBaseline = "middle";
-  app.ctx.textAlign = "center";
+  //app.ctx.textAlign = "center";
 	app.ctx.fillText("Music:", this.textWidth,this.textheight);
-  app.ctx.fillText("Music Volume :" + this.VolumeText, ((app.canvas.width/2)),((app.canvas.height/2.7)));
-  app.ctx.fillText("Exit :", app.canvas.width/3.6,((app.canvas.height/2)*1.6));
-
+  app.ctx.fillText("Music Volume :" + this.VolumeText, ((app.canvas.width/2)*.3),((app.canvas.height/2.7)));  app.ctx.fillText("Exit :", app.canvas.width/3.6,((app.canvas.height/2)*1.6));
 
 
   app.ctx.drawImage(this.soundUp,this.soundUpWidth,this.soundUpHeight);

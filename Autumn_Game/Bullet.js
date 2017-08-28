@@ -13,9 +13,12 @@ function Bullet()
   var directionRight;
   var direction;
 
+  var bulletAlive = true;
+
 
 
 }
+
 Bullet.prototype.init=function(fireX,fireY,dir)
 {
   this.playerBulletY = fireY;
@@ -39,9 +42,22 @@ Bullet.prototype.init=function(fireX,fireY,dir)
   this.directionDown=1;
   this.directionLeft=2;
   this.directionRight=3;
+
+  bulletAlive=true;
+}
+
+Bullet.prototype.CheckAlive=function()
+{
+  if((this.playerBulletX+64>(app.canvas.width/2)*1.85)||(this.playerBulletX-64<(window.innerWidth/20)-70)
+  ||(this.playerBulletY-64<0)||(this.playerBulletY+64>((window.innerHeight/5)*2.82)-70))
+  {
+    bulletAlive = false;
+  }
 }
 Bullet.prototype.BMovement=function()
 {
+  if(bulletAlive)
+  {
     if(this.direction===this.directionUp)
     {
       this.playerBulletY--;
@@ -62,4 +78,5 @@ Bullet.prototype.BMovement=function()
         this.playerBulletX++;
         app.ctx.drawImage(this.fireRight,this.playerBulletX,this.playerBulletY);
     }
+  }
 }
