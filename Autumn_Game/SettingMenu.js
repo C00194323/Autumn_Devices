@@ -47,7 +47,7 @@ SettingMenu.prototype.draw= function(ctx){
   app.ctx.fillStyle = rgb(0,0,0);
   app.ctx.font = 'italic 52pt Calibri';
   app.ctx.TextBaseline = "top";
-  app.ctx.fillText("Settings" , app.canvas.width/2,app.canvas.height/6);
+  app.ctx.fillText("Settings" , app.canvas.width/2.6,app.canvas.height/6);
 
 
 	app.ctx.font = 'italic 40pt Calibri';

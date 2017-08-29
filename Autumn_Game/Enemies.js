@@ -29,7 +29,6 @@ function Enemies()
   var BossX;
   var BossY;
   var BossAlive;
-  var BossTimer;
 
 /*
 *******************************
@@ -82,7 +81,6 @@ Enemies.prototype.init= function(enemyx,enemyy){
 
   this.BossX=enemyx;
   this.BossY=enemyy;
-  this.BossTimer=0;
 
   this.oldTime=Date.now();
   this.fps=60;
@@ -176,7 +174,7 @@ Enemies.prototype.BossAnimatingLeft=function()
 }
 Enemies.prototype.BossBulletMoving=function()
 {
-  
+
 }
 Enemies.prototype.BossAnimatingRight=function()
 {
@@ -194,11 +192,11 @@ Enemies.prototype.BossAnimatingRight=function()
       this.oldTime=Date.now();
       console.log("Boss Animating Right");
     }
-    app.ctx.drawImage(this.bossAnimationRight,this.imageFrame*128,0,128,64,this.BossX,this.BossY,128,64);
+    app.ctx.drawImage(this.bossAnimationRight,this.imageFrame*64,0,64,128,this.BossX,this.BossY,64,128);
   }
 }
 Enemies.prototype.BossMovement=function(){
-  if(SecondLevel&&this.BossTimer>2500)
+  if(SecondLevel&&app.level.RubiesCollected === 7)
   {
     if(app.player.playerX<this.BossX)
     {
@@ -212,7 +210,7 @@ Enemies.prototype.BossMovement=function(){
     }
     if(app.player.playerX===this.BossX)
     {
-      app.ctx.drawImage(this.bossIdle,this.BossX,this.BossY);
+      app.ctx.drawImage(this.bossIdle,this.BossX-32,this.BossY);
     }
   }
 }

@@ -111,7 +111,9 @@ function Levels()
     var PlayerHudIcon;
 
     var tutorialTimer;
+    var tutorialTimer2;
     var tutorialText;
+    var shootTextBool;
 
 }
 Levels.prototype.init=function(){
@@ -142,52 +144,62 @@ Levels.prototype.init=function(){
   this.Level1Rubys='/5';
   this.Level2Rubys='/7';
   this.tutorialTimer =0;
+  this.tutorialTimer2 =0;
   this.tutorialText='';
+  shootTextBool=false;
 
 
 }
 Levels.prototype.Tutorial=function()
 {
-  this.tutorialTimer++;
-  if(this.tutorialTimer < 220)
-  {
-    this.tutorialText="Hi This Is A Tutorial Level, Lets Play A Game"
-  }
-  if(this.tutorialTimer>220&&this.tutorialTimer<480)
-  {
-    this.tutorialText="Follow These Simple Instructions"
-  }
-  if(this.tutorialTimer>480)
-  {
-    this.tutorialText="To Move Press The Right Arrow On The Screen/Computer"
-  }
-  if(TutorialRarrow === true &&this.tutorialTimer>600)
-  {
-    this.tutorialText="Well Done Now Press The Left Arrow On The Screen/Computer"
-  }
-  if(TutorialLarrow === true &&this.tutorialTimer>720)
-  {
-    this.tutorialText=" Now Press The Up Arrow On The Screen/Computer"
-  }
-  if(TutorialUarrow === true &&this.tutorialTimer>940)
-  {
-    this.tutorialText=" Now Press The Down Arrow On The Screen/Computer"
-  }
-  if(TutorialDarrow === true &&this.tutorialTimer>1060)
-  {
-    this.tutorialText=" Congratulations We Now Know How to Move"
-  }
-  if(TutorialRarrow === true&&TutorialLarrow === true&&TutorialUarrow === true&&TutorialDarrow === true&&this.tutorialTimer>1180)
-  {
-    this.tutorialText=" Now We Can Collect the Rubys"
-  }
-  if(this.tutorialTimer>1300)
-  {
-    this.tutorialText="Now To kill the Enemy"
-  }
-  if(this.tutorialTimer>1420)
-  {
-    this.tutorialText="Press SpaceBar/Fire button to Shoot Magic"
+  if(TutorialLevel){
+    this.tutorialTimer++;
+    if(this.tutorialTimer < 220)
+    {
+      this.tutorialText="Hi This Is A Tutorial Level, Lets Play A Game"
+    }
+    if(this.tutorialTimer>220&&this.tutorialTimer<480)
+    {
+      this.tutorialText="Follow These Simple Instructions"
+    }
+    if(this.tutorialTimer>480)
+    {
+      this.tutorialText="To Move Press The Right Arrow On The Screen/Computer"
+    }
+    if(TutorialRarrow === true &&this.tutorialTimer>600)
+    {
+      this.tutorialText="Well Done Now Press The Left Arrow On The Screen/Computer"
+    }
+    if(TutorialLarrow === true &&this.tutorialTimer>720)
+    {
+      this.tutorialText=" Now Press The Up Arrow On The Screen/Computer"
+    }
+    if(TutorialUarrow === true &&this.tutorialTimer>940)
+    {
+      this.tutorialText=" Now Press The Down Arrow On The Screen/Computer"
+    }
+    if(TutorialDarrow === true &&this.tutorialTimer>1060)
+    {
+      this.tutorialText=" Congratulations We Now Know How to Move"
+    }
+    if(TutorialRarrow === true&&TutorialLarrow === true&&TutorialUarrow === true&&TutorialDarrow === true&&this.tutorialTimer>1180)
+    {
+      this.tutorialText=" Now We Can Collect the Rubys"
+    }
+    if(tRubies === true && this.tutorialTimer>1300)
+    {
+      this.tutorialText="Now To kill the Enemy"
+      shootTextBool=true;
+      this.tutorialTimer2++;
+    }
+    if(shootTextBool === true&&this.tutorialTimer2>220)
+    {
+      this.tutorialText="Press SpaceBar/Fire button to Shoot Magic"
+    }
+    /*if(this.tutorialTimer2>440)
+    {
+      this.tutorialText="You are now ready for the First Level"
+    }*/
   }
 
 

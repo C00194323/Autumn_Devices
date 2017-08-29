@@ -31,6 +31,7 @@ var bul;
 Ruby Objects
 *******************************
 */
+var tRubies=false;
 var RubyTutorial;
 var RubyLevel1;
 var RubyLevel2;
@@ -154,6 +155,7 @@ Tutorial Level Assets
 	app.enemyTutorial = [1];
 	app.enemyTutorial[0]=new Enemies();
 	app.enemyTutorial[0].init(800,700);
+	app.tRubies=false;
 
 /*
 *******************************
@@ -378,11 +380,9 @@ function update()
 						app.RubyLevel2[j].Collision();
 					}
 
-					app.boss.BossTimer++;
-					console.log(app.boss.BossTimer);
-					if(app.boss.BossTimer >2500)
+					if(app.level.RubiesCollected === 7)
 					{
-						app.boss.BossAlive =true;
+						app.boss.BossAlive = true;
 					}
 					app.boss.BossMovement();
 					HudElements();
@@ -466,6 +466,11 @@ function HudElements()
 	if(TutorialLevel)
 	{
 		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.TutorialRubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
+		if(app.level.RubiesCollected === 2)
+		{
+			tRubies=true;
+			console.log(tRubies);
+		}
 	}
 	if(SecondLevel)
 	{

@@ -7,7 +7,7 @@ function PickUps(){
   var imageFrame;
   var RubyLevel1;
   var rubyPicked;
-
+  var TutorialRubiesCollected;
 
 }
 PickUps.prototype.init=function(rubX,rubY){
@@ -18,6 +18,7 @@ PickUps.prototype.init=function(rubX,rubY){
   this.RubyY=rubY;
 
   rubyPicked = false;
+  TutorialRubiesCollected =false;
 
   this.oldTime=Date.now();
   this.fps=60;
