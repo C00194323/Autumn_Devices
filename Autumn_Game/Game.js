@@ -41,7 +41,7 @@ Enemy Objects
 var enemyTutorial;
 var enemyLevel1;
 var enemyLevel2;
-
+var boss;
 /*
 *******************************
 Menu Object
@@ -194,6 +194,10 @@ First Level Assets
 Second Level Assets
 *******************************
 */
+
+app.boss= new Enemies();
+app.boss.init(50,50);
+
 app.enemyLevel2=[5];
 app.enemyLevel2[0]=new Enemies();
 app.enemyLevel2[1]=new Enemies();
@@ -349,6 +353,13 @@ function update()
 				{
 					app.level.draw(app.ctx);
 					app.level.Collision();
+					app.boss.BossTimer++;
+					console.log(app.boss.BossTimer);
+					if(app.boss.BossTimer >2500)
+					{
+						app.boss.BossAlive =true;
+					}
+					app.boss.BossMovement();
 					HudElements();
 					if(SpacePressed)
 					{

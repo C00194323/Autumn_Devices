@@ -24,6 +24,7 @@ function Enemies()
 */
   var bossAnimationLeft;
   var bossAnimationRight;
+  var bossFire;
   var bossIdle;
   var BossX;
   var BossY;
@@ -57,6 +58,17 @@ Enemies.prototype.init= function(enemyx,enemyy){
   this.enemyAnimationDown=new Image();
   this.enemyAnimationDown.src='assets/Enemy_Assets/Level_1/EnemyDown.png';
 
+  this.bossAnimationRight= new Image();
+  this.bossAnimationRight.src='assets/Enemy_Assets/Level_2/DragonRight.png';
+
+  this.bossAnimationLeft = new Image();
+  this.bossAnimationLeft.src='assets/Enemy_Assets/Level_2/DragonLeft.png';
+
+  this.bossIdle=new Image();
+  this.bossIdle.src='assets/Enemy_Assets/Level_2/DragonIdle.png';
+
+  this.bossFire=new Image();
+  this.bossFire.src='assets/Bullet_Assets/Boss_Bullets/Fire_Down.png';
 
   this.enemiesAlive=true;
 
@@ -67,6 +79,10 @@ Enemies.prototype.init= function(enemyx,enemyy){
 
   this.enemyX=enemyx;
   this.enemyY=enemyy;
+
+  this.BossX=enemyx;
+  this.BossY=enemyy;
+  this.BossTimer=0;
 
   this.oldTime=Date.now();
   this.fps=60;
@@ -138,6 +154,67 @@ Enemies.prototype.EnemyanimationRight=function(){
       app.ctx.drawImage(this.enemyAnimationRight,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
   }
 
+}
+Enemies.prototype.BossAnimatingLeft=function()
+{
+  if(this.BossAlive === true){
+    if(Date.now()-this.oldTime>5000/this.fps)
+    {
+      if(SecondLevel)
+      {
+        if(this.imageFrame===2)
+        {
+          this.imageFrame=0;
+        }
+      }
+      this.imageFrame++;
+      this.oldTime=Date.now();
+      console.log("Boss Animating Left");
+    }
+    app.ctx.drawImage(this.bossAnimationLeft,this.imageFrame*64,0,64,128,this.BossX,this.BossY,64,128);
+  }
+}
+Enemies.prototype.BossBulletMoving=function()
+{
+  
+}
+Enemies.prototype.BossAnimatingRight=function()
+{
+  if(this.BossAlive === true){
+    if(Date.now()-this.oldTime>5000/this.fps)
+    {
+      if(SecondLevel)
+      {
+        if(this.imageFrame===2)
+        {
+          this.imageFrame=0;
+        }
+      }
+      this.imageFrame++;
+      this.oldTime=Date.now();
+      console.log("Boss Animating Right");
+    }
+    app.ctx.drawImage(this.bossAnimationRight,this.imageFrame*128,0,128,64,this.BossX,this.BossY,128,64);
+  }
+}
+Enemies.prototype.BossMovement=function(){
+  if(SecondLevel&&this.BossTimer>2500)
+  {
+    if(app.player.playerX<this.BossX)
+    {
+      this.BossX--;
+      this.BossAnimatingLeft();
+    }
+    if(app.player.playerX>this.BossX)
+    {
+      this.BossX++;
+      this.BossAnimatingRight();
+    }
+    if(app.player.playerX===this.BossX)
+    {
+      app.ctx.drawImage(this.bossIdle,this.BossX,this.BossY);
+    }
+  }
 }
 
 Enemies.prototype.EnemyanimationUp=function(){
