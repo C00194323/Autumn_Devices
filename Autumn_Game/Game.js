@@ -33,6 +33,7 @@ Ruby Objects
 */
 var RubyTutorial;
 var RubyLevel1;
+var RubyLevel2;
 /*
 *******************************
 Enemy Objects
@@ -211,6 +212,22 @@ app.enemyLevel2[2].init(100,600);
 app.enemyLevel2[3].init(300,400);
 app.enemyLevel2[4].init(400,600);
 
+app.RubyLevel2 = [7];
+app.RubyLevel2[0] = new PickUps();
+app.RubyLevel2[1] = new PickUps();
+app.RubyLevel2[2] = new PickUps();
+app.RubyLevel2[3] = new PickUps();
+app.RubyLevel2[4] = new PickUps();
+app.RubyLevel2[5] = new PickUps();
+app.RubyLevel2[6] =	new PickUps();
+
+app.RubyLevel2[0].init(100,150);
+app.RubyLevel2[1].init(300,500);
+app.RubyLevel2[2].init(200,200);
+app.RubyLevel2[3].init(500,700);
+app.RubyLevel2[4].init(700,300);
+app.RubyLevel2[5].init(800,100);
+app.RubyLevel2[6].init(400,450);
 /*
 *******************************
 Sound Manager
@@ -257,50 +274,50 @@ function update()
 					app.level.draw(app.ctx);
 					app.level.Collision();
 
-					if(TutorialRarrow === true&&TutorialLarrow === true&&
-						TutorialUarrow === true&&TutorialDarrow === true&&
-						app.level.tutorialTimer>1180)
-					{
-						for(j=0;j<app.RubyTutorial.length;j++)
+						if(TutorialRarrow === true&&TutorialLarrow === true&&
+							TutorialUarrow === true&&TutorialDarrow === true&&
+							app.level.tutorialTimer>1180)
 						{
-							app.RubyTutorial[j].CoinSpinning();
-							app.RubyTutorial[j].Collision();
+							for(j=0;j<app.RubyTutorial.length;j++)
+							{
+								app.RubyTutorial[j].CoinSpinning();
+								app.RubyTutorial[j].Collision();
+							}
+						}
+
+						for(a=0;a<app.enemyTutorial.length;a++)
+						{
+							if(app.enemyTutorial[a].enemiesAlive === true)
+							{
+									app.enemyTutorial[a].movement();
+							}
+						}
+
+							if(SpacePressed){
+								app.bul.BMovement();
+								app.bul.CheckAlive();
+							}
+
+						if(app.player.playerAlive === true)
+						{
+							if(playerWalkingUp === true)
+							{
+								app.player.animationUp();
+							}
+
+							if(playerWalkingDown ===true)
+							{
+								app.player.animationDown();
+							}
+
+							if(playerWalkingRight ===true){
+								app.player.animation(app.ctx);
+
+							}
+							if(playerWalkingLeft ===true){
+								app.player.animationLeft(app.ctx);
 						}
 					}
-
-					for(a=0;a<app.enemyTutorial.length;a++)
-					{
-						if(app.enemyTutorial[a].enemiesAlive === true)
-						{
-								app.enemyTutorial[a].movement();
-						}
-					}
-
-						if(SpacePressed){
-							app.bul.BMovement();
-							app.bul.CheckAlive();
-						}
-
-					if(app.player.playerAlive === true)
-					{
-						if(playerWalkingUp === true)
-						{
-							app.player.animationUp();
-						}
-
-						if(playerWalkingDown ===true)
-						{
-							app.player.animationDown();
-						}
-
-						if(playerWalkingRight ===true){
-							app.player.animation(app.ctx);
-
-						}
-						if(playerWalkingLeft ===true){
-							app.player.animationLeft(app.ctx);
-					}
-				}
 
 					HudElements();
 				}
@@ -317,6 +334,7 @@ function update()
 						app.RubyLevel1[j].CoinSpinning();
 						app.RubyLevel1[j].Collision();
 					}
+
 					for(i=0;i<app.enemyLevel1.length;i++)
 					{
 						if(app.enemyLevel1[i].enemiesAlive === true)
@@ -324,28 +342,28 @@ function update()
 								app.enemyLevel1[i].movement();
 						}
 					}
-					if(app.player.playerAlive === true)
-					{
-						if(playerWalkingUp === true)
+						if(app.player.playerAlive === true)
 						{
+							if(playerWalkingUp === true)
+							{
 
-							app.player.animationUp();
+								app.player.animationUp();
 
 
+							}
+							if(playerWalkingDown)
+							{
+								app.player.animationDown();
+							}
+
+							if(playerWalkingRight ===true){
+								app.player.animation(app.ctx);
+
+							}
+							if(playerWalkingLeft ===true){
+								app.player.animationLeft(app.ctx);
 						}
-						if(playerWalkingDown)
-						{
-							app.player.animationDown();
-						}
-
-						if(playerWalkingRight ===true){
-							app.player.animation(app.ctx);
-
-						}
-						if(playerWalkingLeft ===true){
-							app.player.animationLeft(app.ctx);
 					}
-				}
 
 					HudElements();
 				}
@@ -353,6 +371,13 @@ function update()
 				{
 					app.level.draw(app.ctx);
 					app.level.Collision();
+					for(j=0;j<app.RubyLevel2.length;j++)
+					{
+						console.log("Coin Spinning Level 2");
+						app.RubyLevel2[j].CoinSpinning();
+						app.RubyLevel2[j].Collision();
+					}
+
 					app.boss.BossTimer++;
 					console.log(app.boss.BossTimer);
 					if(app.boss.BossTimer >2500)
@@ -361,47 +386,49 @@ function update()
 					}
 					app.boss.BossMovement();
 					HudElements();
-					if(SpacePressed)
+					/*if(SpacePressed)
 					{
 						for(b=0;b<app.bullets.length;b++)
 						{
 							app.bullets[b].update();
 						}
-					}
+					}*/
 
-					for(i=0;i<app.enemyLevel2.length;i++)
-					{
-						app.enemyLevel2[i].ChangeSprite();
-						if(app.enemyLevel2[i].enemiesAlive === true)
+						for(i=0;i<app.enemyLevel2.length;i++)
 						{
+							app.enemyLevel2[i].ChangeSprite();
+							if(app.enemyLevel2[i].enemiesAlive === true)
+							{
 
-								app.enemyLevel2[i].movement();
-						}
-					}
-					if(app.player.playerAlive === true)
-					{
-						if(playerWalkingUp === true)
-						{
-
-							app.player.animationUp();
-
-
-						}
-						if(playerWalkingDown)
-						{
-							app.player.animationDown();
+									app.enemyLevel2[i].movement();
+							}
 						}
 
-						if(playerWalkingRight ===true){
-							app.player.animation(app.ctx);
 
+							if(app.player.playerAlive === true)
+							{
+								if(playerWalkingUp === true)
+								{
+
+									app.player.animationUp();
+
+
+								}
+								if(playerWalkingDown)
+								{
+									app.player.animationDown();
+								}
+
+								if(playerWalkingRight ===true){
+									app.player.animation(app.ctx);
+
+								}
+								if(playerWalkingLeft ===true){
+									app.player.animationLeft(app.ctx);
+							}
 						}
-						if(playerWalkingLeft ===true){
-							app.player.animationLeft(app.ctx);
-					}
 				}
-				}
-		}
+		 }
 	}
 	if(Options === true)
 	{
@@ -410,6 +437,7 @@ function update()
 	window.requestAnimationFrame(update);
 	console.log("Updating");
 };
+
 function HudElements()
 {
 

@@ -33,7 +33,7 @@ PickUps.prototype.CoinSpinning=function(){
     }
     this.imageFrame++;
     this.oldTime=Date.now();
-    console.log("Player Animating Right");
+    console.log("Ruby Animating");
   }
   app.ctx.drawImage(this.RubySpriteAnimation,this.imageFrame*64,0,64,64,this.RubyX,this.RubyY,64,64);
 };
@@ -56,6 +56,20 @@ PickUps.prototype.Collision=function(){
       SecondLevel=true;
       FirstLevel=false;
       app.level.RubiesCollected=0;
+    }
+  }
+  if(SecondLevel)
+  {
+    for(i=0;i<app.RubyLevel2.length;i++)
+    {
+      if(app.player.playerX+64>=app.RubyLevel2[i].RubyX&&app.player.playerX-64<=app.RubyLevel2[i].RubyX
+      &&app.player.playerY+64>=app.RubyLevel2[i].RubyY&&app.player.playerY-64<=app.RubyLevel2[i].RubyY)
+      {
+        console.log("Collected");
+        app.RubyLevel2.splice(i,1);
+        rubyPicked=true;
+        app.level.RubiesCollected++;
+      }
     }
   }
 
