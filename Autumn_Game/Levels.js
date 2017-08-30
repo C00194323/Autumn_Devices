@@ -196,10 +196,13 @@ Levels.prototype.Tutorial=function()
     {
       this.tutorialText="Press SpaceBar/Fire button to Shoot Magic"
     }
-    /*if(this.tutorialTimer2>440)
+    for(i=0;i<app.enemyTutorial.length;i++)
     {
-      this.tutorialText="You are now ready for the First Level"
-    }*/
+      if(app.enemyTutorial[i].enemiesAlive===false&&this.tutorialTimer2>440)
+      {
+        this.tutorialText="You are now ready for the First Level"
+      }
+    }
   }
 
 

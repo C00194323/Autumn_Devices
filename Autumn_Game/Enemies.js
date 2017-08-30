@@ -169,7 +169,7 @@ Enemies.prototype.BossAnimatingLeft=function()
       this.oldTime=Date.now();
       console.log("Boss Animating Left");
     }
-    app.ctx.drawImage(this.bossAnimationLeft,this.imageFrame*64,0,64,128,this.BossX,this.BossY,64,128);
+    app.ctx.drawImage(this.bossAnimationLeft,this.imageFrame*128,0,128,192,this.BossX,this.BossY,128,192);
   }
 }
 Enemies.prototype.BossBulletMoving=function()
@@ -192,7 +192,7 @@ Enemies.prototype.BossAnimatingRight=function()
       this.oldTime=Date.now();
       console.log("Boss Animating Right");
     }
-    app.ctx.drawImage(this.bossAnimationRight,this.imageFrame*64,0,64,128,this.BossX,this.BossY,64,128);
+    app.ctx.drawImage(this.bossAnimationRight,this.imageFrame*128,0,128,192,this.BossX,this.BossY,128,192);
   }
 }
 Enemies.prototype.BossMovement=function(){

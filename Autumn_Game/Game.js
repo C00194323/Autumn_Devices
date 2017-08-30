@@ -295,8 +295,9 @@ function update()
 							}
 						}
 
-							if(SpacePressed){
+							if(shootTextBool&& SpacePressed){
 								app.bul.BMovement();
+								app.bul.EnemieCollision();
 								app.bul.CheckAlive();
 							}
 
@@ -542,8 +543,30 @@ function keyDownHandler(j)
 	{
 		if(Play)
 		{
-			SpacePressed=true;
-			if((TutorialLevel||SecondLevel)&&SpacePressed)
+
+			if(TutorialLevel&&shootTextBool)
+			{
+				SpacePressed=true;
+				app.bul = new Bullet();
+				if(playerWalkingUp)
+				{
+					app.bul.init(app.player.playerX,app.player.playerY,0);
+				}
+				if(playerWalkingDown)
+				{
+					app.bul.init(app.player.playerX,app.player.playerY,1);
+				}
+				if(playerWalkingLeft)
+				{
+					app.bul.init(app.player.playerX,app.player.playerY,2);
+				}
+				if(playerWalkingRight)
+				{
+					app.bul.init(app.player.playerX,app.player.playerY,3);
+				}
+				//app.bullets.push(app.bul);
+			}
+			if((SecondLevel)&&SpacePressed)
 			{
 				app.bul = new Bullet();
 				if(playerWalkingUp)

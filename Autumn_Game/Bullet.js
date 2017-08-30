@@ -45,11 +45,46 @@ Bullet.prototype.init=function(fireX,fireY,dir)
 
   bulletAlive=true;
 }
+Bullet.prototype.EnemieCollision=function()
+{
+  if(bulletAlive)
+  {
+    if(TutorialLevel)
+    {
+      console.log("Checking Collision");
+      for(a=0;a<app.enemyTutorial.length;a++)
+      {
+        if(this.playerBulletX+64>=app.enemyTutorial[a].enemyX
+          &&this.playerBulletX-64<=app.enemyTutorial[a].enemyX
+          &&this.playerBulletY+64>=app.enemyTutorial[a].enemyY
+          &&this.playerBulletY-64<=app.enemyTutorial[a].enemyY)
+          {
+            console.log("Bullet Collided");
+            app.enemyTutorial[a].enemiesAlive = false;
+          }
+      }
+    }
+
+    if(SecondLevel)
+    {
+      for(j=0;j<app.enemyLevel2.length;j++)
+      {
+        if(this.playerBulletX+64>=app.enemyLevel2[i].enemyX
+          &&this.playerBulletX-64<=app.enemyLevel2[i].enemyX
+          &&this.playerBulletY+64>=app.enemyLevel2[i].enemyY
+          &&this.playerBulletY-64<=app.enemyLevel2[i].enemyY)
+        {
+          console.log("Bullet Collided");
+        }
+      }
+    }
+  }
+}
 
 Bullet.prototype.CheckAlive=function()
 {
   if((this.playerBulletX+64>(app.canvas.width/2)*1.85)||(this.playerBulletX-64<(window.innerWidth/20)-70)
-  ||(this.playerBulletY-64<0)||(this.playerBulletY+64>((window.innerHeight/5)*2.82)-70))
+  ||(this.playerBulletY-64<0)||(this.playerBulletY+64>((window.innerHeight/5)*3.2)-70))
   {
     bulletAlive = false;
   }
