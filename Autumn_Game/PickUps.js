@@ -86,5 +86,6 @@ PickUps.prototype.Collision=function(){
         app.level.RubiesCollected++;
       }
     }
+
   }
 };

@@ -273,6 +273,26 @@ Enemies.prototype.ChangeSprite=function()
     this.enemyAnimationDown.src='assets/Enemy_Assets/Level_2/GolemWDown.png';
   }
 }
+Enemies.prototype.EnemyCollision=function()
+{
+  /*if(FirstLevel)
+  {
+    for(i=0;i<app.enemyLevel1.length;i++)
+    {
+      for(j=app.enemyLevel1.length;j>0;j--)
+      {
+        if(app.enemyLevel1[i].enemyX+64>=app.enemyLevel1[j].enemyX
+          &&app.enemyLevel1[i].enemyX-64<=app.enemyLevel1[j].enemyX
+          &&app.enemyLevel1[i].enemyY+64>=app.enemyLevel1[j].enemyY
+          &&app.enemyLevel1[i].enemyY-64<=app.enemyLevel1[j].enemyY)
+          {
+            console.log("Enemy Collided");
+            app.enemyLevel1[j].enemyX=app.enemyLevel1[j].enemyX+10;
+          }
+      }
+    }
+  }*/
+}
 Enemies.prototype.EnemyanimationDown=function(){
   if(this.enemiesAlive===true)
   {

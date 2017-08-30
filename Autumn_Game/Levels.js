@@ -114,6 +114,8 @@ function Levels()
     var tutorialTimer2;
     var tutorialText;
     var shootTextBool;
+    var startLevel;
+    var startSecondLevel;
 
 }
 Levels.prototype.init=function(){
@@ -147,7 +149,8 @@ Levels.prototype.init=function(){
   this.tutorialTimer2 =0;
   this.tutorialText='';
   shootTextBool=false;
-
+  startLevel=false;
+  startSecondLevel=false;
 
 }
 Levels.prototype.Tutorial=function()
@@ -201,7 +204,17 @@ Levels.prototype.Tutorial=function()
       if(app.enemyTutorial[i].enemiesAlive===false&&this.tutorialTimer2>440)
       {
         this.tutorialText="You are now ready for the First Level"
+        startLevel=true;
       }
+    }
+    if(startLevel === true&&this.tutorialTimer2>740)
+    {
+        this.tutorialText="The First level is about to start"
+        startSecondLevel=true;
+    }
+    if(startSecondLevel&&this.tutorialTimer2>1000)
+    {
+      FirstLevel=true;
     }
   }
 

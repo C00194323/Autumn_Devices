@@ -343,6 +343,7 @@ function update()
 						if(app.enemyLevel1[i].enemiesAlive === true)
 						{
 								app.enemyLevel1[i].movement();
+								app.enemyLevel1[i].EnemyCollision();
 						}
 					}
 						if(app.player.playerAlive === true)
@@ -462,21 +463,28 @@ function HudElements()
 	app.ctx.TextBaseline = "top";
 	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLife, app.canvas.width/7,(app.canvas.height/7)*5.1);
 	if(FirstLevel){
-		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.Level1Rubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
+		TutorialLevel = false;
+		SecondLevel = false;
+		app.ctx.fillText("Rubies Collected:" +" "+ app.level.RubiesCollected + app.level.Level1Rubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
 	}
 	if(TutorialLevel)
 	{
-		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.TutorialRubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
+		FirstLevel = false;
+		SecondLevel = false;
+		app.ctx.fillText("Rubies Collected:" +" "+ app.level.RubiesCollected + app.level.TutorialRubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
 		if(app.level.RubiesCollected === 2)
 		{
 			tRubies=true;
 			console.log(tRubies);
+			app.level.RubiesCollected =0;
 		}
 	}
 	if(SecondLevel)
 	{
+		TutorialLevel = false;
+		FirstLevel = false;
 
-		app.ctx.fillText("Ruby Collected:" +" "+ app.level.RubiesCollected + app.level.Level2Rubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
+		app.ctx.fillText("Rubies Collected:" +" "+ app.level.RubiesCollected + app.level.Level2Rubys, app.canvas.width/7,(app.canvas.height/7)*5.88);
 	}
 
 	app.player.drawControls(app.ctx);
