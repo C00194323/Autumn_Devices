@@ -299,12 +299,35 @@ function update()
 								console.log("Bullets Greater than 0")
 								for(var b = 0; b < app.bullets.length; b++)
 								{
-									app.bullets[b].BMovement();
-									app.bullets[b].EnemieCollision();
+									if(TutorialLevel)
+							    {
+							      console.log("Checking Collision");
 
+										/*
+										*******************************
+										Checks Collision with Enemy
+										And Kills It.
+										*******************************
+										*/
+
+							      for(a=0;a<app.enemyTutorial.length;a++)
+							      {
+							        if( app.bullets[b].playerBulletX+64>=app.enemyTutorial[a].enemyX
+							          &&app.bullets[b].playerBulletX-64<=app.enemyTutorial[a].enemyX
+							          &&app.bullets[b].playerBulletY+64>=app.enemyTutorial[a].enemyY
+							          &&app.bullets[b].playerBulletY-64<=app.enemyTutorial[a].enemyY)
+							          {
+							            app.enemyTutorial[a].enemiesAlive = false;
+							            app.bullets[b].bulletAlive=false;
+													app.bullets.splice(i,0);
+							          }
+							      }
+							    }
+									app.bullets[b].BMovement();
 									/*
 									*******************************
 									Checks Collision with Border
+									And Destroys It.
 									*******************************
 									*/
 
@@ -312,6 +335,7 @@ function update()
 									||(app.bullets[b].playerBulletY-64<0)||(app.bullets[b].playerBulletY+64>((window.innerHeight/5)*3.2)-70))
 									{
 										app.bullets[b].bulletAlive = false;
+										app.bullets.splice(i,1);
 									}
 								}
 							}

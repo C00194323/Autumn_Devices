@@ -43,7 +43,7 @@ function Enemies()
 
 }
 
-Enemies.prototype.init= function(enemyx,enemyy){
+Enemies.prototype.init= function(x,y){
 
   this.enemyAnimationRight=new Image();
   this.enemyAnimationRight.src='assets/Enemy_Assets/Level_1/EnemyRight.png';
@@ -76,11 +76,11 @@ Enemies.prototype.init= function(enemyx,enemyy){
   this.enemyRight=false;
   this.enemyLeft=false;
 
-  this.enemyX=enemyx;
-  this.enemyY=enemyy;
+  this.enemyX=x;
+  this.enemyY=y;
 
-  this.BossX=enemyx;
-  this.BossY=enemyy;
+  this.BossX=x;
+  this.BossY=y;
 
   this.oldTime=Date.now();
   this.fps=60;
@@ -318,26 +318,6 @@ Enemies.prototype.ChangeSprite=function()
 
     this.enemyAnimationDown=new Image();
     this.enemyAnimationDown.src='assets/Enemy_Assets/Level_2/GolemWDown.png';
-  }
-}
-Enemies.prototype.EnemyCollision=function()
-{
-  if(FirstLevel)
-  {
-    /*for(i=0;i<app.enemyLevel1.length;i++)
-    {
-      for(j=app.enemyLevel1.length;j>0;j--)
-      {
-        if(app.enemyLevel1[i].enemyX+64>=app.enemyLevel1[j].enemyX
-          &&app.enemyLevel1[i].enemyX-64<=app.enemyLevel1[j].enemyX
-          &&app.enemyLevel1[i].enemyY+64>=app.enemyLevel1[j].enemyY
-          &&app.enemyLevel1[i].enemyY-64<=app.enemyLevel1[j].enemyY)
-          {
-            console.log("Enemy Collided");
-            app.enemyLevel1[j].enemyX=app.enemyLevel1[j].enemyX+10;
-          }
-      }
-    }*/
   }
 }
 Enemies.prototype.EnemyanimationDown=function(){

@@ -89,49 +89,51 @@ Player.prototype.drawControls=function(ctx){
 }
 Player.prototype.PlayerEnemyCollision=function()
 {
-  if(FirstLevel||SecondLevel)
-  {
     if(app.player.playerAlive)
     {
-      for(i=0;i<app.enemyLevel1.length;i++)
+      if(FirstLevel)
       {
-        if(app.player.playerX+32>=app.enemyLevel1[i].enemyX
-          &&app.player.playerX-32<=app.enemyLevel1[i].enemyX
-          &&app.player.playerY+32>=app.enemyLevel1[i].enemyY
-          &&app.player.playerY-32<=app.enemyLevel1[i].enemyY)
-          {
-            app.player.PlayerLife=app.player.PlayerLife-1;
-            if(app.enemyLevel1[i].enemyX+150<((app.canvas.width/2)*1.85))
+        for(i=0;i<app.enemyLevel1.length;i++)
+        {
+          if(app.player.playerX+32>=app.enemyLevel1[i].enemyX
+            &&app.player.playerX-32<=app.enemyLevel1[i].enemyX
+            &&app.player.playerY+32>=app.enemyLevel1[i].enemyY
+            &&app.player.playerY-32<=app.enemyLevel1[i].enemyY)
             {
-                app.enemyLevel1[i].enemyX=app.enemyLevel1[i].enemyX+150;
-            }
-            else if(app.enemyLevel1[i].enemyX-150>(((window.innerWidth/20)-70)))
-            {
-                app.enemyLevel1[i].enemyX=app.enemyLevel1[i].enemyX-150;
-            }
-            if(app.player.PlayerLife === 0)
-            {
-              app.player.playerAlive = false;
+              app.player.PlayerLife=app.player.PlayerLife-1;
+              if(app.enemyLevel1[i].enemyX+150<((app.canvas.width/2)*1.85))
+              {
+                  app.enemyLevel1[i].enemyX=app.enemyLevel1[i].enemyX+150;
+              }
+              else if(app.enemyLevel1[i].enemyX-150>(((window.innerWidth/20)-70)))
+              {
+                  app.enemyLevel1[i].enemyX=app.enemyLevel1[i].enemyX-150;
+              }
+              if(app.player.PlayerLife === 0)
+              {
+                app.player.playerAlive = false;
+              }
             }
           }
-      }
-      for(i=0;i<app.enemyLevel2.length;i++)
+        }
+      if(SecondLevel)
       {
-        if(app.player.playerX+32>=app.enemyLevel2[i].enemyX
-          &&app.player.playerX-32<=app.enemyLevel2[i].enemyX
-          &&app.player.playerY+32>=app.enemyLevel2[i].enemyY
-          &&app.player.playerY-32<=app.enemyLevel2[i].enemyY)
-          {
-            app.player.PlayerLife=app.player.PlayerLife-1;
-            app.enemyLevel2[i].enemyX=app.enemyLevel2[i].enemyX+150;
-            if(app.player.PlayerLife === 0)
+        for(i=0;i<app.enemyLevel2.length;i++)
+        {
+          if(app.player.playerX+32>=app.enemyLevel2[i].enemyX
+            &&app.player.playerX-32<=app.enemyLevel2[i].enemyX
+            &&app.player.playerY+32>=app.enemyLevel2[i].enemyY
+            &&app.player.playerY-32<=app.enemyLevel2[i].enemyY)
             {
-              app.player.playerAlive = false;
+              app.player.PlayerLife=app.player.PlayerLife-1;
+              app.enemyLevel2[i].enemyX=app.enemyLevel2[i].enemyX+150;
+              if(app.player.PlayerLife === 0)
+              {
+                app.player.playerAlive = false;
+              }
             }
-          }
+        }
       }
-    }
-
   }
 }
 
