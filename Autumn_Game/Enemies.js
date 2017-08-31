@@ -89,40 +89,87 @@ Enemies.prototype.init= function(enemyx,enemyy){
 }
 
 Enemies.prototype.movement=function(){
-  if(app.player.playerX<this.enemyX)
+  if(app.player.playerAlive)
   {
-    this.enemyUp=false;
-    this.enemyDown =false;
-    this.enemyLeft =true;
-    this.enemyRight =false;
-    this.EnemyanimationLeft();
-    this.enemyX=this.enemyX-.5;
-  }
- else if(app.player.playerX>this.enemyX){
-   this.enemyUp=false;
-   this.enemyDown =false;
-   this.enemyLeft =false;
-   this.enemyRight =true;
-    this.EnemyanimationRight();
-    this.enemyX=this.enemyX+.5;
+    if(FirstLevel||TutorialLevel)
+    {
+        if(app.player.playerX<this.enemyX)
+        {
+          this.enemyUp=false;
+          this.enemyDown =false;
+          this.enemyLeft =true;
+          this.enemyRight =false;
+          this.EnemyanimationLeft();
+          this.enemyX=this.enemyX-.5;
+        }
+       else if(app.player.playerX>this.enemyX){
+         this.enemyUp=false;
+         this.enemyDown =false;
+         this.enemyLeft =false;
+         this.enemyRight =true;
+          this.EnemyanimationRight();
+          this.enemyX=this.enemyX+.5;
 
+        }
+        else if(app.player.playerY<this.enemyY){
+          this.enemyUp=true;
+          this.enemyDown =false;
+          this.enemyLeft =false;
+          this.enemyRight =false;
+          this.enemyY= this.enemyY-.5;
+          this.EnemyanimationUp();
+        }
+       else if(app.player.playerY>this.enemyY)
+        {
+          this.enemyDown=true;
+          this.enemyUp=false;
+          this.enemyLeft =false;
+          this.enemyRight =false;
+          this.enemyY= this.enemyY+.5;
+            this.EnemyanimationDown();
+        }
+    }
+    if(SecondLevel)
+    {
+        if(app.player.playerX<this.enemyX)
+        {
+          this.enemyUp=false;
+          this.enemyDown =false;
+          this.enemyLeft =true;
+          this.enemyRight =false;
+          this.EnemyanimationLeft();
+          this.enemyX=this.enemyX-1;
+        }
+       else if(app.player.playerX>this.enemyX){
+         this.enemyUp=false;
+         this.enemyDown =false;
+         this.enemyLeft =false;
+         this.enemyRight =true;
+          this.EnemyanimationRight();
+          this.enemyX=this.enemyX+1;
+
+        }
+        else if(app.player.playerY<this.enemyY){
+          this.enemyUp=true;
+          this.enemyDown =false;
+          this.enemyLeft =false;
+          this.enemyRight =false;
+          this.enemyY= this.enemyY-1;
+          this.EnemyanimationUp();
+        }
+       else if(app.player.playerY>this.enemyY)
+        {
+          this.enemyDown=true;
+          this.enemyUp=false;
+          this.enemyLeft =false;
+          this.enemyRight =false;
+          this.enemyY= this.enemyY+1;
+            this.EnemyanimationDown();
+        }
+      }
   }
-  else if(app.player.playerY<this.enemyY){
-    this.enemyUp=true;
-    this.enemyDown =false;
-    this.enemyLeft =false;
-    this.enemyRight =false;
-    this.enemyY= this.enemyY-.5;
-    this.EnemyanimationUp();
-  }
- else if(app.player.playerY>this.enemyY)
-  {
-    this.enemyDown=true;
-    this.enemyUp=false;
-    this.enemyLeft =false;
-    this.enemyRight =false;
-    this.enemyY= this.enemyY+.5;
-      this.EnemyanimationDown();
+  else {
+    this.EnemyanimationLeft();
   }
 }
 
@@ -275,9 +322,9 @@ Enemies.prototype.ChangeSprite=function()
 }
 Enemies.prototype.EnemyCollision=function()
 {
-  /*if(FirstLevel)
+  if(FirstLevel)
   {
-    for(i=0;i<app.enemyLevel1.length;i++)
+    /*for(i=0;i<app.enemyLevel1.length;i++)
     {
       for(j=app.enemyLevel1.length;j>0;j--)
       {
@@ -290,8 +337,8 @@ Enemies.prototype.EnemyCollision=function()
             app.enemyLevel1[j].enemyX=app.enemyLevel1[j].enemyX+10;
           }
       }
-    }
-  }*/
+    }*/
+  }
 }
 Enemies.prototype.EnemyanimationDown=function(){
   if(this.enemiesAlive===true)

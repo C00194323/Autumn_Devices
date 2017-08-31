@@ -1,7 +1,7 @@
-function Bullet()
+function Bullet(fireX,fireY,dir)
 {
-  var playerBulletX;
-  var playerBulletY;
+  var playerBulletX = fireX;
+  var playerBulletY = fireY;
   var fireUp;
   var fireDown;
   var fireLeft;
@@ -11,7 +11,7 @@ function Bullet()
   var directionDown;
   var directionLeft;
   var directionRight;
-  var direction;
+  var direction = dir;
 
   var bulletAlive = true;
 
@@ -43,11 +43,11 @@ Bullet.prototype.init=function(fireX,fireY,dir)
   this.directionLeft=2;
   this.directionRight=3;
 
-  bulletAlive=true;
+  this.bulletAlive=true;
 }
 Bullet.prototype.EnemieCollision=function()
 {
-  if(bulletAlive)
+  if(this.bulletAlive)
   {
     if(TutorialLevel)
     {
@@ -61,37 +61,31 @@ Bullet.prototype.EnemieCollision=function()
           {
             console.log("Bullet Collided");
             app.enemyTutorial[a].enemiesAlive = false;
+            this.bulletAlive=false;
           }
       }
     }
-
-    if(SecondLevel)
-    {
-      for(j=0;j<app.enemyLevel2.length;j++)
+      if(SecondLevel)
       {
-        if(this.playerBulletX+64>=app.enemyLevel2[i].enemyX
-          &&this.playerBulletX-64<=app.enemyLevel2[i].enemyX
-          &&this.playerBulletY+64>=app.enemyLevel2[i].enemyY
-          &&this.playerBulletY-64<=app.enemyLevel2[i].enemyY)
+        console.log("Checking Collision");
+        for(a=0;a<app.enemyLevel2.length;a++)
         {
-          console.log("Bullet Collided");
+          if(this.playerBulletX+64>=app.enemyLevel2[a].enemyX
+            &&this.playerBulletX-64<=app.enemyLevel2[a].enemyX
+            &&this.playerBulletY+64>=app.enemyLevel2[a].enemyY
+            &&this.playerBulletY-64<=app.enemyLevel2[a].enemyY)
+            {
+              console.log("Bullet Collided");
+              app.enemyLevel2[a].enemiesAlive = false;
+              this.bulletAlive=false;
+            }
         }
-      }
     }
   }
 }
-
-Bullet.prototype.CheckAlive=function()
+Bullet.prototype.BMovement = function()
 {
-  if((this.playerBulletX+64>(app.canvas.width/2)*1.85)||(this.playerBulletX-64<(window.innerWidth/20)-70)
-  ||(this.playerBulletY-64<0)||(this.playerBulletY+64>((window.innerHeight/5)*3.2)-70))
-  {
-    bulletAlive = false;
-  }
-}
-Bullet.prototype.BMovement=function()
-{
-  if(bulletAlive)
+  if(this.bulletAlive)
   {
     if(this.direction===this.directionUp)
     {

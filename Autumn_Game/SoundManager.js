@@ -14,6 +14,7 @@ SoundManager.prototype.init=function()
 {
   this.backgroundMusic=new Audio('assets/Music_Assets/BackgroundMusic.mp3');
   this.PickUpSoundEffect = new Audio('assets/Music_Assets/sfx_Ruby.wav');
+  this.PickUpSoundEffect.loop=false;
 };
 SoundManager.prototype.playMusic=function()
 {
@@ -32,7 +33,7 @@ SoundManager.prototype.SoundEffects=function()
 {
   if(rubyPicked)
   {
-  //  this.PickUpSoundEffect.play();
+    this.PickUpSoundEffect.play();
   }
 };
 

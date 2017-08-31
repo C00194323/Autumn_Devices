@@ -24,7 +24,7 @@ var SpacePressed = false;
 Bullet Object
 *******************************
 */
-var bullets=[0];
+var bullets=[];
 var bul;
 /*
 *******************************
@@ -135,7 +135,7 @@ Instances Of Classes
  	Bullet Assets
 *******************************
 */
-	app.bullets=[0];
+	app.bullets=[];
 	app.bul;
 
 
@@ -255,7 +255,6 @@ function update()
   app.ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
 	app.menu.init();
 	app.Sound.playMusic();
-	app.Sound.SoundEffects();
 	if (MainMenu === true)
 	{
 		app.menu.draw(app.ctx);
@@ -294,13 +293,29 @@ function update()
 									app.enemyTutorial[a].movement();
 							}
 						}
+						if(shootTextBool&& SpacePressed){
+							if (app.bullets.length > 0)
+							{
+								console.log("Bullets Greater than 0")
+								for(var b = 0; b < app.bullets.length; b++)
+								{
+									app.bullets[b].BMovement();
+									app.bullets[b].EnemieCollision();
 
-							if(shootTextBool&& SpacePressed){
-								app.bul.BMovement();
-								app.bul.EnemieCollision();
-								app.bul.CheckAlive();
+									/*
+									*******************************
+									Checks Collision with Border
+									*******************************
+									*/
+
+									if((app.bullets[b].playerBulletX+64>(app.canvas.width/2)*1.85)||(app.bullets[b].playerBulletX-64<(window.innerWidth/20)-70)
+									||(app.bullets[b].playerBulletY-64<0)||(app.bullets[b].playerBulletY+64>((window.innerHeight/5)*3.2)-70))
+									{
+										app.bullets[b].bulletAlive = false;
+									}
+								}
 							}
-
+						}
 						if(app.player.playerAlive === true)
 						{
 							if(playerWalkingUp === true)
@@ -343,11 +358,12 @@ function update()
 						if(app.enemyLevel1[i].enemiesAlive === true)
 						{
 								app.enemyLevel1[i].movement();
-								app.enemyLevel1[i].EnemyCollision();
+
 						}
 					}
 						if(app.player.playerAlive === true)
 						{
+							app.player.PlayerEnemyCollision();
 							if(playerWalkingUp === true)
 							{
 
@@ -399,6 +415,7 @@ function update()
 						for(i=0;i<app.enemyLevel2.length;i++)
 						{
 							app.enemyLevel2[i].ChangeSprite();
+
 							if(app.enemyLevel2[i].enemiesAlive === true)
 							{
 
@@ -409,6 +426,7 @@ function update()
 
 							if(app.player.playerAlive === true)
 							{
+								app.player.PlayerEnemyCollision();
 								if(playerWalkingUp === true)
 								{
 
@@ -554,10 +572,11 @@ function keyDownHandler(j)
 
 			if(TutorialLevel&&shootTextBool)
 			{
-				SpacePressed=true;
+
 				app.bul = new Bullet();
 				if(playerWalkingUp)
 				{
+					//app.bullets.push(new Bullet(app.player.playerX,app.player.playerY,0))
 					app.bul.init(app.player.playerX,app.player.playerY,0);
 				}
 				if(playerWalkingDown)
@@ -572,7 +591,12 @@ function keyDownHandler(j)
 				{
 					app.bul.init(app.player.playerX,app.player.playerY,3);
 				}
-				//app.bullets.push(app.bul);
+				app.bullets.push(app.bul);
+				if(app.bullets.length>0)
+				{
+					console.log(app.bullets.length);
+					SpacePressed=true;
+				}
 			}
 			if((SecondLevel)&&SpacePressed)
 			{

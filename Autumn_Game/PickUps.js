@@ -50,6 +50,7 @@ PickUps.prototype.Collision=function(){
         app.RubyLevel1.splice(i,1);
         rubyPicked=true;
         app.level.RubiesCollected++;
+        app.Sound.SoundEffects();
       }
     }
     if(app.level.RubiesCollected === 5)
