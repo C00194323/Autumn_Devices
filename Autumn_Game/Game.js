@@ -244,6 +244,7 @@ app.Sound.init();
 
 
 
+
 	update();
 
 
@@ -335,7 +336,7 @@ function update()
 									||(app.bullets[b].playerBulletY-64<0)||(app.bullets[b].playerBulletY+64>((window.innerHeight/5)*3.2)-70))
 									{
 										app.bullets[b].bulletAlive = false;
-										app.bullets.splice(i,1);
+										app.bullets.splice(b,1);
 									}
 								}
 							}
@@ -428,13 +429,8 @@ function update()
 					}
 					app.boss.BossMovement();
 					HudElements();
-					/*if(SpacePressed)
-					{
-						for(b=0;b<app.bullets.length;b++)
-						{
-							app.bullets[b].update();
-						}
-					}*/
+
+
 
 						for(i=0;i<app.enemyLevel2.length;i++)
 						{
@@ -447,6 +443,59 @@ function update()
 							}
 						}
 
+						if(SpacePressed && SecondLevel){
+							if (app.bullets.length > 0)
+							{
+								console.log("Bullets Greater than 0")
+								for(var b = 0; b < app.bullets.length; b++)
+								{
+									if(SecondLevel)
+									{
+										console.log("Checking Collision");
+
+										/*
+										*******************************
+										Checks Collision with Enemy
+										And Kills It.
+										*******************************
+										*/
+
+										for(a=0;a<app.enemyLevel2.length;a++)
+										{
+											if(app.bullets[b]!=null&&(app.enemyLevel2[a].enemiesAlive === true)){
+												if( app.bullets[b].playerBulletX+64>=app.enemyLevel2[a].enemyX
+													&&app.bullets[b].playerBulletX-64<=app.enemyLevel2[a].enemyX
+													&&app.bullets[b].playerBulletY+64>=app.enemyLevel2[a].enemyY
+													&&app.bullets[b].playerBulletY-64<=app.enemyLevel2[a].enemyY)
+													{
+														app.enemyLevel2[a].enemiesAlive = false;
+														app.bullets[b].bulletAlive=false;
+														app.bullets.splice(b,1);
+													}
+											}
+										}
+									}
+									if(app.bullets[b]!= null)
+									{
+										app.bullets[b].BMovement();
+									}
+									/*
+									*******************************
+									Checks Collision with Border
+									And Destroys It.
+									*******************************
+									*/
+									if(app.bullets[b]!=null){
+										if((app.bullets[b].playerBulletX+64>(app.canvas.width/2)*1.85)||(app.bullets[b].playerBulletX-64<(window.innerWidth/20)-70)
+										||(app.bullets[b].playerBulletY-64<0)||(app.bullets[b].playerBulletY+64>((window.innerHeight/5)*3.2)-70))
+										{
+											app.bullets[b].bulletAlive = false;
+											app.bullets.splice(b,1);
+										}
+									}
+								}
+							}
+						}
 
 							if(app.player.playerAlive === true)
 							{
@@ -600,7 +649,6 @@ function keyDownHandler(j)
 				app.bul = new Bullet();
 				if(playerWalkingUp)
 				{
-					//app.bullets.push(new Bullet(app.player.playerX,app.player.playerY,0))
 					app.bul.init(app.player.playerX,app.player.playerY,0);
 				}
 				if(playerWalkingDown)
@@ -622,7 +670,7 @@ function keyDownHandler(j)
 					SpacePressed=true;
 				}
 			}
-			if((SecondLevel)&&SpacePressed)
+			if((SecondLevel))
 			{
 				app.bul = new Bullet();
 				if(playerWalkingUp)
@@ -641,7 +689,8 @@ function keyDownHandler(j)
 				{
 					app.bul.init(app.player.playerX,app.player.playerY,3);
 				}
-				//app.bullets.push(app.bul);
+				app.bullets.push(app.bul);
+				SpacePressed=true;
 			}
 		}
 	}

@@ -2,6 +2,12 @@ function Enemies()
 {
 /*
 *******************************
+Particles
+*******************************
+*/
+var particles;
+/*
+*******************************
  Normal Enemy Assets/Variables
 *******************************
 */
@@ -29,6 +35,7 @@ function Enemies()
   var BossX;
   var BossY;
   var BossAlive;
+  var bossTimer;
 
 /*
 *******************************
@@ -81,10 +88,15 @@ Enemies.prototype.init= function(x,y){
 
   this.BossX=x;
   this.BossY=y;
+  this.bossTimer =0;
 
   this.oldTime=Date.now();
   this.fps=60;
   this.imageFrame=0;
+  this.particles=[];
+  for (i = 0; i < 200; i++) {
+    this.particles[i] = new Particle(Math.random() *300, Math.random() * 300);
+  }
 
 }
 
@@ -245,20 +257,32 @@ Enemies.prototype.BossAnimatingRight=function()
 Enemies.prototype.BossMovement=function(){
   if(SecondLevel&&app.level.RubiesCollected === 7)
   {
-    if(app.player.playerX<this.BossX)
+    this.bossTimer++;
+    if(this.bossTimer<=180)
     {
-      this.BossX--;
-      this.BossAnimatingLeft();
-    }
-    if(app.player.playerX>this.BossX)
-    {
-      this.BossX++;
-      this.BossAnimatingRight();
-    }
-    if(app.player.playerX===this.BossX)
-    {
-      app.ctx.drawImage(this.bossIdle,this.BossX-32,this.BossY);
-    }
+    for (var i = 0; i < this.particles.length; i++) {
+         this.particles[i].attract(this.BossX+64, this.BossY+96);
+         this.particles[i].integrate();
+         this.particles[i].draw();
+       }
+     }
+       if(this.bossTimer>180)
+       {
+         if(app.player.playerX<this.BossX)
+         {
+           this.BossX--;
+           this.BossAnimatingLeft();
+         }
+         if(app.player.playerX>this.BossX)
+         {
+           this.BossX++;
+           this.BossAnimatingRight();
+         }
+         if(app.player.playerX===this.BossX)
+         {
+           app.ctx.drawImage(this.bossIdle,this.BossX-32,this.BossY);
+         }
+       }
   }
 }
 

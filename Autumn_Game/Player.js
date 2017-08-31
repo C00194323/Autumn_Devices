@@ -125,11 +125,21 @@ Player.prototype.PlayerEnemyCollision=function()
             &&app.player.playerY+32>=app.enemyLevel2[i].enemyY
             &&app.player.playerY-32<=app.enemyLevel2[i].enemyY)
             {
-              app.player.PlayerLife=app.player.PlayerLife-1;
-              app.enemyLevel2[i].enemyX=app.enemyLevel2[i].enemyX+150;
-              if(app.player.PlayerLife === 0)
+              if(app.enemyLevel2[i].enemiesAlive)
               {
-                app.player.playerAlive = false;
+                app.player.PlayerLife=app.player.PlayerLife-1;
+                if(app.enemyLevel2[i].enemyX+150<((app.canvas.width/2)*1.85))
+                {
+                    app.enemyLevel2[i].enemyX=app.enemyLevel2[i].enemyX+150;
+                }
+                else if(app.enemyLevel2[i].enemyX-150>(((window.innerWidth/20)-70)))
+                {
+                    app.enemyLevel2[i].enemyX=app.enemyLevel2[i].enemyX-150;
+                }
+                if(app.player.PlayerLife === 0)
+                {
+                  app.player.playerAlive = false;
+                }
               }
             }
         }
