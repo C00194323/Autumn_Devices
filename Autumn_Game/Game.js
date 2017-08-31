@@ -44,6 +44,7 @@ var enemyTutorial;
 var enemyLevel1;
 var enemyLevel2;
 var boss;
+var bossBullet;
 /*
 *******************************
 Menu Object
@@ -425,9 +426,11 @@ function update()
 
 					if(app.level.RubiesCollected === 7)
 					{
+						app.boss.BossMovement();
 						app.boss.BossAlive = true;
 					}
-					app.boss.BossMovement();
+
+					//app.boss.BossMovement();
 					HudElements();
 
 
@@ -831,8 +834,8 @@ function onTouchStart(e)
 	    	Play = true;
 				GameMode= false;
 				TutorialLevel = false;
-				FirstLevel = true;
-				SecondLevel = false;
+				FirstLevel =false;
+				SecondLevel = true;
 	    	Options = false;
 			}
 
