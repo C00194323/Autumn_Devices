@@ -71,6 +71,7 @@ PickUps.prototype.Collision=function(){
         app.RubyLevel2.splice(i,1);
         rubyPicked=true;
         app.level.RubiesCollected++;
+        app.Sound.SoundEffects();
       }
     }
   }
@@ -85,6 +86,7 @@ PickUps.prototype.Collision=function(){
         console.log("Collected");
         app.RubyTutorial.splice(i,1);
         app.level.RubiesCollected++;
+        app.Sound.SoundEffects();
       }
     }
 

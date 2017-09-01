@@ -270,35 +270,41 @@ Enemies.prototype.BossMovement=function(){
          this.particles[i].draw();
        }
      }
-       if(this.bossTimer>180)
-       {
-         if(app.player.playerX<this.BossX)
-         {
-           this.BossX--;
-           this.BossAnimatingLeft();
-         }
-         if(app.player.playerX>this.BossX)
-         {
-           this.BossX++;
-           this.BossAnimatingRight();
-         }
-         if(app.player.playerX===this.BossX)
-         {
-           this.bTimer++;
-           if(this.bTimer>=240)
-           {
-             this.bossBul.init(this.BossX,this.BossY);
-             this.bossBullet.push(this.bossBul);
-             this.bTimer=0;
-           }
-           for(i=0;i<this.bossBullet.length;i++)
-           {
-             this.bossBullet[i].BossBulletMovement();
-           }
+     if(this.bossTimer>180&&this.bossTimer<240)
+     {
+       app.Sound.BossAppearSoundEffect.play();
 
-           app.ctx.drawImage(this.bossIdle,this.BossX,this.BossY);
-         }
+     }
+
+     if(this.bossTimer>180)
+     {
+       if(app.player.playerX<this.BossX)
+       {
+         this.BossX--;
+         this.BossAnimatingLeft();
        }
+       if(app.player.playerX>this.BossX)
+       {
+         this.BossX++;
+         this.BossAnimatingRight();
+       }
+       if(app.player.playerX===this.BossX)
+       {
+         app.ctx.drawImage(this.bossIdle,this.BossX,this.BossY);
+       }
+
+         this.bTimer++;
+         if(this.bTimer>=150)
+         {
+           this.bossBul.init(this.BossX,this.BossY);
+           this.bossBullet.push(this.bossBul);
+           this.bTimer=0;
+         }
+         for(i=0;i<this.bossBullet.length;i++)
+         {
+           this.bossBullet[i].BossBulletMovement();
+         }
+     }
   }
 }
 

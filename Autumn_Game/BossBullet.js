@@ -6,6 +6,7 @@ var BossbulletAlive = true;
 var bossBulletX;
 var bossBulletY;
 var bulletTimer;
+var maxBulletSpeed;
 
 
 
@@ -21,6 +22,8 @@ BossBullet.prototype.init=function(bossx,bossy)
 
   BossbulletAlive=true;
   this.bulletTimer=0;
+  this.maxBulletSpeed =12;
+
 }
 BossBullet.prototype.PlayerCollision=function()
 {
@@ -36,9 +39,16 @@ BossBullet.prototype.BossBulletMovement = function()
     this.bulletTimer++;
     if(this.bulletTimer<60)
     {
-      this.bossBulletY+=2;
+      if(this.bossBulletY>50)
+      {
+        this.bossBulletY+=2;
+      }
+      else {
+        this.bossBulletY=this.bossBulletY;
+      }
+
       //app.ctx.clearRect(this.bossBulletX,this.bossBulletY,this.bossBulletX+64,this.bossBulletY+64);
-      app.ctx.drawImage(this.bossFire,this.bossBulletX,this.bossBulletY);
+      app.ctx.drawImage(this.bossFire,this.bossBulletX-32,this.bossBulletY);
     }
     else if(this.bulletTimer>60) {
       this.bulletTimer=0;

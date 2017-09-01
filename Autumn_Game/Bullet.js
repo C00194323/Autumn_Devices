@@ -45,7 +45,7 @@ Bullet.prototype.init=function(fireX,fireY,dir)
 
   this.bulletAlive=true;
 }
-Bullet.prototype.EnemieCollision=function()
+/*Bullet.prototype.EnemieCollision=function()
 {
   if(this.bulletAlive)
   {
@@ -60,6 +60,7 @@ Bullet.prototype.EnemieCollision=function()
           &&this.playerBulletY-64<=app.enemyTutorial[a].enemyY)
           {
             console.log("Bullet Collided");
+            app.Sound.EnemyDeath();
             app.enemyTutorial[a].enemiesAlive = false;
             this.bulletAlive=false;
           }
@@ -76,35 +77,36 @@ Bullet.prototype.EnemieCollision=function()
             &&this.playerBulletY-64<=app.enemyLevel2[a].enemyY)
             {
               console.log("Bullet Collided");
+              app.Sound.EnemyDeath();
               app.enemyLevel2[a].enemiesAlive = false;
               this.bulletAlive=false;
             }
         }
     }
   }
-}
+}*/
 Bullet.prototype.BMovement = function()
 {
   if(this.bulletAlive)
   {
     if(this.direction===this.directionUp)
     {
-      this.playerBulletY--;
+      this.playerBulletY-=5;
       app.ctx.drawImage(this.fireUp,this.playerBulletX,this.playerBulletY);
     }
     if(this.direction===this.directionDown)
     {
-        this.playerBulletY++;
+        this.playerBulletY+=5;
         app.ctx.drawImage(this.fireDown,this.playerBulletX,this.playerBulletY);
     }
     if(this.direction=== this.directionLeft)
     {
-        this.playerBulletX--;
+        this.playerBulletX-=5;
         app.ctx.drawImage(this.fireLeft,this.playerBulletX,this.playerBulletY);
     }
     if(this.direction===this.directionRight)
     {
-        this.playerBulletX++;
+        this.playerBulletX+=5;
         app.ctx.drawImage(this.fireRight,this.playerBulletX,this.playerBulletY);
     }
   }

@@ -8,6 +8,7 @@ var MainMenu = true;
 var Play = false;
 var Options = false;
 var exit = false;
+var GOver =  false;
 /*
 *******************************
 Player Control Bools For Arrows/Space Bar
@@ -52,6 +53,7 @@ Menu Object
 */
 var menu;
 var settingMenu;
+var gameOver;
 /*
 *******************************
 Player Bools/Objects
@@ -124,12 +126,15 @@ Instances Of Classes
 	app.settingMenu=new SettingMenu();
 	app.gameMode = new GameModeMenu();
 	app.level = new Levels();
+	app.gameOver= new GameOver();
 
 
 	app.player.init();
 	app.settingMenu.init();
 	app.gameMode.init();
+	app.gameOver.init();
 	app.level.init();
+
 
 /*
 *******************************
@@ -261,6 +266,10 @@ function update()
 	{
 		app.menu.draw(app.ctx);
 
+	}
+	if(GOver)
+	{
+		app.gameOver.draw();
 	}
 	if(Play === true)
 	{
@@ -471,6 +480,7 @@ function update()
 													&&app.bullets[b].playerBulletY+64>=app.enemyLevel2[a].enemyY
 													&&app.bullets[b].playerBulletY-64<=app.enemyLevel2[a].enemyY)
 													{
+														app.Sound.EnemyDeath();
 														app.enemyLevel2[a].enemiesAlive = false;
 														app.bullets[b].bulletAlive=false;
 														app.bullets.splice(b,1);
@@ -945,6 +955,66 @@ function onTouchStart(e)
 						}
 					}
 				}
+					if(touches[0].clientX >= ((app.canvas.width/2)*1.65) &&
+			    	touches[0].clientX <= (((app.canvas.width/2)*1.65)+130) &&
+			    	touches[0].clientY >= ((app.canvas.height/2)*1.85) &&
+			    	touches[0].clientY <= (((app.canvas.height/2)*1.85)+130))
+						{
+							if(Play)
+							{
+
+								if(TutorialLevel&&shootTextBool)
+								{
+
+									app.bul = new Bullet();
+									if(playerWalkingUp)
+									{
+										app.bul.init(app.player.playerX,app.player.playerY,0);
+									}
+									if(playerWalkingDown)
+									{
+										app.bul.init(app.player.playerX,app.player.playerY,1);
+									}
+									if(playerWalkingLeft)
+									{
+										app.bul.init(app.player.playerX,app.player.playerY,2);
+									}
+									if(playerWalkingRight)
+									{
+										app.bul.init(app.player.playerX,app.player.playerY,3);
+									}
+									app.bullets.push(app.bul);
+									if(app.bullets.length>0)
+									{
+										console.log(app.bullets.length);
+										SpacePressed=true;
+									}
+								}
+								if((SecondLevel))
+								{
+									app.bul = new Bullet();
+									if(playerWalkingUp)
+									{
+										app.bul.init(app.player.playerX,app.player.playerY,0);
+									}
+									if(playerWalkingDown)
+									{
+										app.bul.init(app.player.playerX,app.player.playerY,1);
+									}
+									if(playerWalkingLeft)
+									{
+										app.bul.init(app.player.playerX,app.player.playerY,2);
+									}
+									if(playerWalkingRight)
+									{
+										app.bul.init(app.player.playerX,app.player.playerY,3);
+									}
+									app.bullets.push(app.bul);
+									SpacePressed=true;
+								}
+							}
+						}
+				}
 
 
    		}
@@ -986,7 +1056,6 @@ function onTouchStart(e)
 				Options = false;
 
 	    }
-		}
 };
 
 function rgb(r, g, b)
