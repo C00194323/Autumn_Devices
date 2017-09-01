@@ -34,8 +34,9 @@ SoundManager.prototype.playMusic=function()
   if(MainMenu){
     this.backgroundMusic.loop=true;
     this.backgroundMusic.play();
+    this.GameMusic.pause();
   }
-  else if(TutorialLevel ===true||FirstLevel ===true||SecondLevel ===true)
+  else if(Play === true && (TutorialLevel ===true||FirstLevel ===true||SecondLevel ===true))
   {
     this.backgroundMusic.pause();
     this.GameMusic.loop=true;

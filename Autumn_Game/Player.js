@@ -112,6 +112,9 @@ Player.prototype.PlayerEnemyCollision=function()
               if(app.player.PlayerLife === 0)
               {
                 app.player.playerAlive = false;
+                GOver=true;
+                Play=false;
+                SecondLevel=false;
               }
             }
           }
@@ -139,6 +142,9 @@ Player.prototype.PlayerEnemyCollision=function()
                 if(app.player.PlayerLife === 0)
                 {
                   app.player.playerAlive = false;
+                  GOver=true;
+                  Play=false;
+                  SecondLevel=false;
                 }
               }
             }

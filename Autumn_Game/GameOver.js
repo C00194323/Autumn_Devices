@@ -29,7 +29,7 @@ if(GOver)
   app.ctx.fillText("Game Over Menu",app.canvas.width/4,app.canvas.height/6);
 
   app.ctx.font = 'italic 40pt Calibri';
-  /*if(app.boss.BossAlive===false )
+  if(app.boss.BossAlive===false )
   {
     app.ctx.fillText("Congrates You Beaten The Game",app.canvas.width/20,app.canvas.height/3);
     app.ctx.fillText("and Saved The Princess.",app.canvas.width/20,app.canvas.height/2.7);
@@ -40,11 +40,6 @@ if(GOver)
     app.ctx.fillText("Princess Forever.",app.canvas.width/20,app.canvas.height/2.7);
   }
 }
-  */
-
   app.ctx.fillText("Play Again :",app.canvas.width/13,app.canvas.height/1.85);
   app.ctx.fillText(": Back To Menu",app.canvas.width/1.55,app.canvas.height/1.85);
-}
-
-
 }

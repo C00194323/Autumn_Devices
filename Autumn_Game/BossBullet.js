@@ -27,9 +27,19 @@ BossBullet.prototype.init=function(bossx,bossy)
 }
 BossBullet.prototype.PlayerCollision=function()
 {
-  if(BossbulletAlive)
-  {
-  }
+    if(app.player.playerX+32>=this.bossBulletX&&
+       app.player.playerX-32<=this.bossBulletX&&
+       app.player.playerY+32>=this.bossBulletY&&
+       app.player.playerY-32<=this.bossBulletY)
+       {
+         console.log("Bullet Collided");
+         return true;
+
+       }
+       else {
+         return false;
+       }
+
 }
 BossBullet.prototype.BossBulletMovement = function()
 {
@@ -47,7 +57,7 @@ BossBullet.prototype.BossBulletMovement = function()
         this.bossBulletY=this.bossBulletY;
       }
 
-      //app.ctx.clearRect(this.bossBulletX,this.bossBulletY,this.bossBulletX+64,this.bossBulletY+64);
+
       app.ctx.drawImage(this.bossFire,this.bossBulletX-32,this.bossBulletY);
     }
     else if(this.bulletTimer>60) {

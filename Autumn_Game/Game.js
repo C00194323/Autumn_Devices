@@ -270,6 +270,105 @@ function update()
 	if(GOver)
 	{
 		app.gameOver.draw();
+		app.player.init();
+		app.settingMenu.init();
+		app.gameMode.init();
+		app.gameOver.init();
+		app.level.init();
+		app.Sound = new SoundManager();
+		app.Sound.init();
+
+		/*
+		*******************************
+		Tutorial Level Assets
+		*******************************
+		*/
+
+			app.RubyTutorial=[2];
+			app.RubyTutorial[0]= new PickUps();
+			app.RubyTutorial[1]= new PickUps();
+
+			app.RubyTutorial[0].init(100,800);
+			app.RubyTutorial[1].init(300,800);
+
+			app.enemyTutorial = [1];
+			app.enemyTutorial[0]=new Enemies();
+			app.enemyTutorial[0].init(800,700);
+			app.tRubies=false;
+
+		/*
+		*******************************
+		First Level Assets
+		*******************************
+		*/
+			this.FirstLevelTimer=0;
+			this.FirstLevelText="Collect All The Rubys";
+
+			app.RubyLevel1=[5];
+
+			app.RubyLevel1[0]= new PickUps();
+			app.RubyLevel1[1]= new PickUps();
+			app.RubyLevel1[2]= new PickUps();
+			app.RubyLevel1[3]= new PickUps();
+			app.RubyLevel1[4]= new PickUps();
+
+
+
+
+			app.enemyLevel1=[3];
+			app.enemyLevel1[0]=new Enemies();
+			app.enemyLevel1[1]=new Enemies();
+			app.enemyLevel1[2]=new Enemies();
+
+			app.enemyLevel1[0].init(500,300);
+			app.enemyLevel1[1].init(800,500);
+			app.enemyLevel1[2].init(100,600);
+
+			app.RubyLevel1[0].init(100,800);
+			app.RubyLevel1[1].init(300,800);
+			app.RubyLevel1[2].init(500,500);
+			app.RubyLevel1[3].init(600,200);
+			app.RubyLevel1[4].init(200,400);
+
+
+		/*
+		*******************************
+		Second Level Assets
+		*******************************
+		*/
+
+		app.boss= new Enemies();
+		app.boss.init(50,50);
+
+		app.enemyLevel2=[5];
+		app.enemyLevel2[0]=new Enemies();
+		app.enemyLevel2[1]=new Enemies();
+		app.enemyLevel2[2]=new Enemies();
+		app.enemyLevel2[3]=new Enemies();
+		app.enemyLevel2[4]=new Enemies();
+
+		app.enemyLevel2[0].init(500,300);
+		app.enemyLevel2[1].init(800,500);
+		app.enemyLevel2[2].init(100,600);
+		app.enemyLevel2[3].init(300,400);
+		app.enemyLevel2[4].init(400,600);
+
+		app.RubyLevel2 = [7];
+		app.RubyLevel2[0] = new PickUps();
+		app.RubyLevel2[1] = new PickUps();
+		app.RubyLevel2[2] = new PickUps();
+		app.RubyLevel2[3] = new PickUps();
+		app.RubyLevel2[4] = new PickUps();
+		app.RubyLevel2[5] = new PickUps();
+		app.RubyLevel2[6] =	new PickUps();
+
+		app.RubyLevel2[0].init(100,150);
+		app.RubyLevel2[1].init(300,500);
+		app.RubyLevel2[2].init(200,200);
+		app.RubyLevel2[3].init(500,700);
+		app.RubyLevel2[4].init(700,300);
+		app.RubyLevel2[5].init(800,100);
+		app.RubyLevel2[6].init(400,450);
 	}
 	if(Play === true)
 	{
@@ -789,6 +888,8 @@ function onTouchStart(e)
 				FirstLevel = false;
 				SecondLevel = false;
 	    	Options = false;
+				GOver=false;
+				SpacePressed=false;
 	    }
 
 	    //Options Button
@@ -801,6 +902,7 @@ function onTouchStart(e)
 	    		MainMenu = false;
 		    	Play = false;
 	    	 	Options = true;
+
 	    }
 
 	    //Exit Button
@@ -817,6 +919,37 @@ function onTouchStart(e)
 	    }
     }
 
+		if(GOver)
+		{
+			if(touches[0].clientX >= app.canvas.width/3 &&
+				touches[0].clientX <= (app.canvas.width/3)+130&&
+				touches[0].clientY >= app.canvas.height/2 &&
+				touches[0].clientY <= (app.canvas.height/2)+130)
+				{
+					Play=true;
+					GameMode= true;
+					TutorialLevel = false;
+					FirstLevel = false;
+					SecondLevel = false;
+		    	Options = false;
+					GOver=false;
+				}
+				if(touches[0].clientX >= app.canvas.width/2 &&
+					touches[0].clientX <= (app.canvas.width/2)+130&&
+					touches[0].clientY >= app.canvas.height/2 &&
+					touches[0].clientY <= (app.canvas.height/2)+130)
+					{
+						MainMenu=true;
+						GOver=false;
+						Play=false;
+						GameMode=false;
+						TutorialLevel = false;
+						FirstLevel = false;
+						SecondLevel = false;
+						SpacePressed =false;
+					}
+		}
+
 		if(GameMode === true)
 		{
 			if (touches[0].clientX >= app.canvas.width/3 &&
@@ -832,6 +965,7 @@ function onTouchStart(e)
 				FirstLevel = false;
 				SecondLevel = false;
 	    	Options = false;
+				GOver=false;
 			}
 
 			if (touches[0].clientX >= app.canvas.width/2 &&
@@ -847,6 +981,7 @@ function onTouchStart(e)
 				FirstLevel =false;
 				SecondLevel = true;
 	    	Options = false;
+				GOver=false;
 			}
 
 

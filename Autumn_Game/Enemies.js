@@ -303,6 +303,26 @@ Enemies.prototype.BossMovement=function(){
          for(i=0;i<this.bossBullet.length;i++)
          {
            this.bossBullet[i].BossBulletMovement();
+           if(this.bossBullet[i].PlayerCollision())
+           {
+             if(app.player.playerAlive)
+             {
+               this.bossBullet.splice(i,1);
+               var minusHealth =1;
+               app.player.PlayerLife=app.player.PlayerLife-minusHealth;
+
+
+             }
+             if(app.player.PlayerLife===0)
+             {
+               app.player.playerAlive=false;
+               GOver=true;
+               Play=false;
+               SecondLevel=false;
+             }
+           }
+
+
          }
      }
   }
