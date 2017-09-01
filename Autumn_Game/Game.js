@@ -552,7 +552,7 @@ function HudElements()
 	if(FirstLevel===true){
 		this.FirstLevelTimer++;
 		app.ctx.fillStyle = rgb(0,0,0);
-		app.ctx.font = 'italic 35pt Calibri';
+		app.ctx.font = '36px CartoonFont';
 		if(this.FirstLevelTimer >180){
 			this.FirstLevelText= " And Avoid the Enemies";
 	}
@@ -563,7 +563,7 @@ function HudElements()
 	,app.canvas.width/7,(app.canvas.height/7)*4.55);
 	}
   app.ctx.fillStyle = rgb(256,256,256);
-	app.ctx.font = 'italic 40pt Calibri';
+	app.ctx.font = '48px CartoonFont';
 	app.ctx.TextBaseline = "top";
 	app.ctx.fillText("Player Health:" +" "+ app.player.PlayerLife, app.canvas.width/7,(app.canvas.height/7)*5.1);
 	if(FirstLevel){
