@@ -7,3 +7,9 @@
 [0831/094421.927:ERROR:exception_snapshot_win.cc(87)] thread ID 12744 not found in process
 [0831/094421.927:WARNING:crash_report_exception_handler.cc(62)] ProcessSnapshotWin::Initialize failed
 [0831/094421.927:ERROR:scoped_process_suspend.cc(39)] NtResumeProcess: An attempt was made to access an exiting process.  (0xc000010a)
+[0901/121205.992:ERROR:process_info.cc(632)] range at 0x71fc327e00000000, size 0x1de fully unreadable
+[0901/121206.031:ERROR:process_info.cc(632)] range at 0x71fc32e200000000, size 0x1de fully unreadable
+[0901/121206.031:ERROR:process_info.cc(632)] range at 0x0, size 0x1de fully unreadable
+[0901/124354.003:ERROR:process_info.cc(632)] range at 0x51d4327e00000000, size 0x24c fully unreadable
+[0901/124354.004:ERROR:process_info.cc(632)] range at 0x51d432e200000000, size 0x24c fully unreadable
+[0901/124354.004:ERROR:process_info.cc(632)] range at 0x0, size 0x24c fully unreadable

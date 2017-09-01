@@ -24,12 +24,15 @@ function Player(){
   var fps;
   var imageFrame;
   var PlayerLife;
+  var princess;
 
 }
 Player.prototype.init= function(){
 
   this.playerAnimationRight = new Image();
   this.playerAnimationRight.src='assets/Player_Assets/WRight.png'
+  this.princess = new Image();
+  this.princess.src='assets/Player_Assets/Princess.png';
 
   this.playerAnimationLeft = new Image();
   this.playerAnimationLeft.src='assets/Player_Assets/WLeft.png'
@@ -164,8 +167,6 @@ Player.prototype.animation=function(){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-
-      console.log("Player Animating Right");
     }
     app.ctx.drawImage(this.playerAnimationRight,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
   }
@@ -182,7 +183,6 @@ Player.prototype.animationDown=function(){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Player Animating Down");
     }
     app.ctx.drawImage(this.playerAnimationDown,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
   }
@@ -199,7 +199,6 @@ Player.prototype.animationUp=function(){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Player Animating Up");
     }
     app.ctx.drawImage(this.playerAnimationUp,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
   }
@@ -216,7 +215,6 @@ Player.prototype.animationLeft=function(){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Player Animating Left");
     }
     app.ctx.drawImage(this.playerAnimationLeft,this.imageFrame*64,0,64,64,this.playerX,this.playerY,64,64);
   }

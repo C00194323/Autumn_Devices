@@ -36,7 +36,6 @@ Bullet.prototype.init=function(fireX,fireY,dir)
 
   this.fireDown = new Image();
   this.fireDown.src='assets/Bullet_Assets/Player_Bullets/Magic_Down.png';
-  console.log("Bullet Created");
 
   this.directionUp=0;
   this.directionDown=1;
@@ -45,46 +44,6 @@ Bullet.prototype.init=function(fireX,fireY,dir)
 
   this.bulletAlive=true;
 }
-/*Bullet.prototype.EnemieCollision=function()
-{
-  if(this.bulletAlive)
-  {
-    if(TutorialLevel)
-    {
-      console.log("Checking Collision");
-      for(a=0;a<app.enemyTutorial.length;a++)
-      {
-        if(this.playerBulletX+64>=app.enemyTutorial[a].enemyX
-          &&this.playerBulletX-64<=app.enemyTutorial[a].enemyX
-          &&this.playerBulletY+64>=app.enemyTutorial[a].enemyY
-          &&this.playerBulletY-64<=app.enemyTutorial[a].enemyY)
-          {
-            console.log("Bullet Collided");
-            app.Sound.EnemyDeath();
-            app.enemyTutorial[a].enemiesAlive = false;
-            this.bulletAlive=false;
-          }
-      }
-    }
-      if(SecondLevel)
-      {
-        console.log("Checking Collision");
-        for(a=0;a<app.enemyLevel2.length;a++)
-        {
-          if(this.playerBulletX+64>=app.enemyLevel2[a].enemyX
-            &&this.playerBulletX-64<=app.enemyLevel2[a].enemyX
-            &&this.playerBulletY+64>=app.enemyLevel2[a].enemyY
-            &&this.playerBulletY-64<=app.enemyLevel2[a].enemyY)
-            {
-              console.log("Bullet Collided");
-              app.Sound.EnemyDeath();
-              app.enemyLevel2[a].enemiesAlive = false;
-              this.bulletAlive=false;
-            }
-        }
-    }
-  }
-}*/
 Bullet.prototype.BMovement = function()
 {
   if(this.bulletAlive)

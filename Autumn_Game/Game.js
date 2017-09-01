@@ -9,6 +9,7 @@ var Play = false;
 var Options = false;
 var exit = false;
 var GOver =  false;
+var pDeath =false;
 /*
 *******************************
 Player Control Bools For Arrows/Space Bar
@@ -78,6 +79,7 @@ var SecondLevel= false;
 var singlePlayer = true;
 var MultiPlayer = false;
 var GameMode = false;
+var Success =false;
 
 /*
 *******************************
@@ -87,6 +89,8 @@ Level Text and Timer
 
 var FirstLevelTimer =0;
 var FirstLevelText='';
+var SecondLevelText='';
+var SecondLevelTimer =0;
 
 var myData;
 
@@ -275,7 +279,6 @@ function update()
 		app.gameMode.init();
 		app.gameOver.init();
 		app.level.init();
-		app.Sound = new SoundManager();
 		app.Sound.init();
 
 		/*
@@ -406,12 +409,11 @@ function update()
 						if(shootTextBool&& SpacePressed){
 							if (app.bullets.length > 0)
 							{
-								console.log("Bullets Greater than 0")
+
 								for(var b = 0; b < app.bullets.length; b++)
 								{
 									if(TutorialLevel)
 							    {
-							      console.log("Checking Collision");
 
 										/*
 										*******************************
@@ -527,7 +529,6 @@ function update()
 					app.level.Collision();
 					for(j=0;j<app.RubyLevel2.length;j++)
 					{
-						console.log("Coin Spinning Level 2");
 						app.RubyLevel2[j].CoinSpinning();
 						app.RubyLevel2[j].Collision();
 					}
@@ -557,12 +558,12 @@ function update()
 						if(SpacePressed && SecondLevel){
 							if (app.bullets.length > 0)
 							{
-								console.log("Bullets Greater than 0")
+
 								for(var b = 0; b < app.bullets.length; b++)
 								{
 									if(SecondLevel)
 									{
-										console.log("Checking Collision");
+
 
 										/*
 										*******************************
@@ -586,6 +587,24 @@ function update()
 													}
 											}
 										}
+										if(app.bullets[b]!=null&&(app.boss.BossAlive === true)){
+											if( app.bullets[b].playerBulletX+64>=app.boss.BossX
+												&&app.bullets[b].playerBulletX-64<=app.boss.BossX
+												&&app.bullets[b].playerBulletY+64>=app.boss.BossY
+												&&app.bullets[b].playerBulletY-64<=app.boss.BossY)
+												{
+													app.bullets[b].bulletAlive=false;
+													app.bullets.splice(b,1);
+													app.boss.BossHealth-=1;
+													if(app.boss.BossHealth<=0)
+													{
+
+														app.boss.BossAlive=false;
+														console.log(app.boss.BossAlive);
+
+													}
+												}
+											}
 									}
 									if(app.bullets[b]!= null)
 									{
@@ -608,9 +627,18 @@ function update()
 								}
 							}
 						}
+						if((app.boss.BossHealth <= 0)&&app.player.playerAlive)
+						{
+
+							app.ctx.drawImage(app.player.princess,100,500);
+							GOver=true;
+
+						}
+
 
 							if(app.player.playerAlive === true)
 							{
+
 								app.player.PlayerEnemyCollision();
 								if(playerWalkingUp === true)
 								{
@@ -640,7 +668,6 @@ function update()
 		app.settingMenu.draw(app.ctx);
 	}
 	window.requestAnimationFrame(update);
-	console.log("Updating");
 };
 
 function HudElements()
@@ -660,6 +687,28 @@ function HudElements()
 	}
 	app.ctx.fillText(this.FirstLevelText
 	,app.canvas.width/7,(app.canvas.height/7)*4.55);
+	}
+	if(SecondLevel)
+	{
+		if(app.level.RubiesCollected === 7){
+			this.SecondLevelTimer++;
+			app.ctx.fillStyle = rgb(0,0,0);
+			app.ctx.font = '36px CartoonFont';
+			if(SecondLevelTimer>60)
+			{
+				this.SecondLevelText= "As The Dragon Fires";
+			}
+			if(SecondLevelTimer>120)
+			{
+				this.SecondLevelText="The Damage and Speed increases";
+			}
+			if(SecondLevelTimer>240)
+			{
+				this.SecondLevelText="Dragons Health : " + app.boss.BossHealth;
+			}
+			app.ctx.fillText(this.SecondLevelText
+			,app.canvas.width/30,(app.canvas.height/7)*4.55);
+		}
 	}
   app.ctx.fillStyle = rgb(256,256,256);
 	app.ctx.font = '48px CartoonFont';

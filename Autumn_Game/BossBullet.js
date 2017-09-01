@@ -32,7 +32,6 @@ BossBullet.prototype.PlayerCollision=function()
        app.player.playerY+32>=this.bossBulletY&&
        app.player.playerY-32<=this.bossBulletY)
        {
-         console.log("Bullet Collided");
          return true;
 
        }
@@ -40,6 +39,13 @@ BossBullet.prototype.PlayerCollision=function()
          return false;
        }
 
+}
+BossBullet.prototype.Checkborders=function()
+{
+  if((this.bossBulletY>((window.innerHeight/5)*2.82)-70))
+  {
+    BossbulletAlive=false;
+  }
 }
 BossBullet.prototype.BossBulletMovement = function()
 {

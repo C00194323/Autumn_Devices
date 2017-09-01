@@ -36,6 +36,7 @@ var particles;
   var bossIdle;
   var BossX;
   var BossY;
+  var BossHealth;
   var BossAlive;
   var bTimer;
   var bossTimer;
@@ -56,6 +57,7 @@ var particles;
 
 Enemies.prototype.init= function(x,y){
 
+
   this.enemyAnimationRight=new Image();
   this.enemyAnimationRight.src='assets/Enemy_Assets/Level_1/EnemyRight.png';
 
@@ -73,6 +75,8 @@ Enemies.prototype.init= function(x,y){
 
   this.bossAnimationLeft = new Image();
   this.bossAnimationLeft.src='assets/Enemy_Assets/Level_2/DragonLeft.png';
+
+  this.BossHealth=10;
 
   this.bossIdle=new Image();
   this.bossIdle.src='assets/Enemy_Assets/Level_2/DragonIdle.png';
@@ -92,6 +96,7 @@ Enemies.prototype.init= function(x,y){
 
   this.BossX=x;
   this.BossY=y;
+  this.BossAlive=false;
   this.bTimer =0;
   this.bossTimer =0;
   this.bossBullet=[];
@@ -214,7 +219,6 @@ Enemies.prototype.EnemyanimationRight=function(){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Enemy Animating Right");
     }
       app.ctx.drawImage(this.enemyAnimationRight,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
   }
@@ -234,7 +238,6 @@ Enemies.prototype.BossAnimatingLeft=function()
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Boss Animating Left");
     }
     app.ctx.drawImage(this.bossAnimationLeft,this.imageFrame*128,0,128,192,this.BossX,this.BossY,128,192);
   }
@@ -253,7 +256,6 @@ Enemies.prototype.BossAnimatingRight=function()
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Boss Animating Right");
     }
     app.ctx.drawImage(this.bossAnimationRight,this.imageFrame*128,0,128,192,this.BossX,this.BossY,128,192);
   }
@@ -261,6 +263,7 @@ Enemies.prototype.BossAnimatingRight=function()
 Enemies.prototype.BossMovement=function(){
   if(SecondLevel&&app.level.RubiesCollected === 7)
   {
+
     this.bossTimer++;
     if(this.bossTimer<=180)
     {
@@ -278,52 +281,54 @@ Enemies.prototype.BossMovement=function(){
 
      if(this.bossTimer>180)
      {
-       if(app.player.playerX<this.BossX)
-       {
-         this.BossX--;
-         this.BossAnimatingLeft();
-       }
-       if(app.player.playerX>this.BossX)
-       {
-         this.BossX++;
-         this.BossAnimatingRight();
-       }
-       if(app.player.playerX===this.BossX)
-       {
-         app.ctx.drawImage(this.bossIdle,this.BossX,this.BossY);
-       }
-
-         this.bTimer++;
-         if(this.bTimer>=150)
+       if(this.BossAlive){
+         if(app.player.playerX<this.BossX)
          {
-           this.bossBul.init(this.BossX,this.BossY);
-           this.bossBullet.push(this.bossBul);
-           this.bTimer=0;
+           this.BossX--;
+           this.BossAnimatingLeft();
          }
-         for(i=0;i<this.bossBullet.length;i++)
+         if(app.player.playerX>this.BossX)
          {
-           this.bossBullet[i].BossBulletMovement();
-           if(this.bossBullet[i].PlayerCollision())
+           this.BossX++;
+           this.BossAnimatingRight();
+         }
+         if(app.player.playerX===this.BossX)
+         {
+           app.ctx.drawImage(this.bossIdle,this.BossX,this.BossY);
+         }
+
+           this.bTimer++;
+           if(this.bTimer>=150)
            {
-             if(app.player.playerAlive)
+             this.bossBul.init(this.BossX,this.BossY);
+             this.bossBullet.push(this.bossBul);
+             this.bTimer=0;
+           }
+           for(i=0;i<this.bossBullet.length;i++)
+           {
+             this.bossBullet[i].Checkborders();
+             this.bossBullet[i].BossBulletMovement();
+             if(this.bossBullet[i].PlayerCollision())
              {
-               this.bossBullet.splice(i,1);
-               var minusHealth =1;
-               app.player.PlayerLife=app.player.PlayerLife-minusHealth;
+               if(app.player.playerAlive)
+               {
+
+                 this.bossBullet.splice(i,1);
+                 var minusHealth =1;
+                 app.player.PlayerLife=app.player.PlayerLife-minusHealth;
 
 
-             }
-             if(app.player.PlayerLife===0)
-             {
-               app.player.playerAlive=false;
-               GOver=true;
-               Play=false;
-               SecondLevel=false;
+               }
+               if(app.player.PlayerLife===0)
+               {
+                 app.player.playerAlive=false;
+                 GOver=true;
+                 Play=false;
+                 SecondLevel=false;
+               }
              }
            }
-
-
-         }
+       }
      }
   }
 }
@@ -349,7 +354,6 @@ Enemies.prototype.EnemyanimationUp=function(){
       }
       this.imageFrame++;
       this.oldTime=Date.now();
-      console.log("Enemy Animating Up");
     }
       app.ctx.drawImage(this.enemyAnimationUp,this.imageFrame*64,0,64,64,this.enemyX,this.enemyY,64,64);
   }
